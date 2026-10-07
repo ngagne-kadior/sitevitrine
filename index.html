@@ -3,490 +3,147 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Le Kadior — Boulangerie, viennoiseries, pâtisserie et gâteaux d'anniversaire à Mbour.">
-  <meta name="theme-color" content="#FBF7F1">
-  <title>Le Kadior | Boulangerie & Pâtisserie</title>
+  <meta name="description" content="Le Kadior — Boulangerie, pâtisserie et viennoiserie à Mbour. Produits frais, commandes WhatsApp et livraison.">
+  <meta name="theme-color" content="#3A2118">
+  <title>Le Kadior | Boulangerie • Pâtisserie • Viennoiserie</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=20261006-3">
 </head>
 <body>
-
-  <!-- Icônes (réutilisées via <use href="#i-...">) -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
     <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
-    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
     <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
-    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></symbol>
-    <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></symbol>
-    <!-- Icônes des catégories -->
-    <symbol id="i-bread" viewBox="0 0 48 48"><rect x="4" y="18" width="40" height="13" rx="6.5" transform="rotate(-30 24 24.5)"/><line x1="14.5" y1="27" x2="18.5" y2="31"/><line x1="21.5" y1="23" x2="25.5" y2="27"/><line x1="28.5" y1="19" x2="32.5" y2="23"/></symbol>
-    <symbol id="i-croissant" viewBox="0 0 48 48"><path d="M6 31c3-9 11-15 18-15s15 6 18 15c-3-2-7-3-10-2-2-4-5-6-8-6s-6 2-8 6c-3-1-7 0-10 2z"/><path d="M16 29c1-3 4-6 8-6s7 3 8 6"/><line x1="18" y1="18.5" x2="20" y2="23.5"/><line x1="30" y1="18.5" x2="28" y2="23.5"/></symbol>
-    <symbol id="i-slice" viewBox="0 0 48 48"><path d="M6 34 42 21v13z"/><path d="M6 34h36"/><path d="M8.5 33.1 42 27"/><circle cx="37" cy="16" r="3"/><path d="M37 13c0-2 1-3.5 3-4"/></symbol>
-    <symbol id="i-cake" viewBox="0 0 48 48"><rect x="8" y="24" width="32" height="15" rx="2.5"/><path d="M8 30c2.7 2.4 5.3 2.4 8 0s5.3-2.4 8 0 5.3 2.4 8 0 5.3-2.4 8 0"/><line x1="17" y1="17" x2="17" y2="24"/><line x1="24" y1="17" x2="24" y2="24"/><line x1="31" y1="17" x2="31" y2="24"/><path d="M17 11.5c1.2 1.4 1.2 2.8 0 3.5-1.2-.7-1.2-2.1 0-3.5z"/><path d="M24 11.5c1.2 1.4 1.2 2.8 0 3.5-1.2-.7-1.2-2.1 0-3.5z"/><path d="M31 11.5c1.2 1.4 1.2 2.8 0 3.5-1.2-.7-1.2-2.1 0-3.5z"/><line x1="5" y1="39" x2="43" y2="39"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20 4C11 4 5 8 5 14c0 3 2 5 5 5 6 0 10-6 10-15z"/><path d="M4 21c3-5 7-8 12-10"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.2 13.9 7 23 12 20 17 23 15.8 13.9"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 5.5h12.5v10H2z"/><path d="M14.5 9h4l3.5 3.5v3h-7.5"/><circle cx="6" cy="17.5" r="2"/><circle cx="17.5" cy="17.5" r="2"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 8.7c0 5.2-8.8 10.3-8.8 10.3S3.2 13.9 3.2 8.7A4.7 4.7 0 0 1 12 6.2a4.7 4.7 0 0 1 8.8 2.5z"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 16 16"><path fill="currentColor" stroke="none" d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/></symbol>
+    <symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M14 3.5v11a3.7 3.7 0 1 1-3.7-3.7"/><path d="M14 3.5c.3 2.5 2 4.3 4.7 4.6"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="3.8"/><path d="M17 7h.01"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M14.5 21v-7.5h2.6l.4-3.2h-3V8.4c0-.9.3-1.5 1.6-1.5h1.5V4.1A19 19 0 0 0 15.4 4C13.1 4 11.5 5.4 11.5 8v2.3H9v3.2h2.5V21"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3.2l1.6-2.5h6.4L16.8 8H20a1.5 1.5 0 0 1 1.5 1.5v8A1.5 1.5 0 0 1 20 19H4a1.5 1.5 0 0 1-1.5-1.5v-8A1.5 1.5 0 0 1 4 8z"/><circle cx="12" cy="13" r="3.6"/></symbol>
+    <symbol id="i-wheat" viewBox="0 0 60 120"><path d="M30 118V22"/><ellipse cx="30" cy="12" rx="4.5" ry="10"/><ellipse cx="21" cy="30" rx="4" ry="9.5" transform="rotate(-28 21 30)"/><ellipse cx="39" cy="30" rx="4" ry="9.5" transform="rotate(28 39 30)"/><ellipse cx="21" cy="47" rx="4" ry="9.5" transform="rotate(-28 21 47)"/><ellipse cx="39" cy="47" rx="4" ry="9.5" transform="rotate(28 39 47)"/><ellipse cx="21" cy="64" rx="4" ry="9.5" transform="rotate(-28 21 64)"/><ellipse cx="39" cy="64" rx="4" ry="9.5" transform="rotate(28 39 64)"/><ellipse cx="21" cy="81" rx="4" ry="9.5" transform="rotate(-28 21 81)"/><ellipse cx="39" cy="81" rx="4" ry="9.5" transform="rotate(28 39 81)"/></symbol>
   </svg>
 
   <div class="topbar">
-    <!-- Une seule ligne à toutes les largeurs : .tb-opt, .tb-opt-xs, .tb-days et .tb-h sont masqués progressivement sur petit écran -->
-    <div class="topbar-left">
-      <span class="topbar-item"><svg class="icon" role="img" aria-label="Localisation"><use href="#i-pin"/></svg><span>Mbour<span class="tb-opt">, Sénégal</span></span></span>
-      <span class="topbar-sep" aria-hidden="true"></span>
-      <span class="topbar-item"><svg class="icon" role="img" aria-label="Horaires"><use href="#i-clock"/></svg><span><span class="tb-days">Lun – Dim : </span>06<span class="tb-h">h</span>–14h / 16<span class="tb-h">h</span>–23h</span></span>
+    <div class="topbar-item"><svg class="icon"><use href="#i-pin"/></svg><span>Mbour, Sénégal</span></div>
+    <div class="topbar-item"><svg class="icon"><use href="#i-clock"/></svg><span>Lundi – Dimanche : 06h – 14h / 16h – 23h</span></div>
+    <div class="topbar-item delivery"><svg class="icon"><use href="#i-truck"/></svg><span>Livraison disponible à Mbour et environs</span></div>
+    <div class="socials" aria-label="Réseaux sociaux">
+      <a href="https://www.tiktok.com/@lekadior_officiel" target="_blank" rel="noopener" aria-label="TikTok"><svg class="icon"><use href="#i-tiktok"/></svg></a>
+      <a href="https://www.instagram.com/lekadior_officiel" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon"><use href="#i-instagram"/></svg></a>
+      <a href="https://www.facebook.com/share/1LjNVexWPU/" target="_blank" rel="noopener" aria-label="Facebook"><svg class="icon"><use href="#i-facebook"/></svg></a>
     </div>
-    <div class="topbar-center">
-      <span class="topbar-item topbar-delivery"><svg class="icon" viewBox="0 0 24 24" role="img" aria-label="Livraison disponible"><path d="M2 5.5h12.5v10H2z"/><path d="M14.5 9h4l3.5 3.5v3h-7.5"/><circle cx="6" cy="17.5" r="2"/><circle cx="17.5" cy="17.5" r="2"/></svg><span>Livraison<span class="tb-opt-xs"> disponible</span></span></span>
-    </div>
-    <nav class="topbar-social" aria-label="Réseaux sociaux">
-      <a href="https://www.tiktok.com/@lekadior_officiel?is_from_webapp=1&amp;sender_device=pc" target="_blank" rel="noopener noreferrer" aria-label="TikTok" title="TikTok">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 7.917v4.034a9.948 9.948 0 0 1-5-1.951v4.5a6.5 6.5 0 1 1-8-6.326v4.326a2.5 2.5 0 1 0 4 2V3h4.083A6.005 6.005 0 0 0 21 7.917z"/></svg>
-      </a>
-      <a href="https://www.instagram.com/lekadior_officiel?stkn=ZjkxeHRnYXQ3bzZw&amp;utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4.5"/><circle cx="12" cy="12" r="3.5"/><line x1="16.5" y1="7.5" x2="16.5" y2="7.51"/></svg>
-      </a>
-      <a href="https://www.facebook.com/share/1LjNVexWPU/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10v4h3v7h4v-7h3l1-4h-4V8a1 1 0 0 1 1-1h3V3h-3a5 5 0 0 0-5 5v2H7"/></svg>
-      </a>
-      <a href="https://wa.me/221784666259" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>
-      </a>
-    </nav>
   </div>
 
-  <header class="header">
-    <a class="logo" href="#accueil">
-      <span class="brand-logo"><img src="images/Logo.png" alt="Le Kadior - Boulangerie &amp; Pâtisserie" width="500" height="500"></span>
+  <header class="header" id="site-header">
+    <a class="logo" href="#accueil" aria-label="Le Kadior - Accueil">
+      <img src="images/Logo.png" alt="Le Kadior — Boulangerie Pâtisserie">
     </a>
-
-    <button class="menu-toggle" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
-
-    <nav class="nav">
-      <a href="#accueil">Accueil</a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#accueil" class="active">Accueil</a>
       <a href="#categories">Nos produits</a>
-      <!-- « Nos offres » : aucune section dédiée n'existe encore ; le lien vise provisoirement la section Gâteaux sur commande -->
-      <a href="#gateaux-titre">Nos offres</a>
+      <a href="#gateaux">Nos offres</a>
       <a href="#apropos">À propos</a>
-      <a href="#galerie">Galerie</a>
+      <a href="#livraison">Livraison</a>
+      <a href="#actualites">Actualités</a>
       <a href="#contact">Contact</a>
     </nav>
-
-    <a class="btn btn-whatsapp header-whatsapp" href="https://wa.me/221784666259" target="_blank" rel="noopener noreferrer" aria-label="Commander sur WhatsApp">
-      <svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>Commander
-    </a>
+    <div class="header-actions">
+      <button class="header-search" type="button" aria-label="Rechercher un produit"><svg class="icon"><use href="#i-search"/></svg></button>
+      <a class="btn btn-gold header-cta" href="https://wa.me/221784666259" target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg><span class="cta-long">Commander sur WhatsApp</span><span class="cta-short">Commander</span></a>
+    </div>
+    <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </header>
 
   <main>
     <section id="accueil" class="hero">
+      <div class="hero-deco" aria-hidden="true">
+        <svg class="wheat-1"><use href="#i-wheat"/></svg>
+        <svg class="wheat-2"><use href="#i-wheat"/></svg>
+        <svg class="wheat-3"><use href="#i-wheat"/></svg>
+      </div>
       <div class="hero-content">
-        <span class="eyebrow">Boulangerie • Viennoiserie • Pâtisserie</span>
-        <h1>Le goût qui <span>rassemble.</span></h1>
-        <p>Découvrez les produits Le Kadior, préparés avec soin et disponibles tous les jours.</p>
+        <span class="eyebrow">Boulangerie • Pâtisserie • Viennoiserie</span>
+        <h1 class="hero-title">Le goût du bon pain,<br><span>chaque jour.</span></h1>
+        <p class="hero-text">Des produits frais, savoureux et de qualité, préparés avec passion à Mbour.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#categories">Découvrir nos produits<svg class="icon"><use href="#i-arrow"/></svg></a>
-          <a class="btn btn-whatsapp" href="https://wa.me/221784666259" target="_blank" rel="noopener"><svg class="icon"><use href="#i-chat"/></svg>Commander sur WhatsApp</a>
+          <a class="btn hero-btn hero-btn-primary" href="https://wa.me/221784666259" target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg>Commander sur WhatsApp <svg class="icon"><use href="#i-arrow"/></svg></a>
+          <a class="btn hero-btn hero-btn-secondary" href="#produits">Découvrir nos produits <svg class="icon"><use href="#i-arrow"/></svg></a>
         </div>
-        <ul class="hero-highlights">
-          <li><svg class="icon" aria-hidden="true"><use href="#i-sun"/></svg>Frais, chaque jour</li>
-          <li><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>7j/7</li>
-          <li><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>Mbour, Sénégal</li>
+        <ul class="hero-features">
+          <li class="feature-item"><svg class="icon" aria-hidden="true"><use href="#i-leaf"/></svg><span class="feature-text">Produits frais<br>tous les jours</span></li>
+          <li class="feature-item"><svg class="icon" aria-hidden="true"><use href="#i-award"/></svg><span class="feature-text">Qualité<br>artisanale</span></li>
+          <li class="feature-item"><svg class="icon" aria-hidden="true"><use href="#i-truck"/></svg><span class="feature-text">Livraison<br>disponible</span></li>
+          <li class="feature-item"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg><span class="feature-text">Accueil<br>chaleureux</span></li>
         </ul>
       </div>
-
-      <div class="hero-visual">
-        <svg class="hero-ornament" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1c.6 5.6 2.4 7.9 11 11-8.6 3.1-10.4 5.4-11 11-.6-5.6-2.4-7.9-11-11 8.6-3.1 10.4-5.4 11-11z"/></svg>
-        <div class="hero-media">
-          <!-- Visuel affiché tant que images/hero.jpg n'existe pas -->
-          <div class="hero-placeholder" aria-hidden="true">
-            <span class="brand-logo hero-placeholder-logo"><img src="images/Logo.png" alt="" width="500" height="500"></span>
-            <span class="hero-placeholder-rule"></span>
-            <span class="hero-placeholder-sub">Le goût qui rassemble.</span>
-          </div>
-          <!-- IMAGE : déposez images/hero.jpg (portrait conseillé, ~1000×1250px) — elle s'affiche automatiquement -->
-          <img src="images/hero.jpg" alt="Pains et pâtisseries fraîchement préparés à la boulangerie Le Kadior, à Mbour" fetchpriority="high" onerror="this.remove()">
-        </div>
-        <div class="hero-card">
-          <span class="hero-card-icon" aria-hidden="true"><svg class="icon"><use href="#i-clock"/></svg></span>
-          <span class="hero-card-text">
-            <span class="hero-card-label">Ouvert tous les jours</span>
-            <span class="hero-card-hours"><b>06h – 14h</b><i aria-hidden="true"></i><b>16h – 23h</b></span>
-          </span>
-        </div>
-      </div>
+      <figure class="hero-media">
+        <picture>
+          <source media="(max-width:1150px)" srcset="images/hero-mobile.jpg?v=20261005-3">
+          <img class="hero-img" src="images/hero.jpg?v=20261005-3" alt="La façade de la boulangerie Le Kadior à Mbour" width="1132" height="776">
+        </picture>
+        <div class="hero-badge"><svg class="badge-icon" aria-hidden="true"><use href="#i-wheat"/></svg><span>Le pain,<br>une histoire<br><em>de passion</em></span></div>
+      </figure>
     </section>
 
-    <section id="categories" class="section">
+    <section id="categories" class="section categories-section">
       <div class="section-heading">
-        <span class="eyebrow">Notre univers</span>
-        <h2>Découvrez nos catégories</h2>
-        <p>Choisissez une catégorie et découvrez nos produits.</p>
+        <h2>Nos catégories</h2>
+        <p>Découvrez notre large gamme de produits</p>
       </div>
-
       <div class="category-grid">
-        <a class="category-card" href="#produits" data-category="Pains">
-          <!-- IMAGE : images/pains.jpg -->
-          <div class="category-image media pain-image" style="--img:url('images/pains.jpg')">
-            <div class="media-placeholder"><svg class="icon ph-icon" aria-hidden="true"><use href="#i-bread"/></svg></div>
-          </div>
-          <div class="category-info">
-            <span class="category-num">01</span>
-            <h3>Pains</h3>
-            <p>Baguette, Sicap, Thiéré, Maïs, Riche, Diabétique, Sans sel.</p>
-            <strong>Découvrir <svg class="icon"><use href="#i-arrow"/></svg></strong>
-          </div>
-        </a>
-
-        <a class="category-card" href="#produits" data-category="Viennoiseries">
-          <!-- IMAGE : images/viennoiseries.jpg -->
-          <div class="category-image media viennoiserie-image" style="--img:url('images/viennoiseries.jpg')">
-            <div class="media-placeholder"><svg class="icon ph-icon" aria-hidden="true"><use href="#i-croissant"/></svg></div>
-          </div>
-          <div class="category-info">
-            <span class="category-num">02</span>
-            <h3>Viennoiseries</h3>
-            <p>Croissants, pains au chocolat, brioches, pains aux raisins.</p>
-            <strong>Découvrir <svg class="icon"><use href="#i-arrow"/></svg></strong>
-          </div>
-        </a>
-
-        <a class="category-card" href="#produits" data-category="Pâtisserie">
-          <!-- IMAGE : images/patisserie.jpg -->
-          <div class="category-image media patisserie-image" style="--img:url('images/patisserie.jpg')">
-            <div class="media-placeholder"><svg class="icon ph-icon" aria-hidden="true"><use href="#i-slice"/></svg></div>
-          </div>
-          <div class="category-info">
-            <span class="category-num">03</span>
-            <h3>Pâtisserie</h3>
-            <p>Tartes, desserts, roche coco, madeleines, biscuits, cookies et autres douceurs.</p>
-            <strong>Découvrir <svg class="icon"><use href="#i-arrow"/></svg></strong>
-          </div>
-        </a>
-
-        <a class="category-card" href="#produits" data-category="Gâteaux d'anniversaire">
-          <!-- IMAGE : images/gateaux.jpg -->
-          <div class="category-image media gateau-image" style="--img:url('images/gateaux.jpg')">
-            <div class="media-placeholder"><svg class="icon ph-icon" aria-hidden="true"><use href="#i-cake"/></svg></div>
-          </div>
-          <div class="category-info">
-            <span class="category-num">04</span>
-            <h3>Gâteaux d'anniversaire</h3>
-            <p>Gâteaux d'anniversaire, parts, personnalisés et événementiels.</p>
-            <strong>Découvrir <svg class="icon"><use href="#i-arrow"/></svg></strong>
-          </div>
-        </a>
+        <a class="category-card" href="#produits" data-category="Pains"><div class="category-media"><img src="images/categories/pains.jfif?v=20261006-3" alt="Baguettes dorées" loading="lazy"></div><div class="category-info"><span class="category-number">01</span><div><h3>Pains</h3><small>Voir les produits <svg class="icon"><use href="#i-arrow"/></svg></small></div></div></a>
+        <a class="category-card" href="#produits" data-category="Viennoiseries"><div class="category-media"><img src="images/categories/viennoiserie.jfif?v=20261006-3" alt="Viennoiseries dorées" loading="lazy"></div><div class="category-info"><span class="category-number">02</span><div><h3>Viennoiseries</h3><small>Voir les produits <svg class="icon"><use href="#i-arrow"/></svg></small></div></div></a>
+        <a class="category-card" href="#produits" data-category="Pâtisserie"><div class="category-media"><img src="images/categories/patisseries.jpg?v=20261005-3" alt="Madeleines, cakes et biscuits" loading="lazy" width="900" height="675"></div><div class="category-info"><span class="category-number">03</span><div><h3>Pâtisseries</h3><small>Voir les produits <svg class="icon"><use href="#i-arrow"/></svg></small></div></div></a>
+        <a class="category-card" href="#produits" data-category="Gâteaux d'anniversaire"><div class="category-media"><img src="images/categories/Gâteau d’anniversaire dans une vitrine de pâtisserie.png?v=20261006-3" alt="Gâteaux d'anniversaire en vitrine" loading="lazy"></div><div class="category-info"><span class="category-number">04</span><div><h3>Gâteaux</h3><small>Voir les produits <svg class="icon"><use href="#i-arrow"/></svg></small></div></div></a>
       </div>
     </section>
 
     <section id="produits" class="section products-section">
-      <div class="section-heading">
-        <span class="eyebrow">Le catalogue</span>
-        <h2>Nos produits</h2>
-        <p>Recherchez un produit ou filtrez par catégorie.</p>
+      <div class="section-heading section-heading-row"><div><h2>Nos produits phares</h2><p>Les incontournables de Le Kadior</p></div><a class="btn btn-gold btn-small" href="#catalogue">Voir tout le catalogue <svg class="icon"><use href="#i-arrow"/></svg></a></div>
+      <div class="featured-grid">
+        <article class="featured-card photo" style="--photo:url('images/produits/pains/Six baguettes sur une étagère en bois.png')"><div class="photo-fallback"><span>🥖</span></div><h3>Baguette</h3><strong>150 FCFA</strong><a href="https://wa.me/221784666259?text=Bonjour%20Le%20Kadior%2C%20je%20souhaite%20commander%20une%20Baguette." target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg>Commander</a></article>
+        <article class="featured-card photo" style="--photo:url('images/produits/viennoiseries/croissant beurre 1.jfif')"><div class="photo-fallback"><span>🥐</span></div><h3>Croissant</h3><strong>500 FCFA</strong><a href="https://wa.me/221784666259?text=Bonjour%20Le%20Kadior%2C%20je%20souhaite%20commander%20un%20Croissant." target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg>Commander</a></article>
+        <article class="featured-card photo" style="--photo:url('images/produits/viennoiseries/Pain au chocolat.jfif')"><div class="photo-fallback"><span>🥐</span></div><h3>Pain au chocolat</h3><strong>500 FCFA</strong><a href="https://wa.me/221784666259?text=Bonjour%20Le%20Kadior%2C%20je%20souhaite%20commander%20un%20Pain%20au%20chocolat." target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg>Commander</a></article>
+        <article class="featured-card photo" style="--photo:url('images/produits/viennoiseries/chausson pomme.jfif')"><div class="photo-fallback"><span>🥐</span></div><h3>Chausson pomme</h3><strong>500 FCFA</strong><a href="https://wa.me/221784666259?text=Bonjour%20Le%20Kadior%2C%20je%20souhaite%20commander%20un%20Chausson%20pomme." target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg>Commander</a></article>
+        <article class="featured-card photo" style="--photo:url('images/produits/patisserie/Macarons à la noix de coco dorés.png')"><div class="photo-fallback"><span>🥥</span></div><h3>Roche coco</h3><strong>100 FCFA</strong><a href="https://wa.me/221784666259?text=Bonjour%20Le%20Kadior%2C%20je%20souhaite%20commander%20une%20Roche%20coco." target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg>Commander</a></article>
+        <article class="featured-card photo" style="--photo:url('images/produits/gateaux/gateau-anniversaire-2.jpg')"><div class="photo-fallback"><span>🎂</span></div><h3>Gâteau d'anniversaire</h3><strong>À partir de 8 000 FCFA</strong><a href="https://wa.me/221784666259?text=Bonjour%20Le%20Kadior%2C%20je%20souhaite%20commander%20un%20g%C3%A2teau%20d'anniversaire." target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg>Commander</a></article>
       </div>
 
-      <div class="catalog-tools">
-        <label class="search-field">
-          <svg class="icon"><use href="#i-search"/></svg>
-          <input id="searchInput" type="search" placeholder="Rechercher un produit..." aria-label="Rechercher un produit">
-        </label>
-        <div class="filters">
-          <button class="filter active" data-filter="Tous">Tous</button>
-          <button class="filter" data-filter="Pains">Pains</button>
-          <button class="filter" data-filter="Viennoiseries">Viennoiseries</button>
-          <button class="filter" data-filter="Pâtisserie">Pâtisserie</button>
-          <button class="filter" data-filter="Gâteaux d'anniversaire">Gâteaux</button>
-        </div>
+      <div id="gateaux" class="promo-grid">
+        <article class="promo photo" style="--photo:url('images/pain-thiere.jpg')"><div class="photo-fallback"><span>🍞</span></div><div><h3>Pain thiéré</h3><p>Disponible tous les jours</p><strong>100 FCFA</strong></div></article>
+        <article class="promo photo" style="--photo:url('images/pain-diabetique.jpg')"><div class="photo-fallback"><span>🍞</span></div><div><h3>Pain diabétique</h3><p>Disponible tous les jours</p><strong>150 FCFA</strong></div></article>
       </div>
 
-      <div id="productGrid" class="product-grid"></div>
-      <p id="emptyMessage" class="empty-message hidden">Aucun produit trouvé.</p>
+      <div id="catalogue" class="catalogue">
+        <div class="catalogue-head"><div><span class="eyebrow">Catalogue complet</span><h2>Tous nos produits</h2></div><label class="search-field"><svg class="icon"><use href="#i-search"/></svg><input id="searchInput" type="search" placeholder="Rechercher un produit..." aria-label="Rechercher un produit"></label></div>
+        <div class="filters"><button class="filter active" data-filter="Tous">Tous</button><button class="filter" data-filter="Pains">Pains</button><button class="filter" data-filter="Viennoiseries">Viennoiseries</button><button class="filter" data-filter="Pâtisserie">Pâtisserie</button><button class="filter" data-filter="Gâteaux d'anniversaire">Gâteaux</button></div>
+        <div id="productGrid" class="product-grid"></div><p id="emptyMessage" class="empty-message hidden">Aucun produit trouvé.</p>
+      </div>
     </section>
 
     <section id="apropos" class="section about-section">
-      <div class="about-visual">
-        <div class="about-media">
-          <!-- Visuel affiché tant que images/apropos.jpg n'existe pas -->
-          <div class="about-placeholder" aria-hidden="true">
-            <svg class="icon about-placeholder-icon"><use href="#i-bread"/></svg>
-            <span class="about-placeholder-rule"></span>
-            <span class="about-placeholder-label">Fait avec soin</span>
-          </div>
-          <!-- IMAGE : déposez images/apropos.jpg (portrait conseillé, ~1000×1250px) — elle s'affiche automatiquement -->
-          <img src="images/apropos.jpg" alt="La boulangerie-pâtisserie Le Kadior à Mbour" loading="lazy" onerror="this.remove()">
-        </div>
-        <div class="about-badge">
-          <span class="about-badge-icon" aria-hidden="true"><svg class="icon"><use href="#i-pin"/></svg></span>
-          <span><small>Boulangerie · Pâtisserie</small><b>Mbour, Sénégal</b></span>
-        </div>
-      </div>
-
-      <div class="about-content">
-        <span class="eyebrow">À propos de Le Kadior</span>
-        <h2>Le goût qui <em>rassemble.</em></h2>
-        <p>Le Kadior vous propose des pains, viennoiseries, pâtisseries et gâteaux préparés avec soin pour accompagner vos journées et vos moments importants.</p>
-        <p>Notre envie est simple : offrir à nos clients de Mbour des produits frais, accessibles et préparés avec attention, chaque jour.</p>
-        <ol class="about-points">
-          <li><span class="about-num">01</span><span><b>Produits frais</b><small>Préparés avec soin au quotidien.</small></span></li>
-          <li><span class="about-num">02</span><span><b>Qualité</b><small>Une attention particulière portée à nos produits.</small></span></li>
-          <li><span class="about-num">03</span><span><b>Commande facile</b><small>Commandez directement sur WhatsApp.</small></span></li>
-        </ol>
-      </div>
+      <div class="about-copy"><span class="eyebrow">À propos de Le Kadior</span><h2>Le goût du bon pain,<br><em>chaque jour.</em></h2><p>Le Kadior est une boulangerie, pâtisserie et viennoiserie située à Mbour. Nous vous proposons des produits frais, savoureux et de qualité, préparés chaque jour avec passion et savoir-faire.</p><a class="btn btn-gold" href="#contact">En savoir plus <svg class="icon"><use href="#i-arrow"/></svg></a></div>
+      <div class="about-photo"><img src="images/hero-mobile.jpg?v=20261005-3" alt="La façade de la boulangerie Le Kadior à Mbour" loading="lazy"></div>
+      <div class="about-points"><div><svg class="icon"><use href="#i-leaf"/></svg><b>Produits frais</b><small>Préparés chaque jour</small></div><div><svg class="icon"><use href="#i-award"/></svg><b>Qualité artisanale</b><small>Recettes traditionnelles</small></div><div><svg class="icon"><use href="#i-heart"/></svg><b>Large choix</b><small>Pains, viennoiseries, pâtisseries, gâteaux</small></div><div><svg class="icon"><use href="#i-truck"/></svg><b>Livraison disponible</b><small>À Mbour et environs</small></div></div>
     </section>
 
-    <section class="birthday-banner" aria-labelledby="gateaux-titre">
-      <div class="birthday-visual">
-        <div class="birthday-media">
-          <!-- Visuel affiché tant que images/gateaux.jpg n'existe pas -->
-          <div class="birthday-placeholder" aria-hidden="true">
-            <svg class="icon birthday-placeholder-icon"><use href="#i-cake"/></svg>
-            <span class="birthday-placeholder-rule"></span>
-            <span class="birthday-placeholder-label">Gâteaux sur commande</span>
-          </div>
-          <!-- IMAGE : déposez images/gateaux.jpg (portrait conseillé, ~1000×1250px) — elle s'affiche automatiquement -->
-          <img src="images/gateaux.jpg" alt="Gâteau d'anniversaire préparé par Le Kadior" loading="lazy" onerror="this.remove()">
-        </div>
-      </div>
+    <section class="section testimonials-section"><div class="section-heading"><h2>Ils nous font confiance</h2></div><div class="testimonial-grid"><article><div class="avatar">A</div><div><b>Aïssatou D.</b><div class="stars">★★★★★</div><p>« Le pain est toujours frais et délicieux. J'adore leurs viennoiseries ! »</p></div></article><article><div class="avatar">M</div><div><b>Mamadou S.</b><div class="stars">★★★★★</div><p>« Service rapide et de qualité. Les gâteaux sont magnifiques. »</p></div></article><article><div class="avatar">N</div><div><b>Ndeye F.</b><div class="stars">★★★★★</div><p>« La meilleure boulangerie de Mbour. Accueil très chaleureux ! »</p></div></article></div></section>
 
-      <div class="birthday-text">
-        <svg class="birthday-ornament" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1c.6 5.6 2.4 7.9 11 11-8.6 3.1-10.4 5.4-11 11-.6-5.6-2.4-7.9-11-11 8.6-3.1 10.4-5.4 11-11z"/></svg>
-        <span class="eyebrow">Pour vos moments spéciaux</span>
-        <h2 id="gateaux-titre">Un gâteau pour chaque <em>occasion.</em></h2>
-        <p>Anniversaire, célébration ou événement spécial : confiez-nous votre gâteau et partagez un moment qui vous ressemble.</p>
-        <ul class="birthday-list">
-          <li>Gâteaux d'anniversaire</li>
-          <li>Parts de gâteau</li>
-          <li>Gâteaux personnalisés</li>
-        </ul>
-        <a class="btn btn-gold birthday-cta" href="https://wa.me/221784666259?text=Bonjour%20Le%20Kadior%2C%20je%20souhaite%20commander%20un%20g%C3%A2teau." target="_blank" rel="noopener noreferrer">Commander mon gâteau<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-    </section>
+    <section id="actualites" class="section gallery-preview"><div class="section-heading"><h2>Notre univers en images</h2></div><div class="gallery-strip"><div class="photo" style="--photo:url('images/galerie-1.jpg')"><div class="photo-fallback"><span>🥖</span></div></div><div class="photo" style="--photo:url('images/galerie-2.jpg')"><div class="photo-fallback"><span>🥐</span></div></div><div class="photo" style="--photo:url('images/galerie-3.jpg')"><div class="photo-fallback"><span>🍰</span></div></div><div class="photo" style="--photo:url('images/galerie-4.jpg')"><div class="photo-fallback"><span>🧁</span></div></div><div class="photo" style="--photo:url('images/galerie-5.jpg')"><div class="photo-fallback"><span>🎂</span></div></div></div></section>
 
-    <section id="galerie" class="section gallery-section" aria-labelledby="galerie-titre">
-      <!-- Icônes propres à la galerie -->
-      <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-        <symbol id="g-wheat" viewBox="0 0 32 48"><path d="M16 46V9"/><path d="M16 9c-1.8-2.2-1.8-5 0-7.5 1.8 2.5 1.8 5.3 0 7.5z"/><path d="M16 16c-4-.6-6.4-3.2-6.6-7 3.8.4 6.2 3 6.6 7z"/><path d="M16 16c4-.6 6.4-3.2 6.6-7-3.8.4-6.2 3-6.6 7z"/><path d="M16 24c-4-.6-6.4-3.2-6.6-7 3.8.4 6.2 3 6.6 7z"/><path d="M16 24c4-.6 6.4-3.2 6.6-7-3.8.4-6.2 3-6.6 7z"/><path d="M16 32c-4-.6-6.4-3.2-6.6-7 3.8.4 6.2 3 6.6 7z"/><path d="M16 32c4-.6 6.4-3.2 6.6-7-3.8.4-6.2 3-6.6 7z"/></symbol>
-        <symbol id="g-expand" viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></symbol>
-        <symbol id="g-close" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
-        <symbol id="g-prev" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></symbol>
-        <symbol id="g-next" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></symbol>
-      </svg>
-
-      <div class="section-heading">
-        <span class="eyebrow">Notre savoir-faire</span>
-        <h2 id="galerie-titre">Découvrez l'univers Le&nbsp;Kadior</h2>
-        <p>Des pains frais aux créations pâtissières, découvrez quelques instants de l'univers Le Kadior.</p>
-      </div>
-
-      <!-- IMAGES : déposez images/galerie-1.jpg à images/galerie-8.jpg.
-           Tant qu'une photo est absente, un visuel crème/marron s'affiche à sa place.
-           1 = grande photo principale · 2, 4, 6 = formats verticaux · 5, 7 = formats horizontaux · 3, 8 = petits formats -->
-      <ul class="gallery-mosaic" role="list">
-        <li class="gallery-item">
-          <button class="gallery-trigger" type="button" aria-label="Agrandir la photo : Pain frais Le Kadior">
-            <span class="gallery-placeholder" aria-hidden="true"><svg><use href="#g-wheat"/></svg></span>
-            <img src="images/galerie-1.jpg" alt="Pain frais Le Kadior" loading="lazy" decoding="async" onerror="this.parentNode.disabled=true;this.remove()">
-            <span class="gallery-zoom" aria-hidden="true"><svg class="icon"><use href="#g-expand"/></svg></span>
-          </button>
-        </li>
-        <li class="gallery-item">
-          <button class="gallery-trigger" type="button" aria-label="Agrandir la photo : Viennoiseries Le Kadior">
-            <span class="gallery-placeholder" aria-hidden="true"><svg><use href="#g-wheat"/></svg></span>
-            <img src="images/galerie-2.jpg" alt="Viennoiseries Le Kadior" loading="lazy" decoding="async" onerror="this.parentNode.disabled=true;this.remove()">
-            <span class="gallery-zoom" aria-hidden="true"><svg class="icon"><use href="#g-expand"/></svg></span>
-          </button>
-        </li>
-        <li class="gallery-item">
-          <button class="gallery-trigger" type="button" aria-label="Agrandir la photo : Pâtisserie Le Kadior">
-            <span class="gallery-placeholder" aria-hidden="true"><svg><use href="#g-wheat"/></svg></span>
-            <img src="images/galerie-3.jpg" alt="Pâtisserie Le Kadior" loading="lazy" decoding="async" onerror="this.parentNode.disabled=true;this.remove()">
-            <span class="gallery-zoom" aria-hidden="true"><svg class="icon"><use href="#g-expand"/></svg></span>
-          </button>
-        </li>
-        <li class="gallery-item">
-          <button class="gallery-trigger" type="button" aria-label="Agrandir la photo : Gâteau Le Kadior">
-            <span class="gallery-placeholder" aria-hidden="true"><svg><use href="#g-wheat"/></svg></span>
-            <img src="images/galerie-4.jpg" alt="Gâteau Le Kadior" loading="lazy" decoding="async" onerror="this.parentNode.disabled=true;this.remove()">
-            <span class="gallery-zoom" aria-hidden="true"><svg class="icon"><use href="#g-expand"/></svg></span>
-          </button> 
-        </li>
-        <li class="gallery-item">
-          <button class="gallery-trigger" type="button" aria-label="Agrandir la photo : Boulangerie Le Kadior">
-            <span class="gallery-placeholder" aria-hidden="true"><svg><use href="#g-wheat"/></svg></span>
-            <img src="images/galerie-5.jpg" alt="Boulangerie Le Kadior" loading="lazy" decoding="async" onerror="this.parentNode.disabled=true;this.remove()">
-            <span class="gallery-zoom" aria-hidden="true"><svg class="icon"><use href="#g-expand"/></svg></span>
-          </button>
-        </li>
-        <li class="gallery-item">
-          <button class="gallery-trigger" type="button" aria-label="Agrandir la photo : Douceurs Le Kadior">
-            <span class="gallery-placeholder" aria-hidden="true"><svg><use href="#g-wheat"/></svg></span>
-            <img src="images/galerie-6.jpg" alt="Douceurs Le Kadior" loading="lazy" decoding="async" onerror="this.parentNode.disabled=true;this.remove()">
-            <span class="gallery-zoom" aria-hidden="true"><svg class="icon"><use href="#g-expand"/></svg></span>
-          </button>
-        </li>
-        <li class="gallery-item">
-          <button class="gallery-trigger" type="button" aria-label="Agrandir la photo : Gâteau d'anniversaire Le Kadior">
-            <span class="gallery-placeholder" aria-hidden="true"><svg><use href="#g-wheat"/></svg></span>
-            <img src="images/galerie-7.jpg" alt="Gâteau d'anniversaire Le Kadior" loading="lazy" decoding="async" onerror="this.parentNode.disabled=true;this.remove()">
-            <span class="gallery-zoom" aria-hidden="true"><svg class="icon"><use href="#g-expand"/></svg></span>
-          </button>
-        </li>
-        <li class="gallery-item">
-          <button class="gallery-trigger" type="button" aria-label="Agrandir la photo : Création pâtissière Le Kadior">
-            <span class="gallery-placeholder" aria-hidden="true"><svg><use href="#g-wheat"/></svg></span>
-            <img src="images/galerie-8.jpg" alt="Création pâtissière Le Kadior" loading="lazy" decoding="async" onerror="this.parentNode.disabled=true;this.remove()">
-            <span class="gallery-zoom" aria-hidden="true"><svg class="icon"><use href="#g-expand"/></svg></span>
-          </button>
-        </li>
-      </ul>
-
-      <!-- Visionneuse (lightbox) : pilotée par gallery.js -->
-      <div class="lightbox" id="galleryLightbox" role="dialog" aria-modal="true" aria-label="Photo agrandie" hidden>
-        <button class="lightbox-btn lightbox-close" type="button" aria-label="Fermer"><svg class="icon"><use href="#g-close"/></svg></button>
-        <button class="lightbox-btn lightbox-prev" type="button" aria-label="Photo précédente"><svg class="icon"><use href="#g-prev"/></svg></button>
-        <figure class="lightbox-figure">
-          <img class="lightbox-img" alt="">
-          <figcaption class="lightbox-caption"><span class="lightbox-title"></span><span class="lightbox-count"></span></figcaption>
-        </figure>
-        <button class="lightbox-btn lightbox-next" type="button" aria-label="Photo suivante"><svg class="icon"><use href="#g-next"/></svg></button>
-      </div>
-    </section>
-
-    <section id="contact" class="section contact-section" aria-labelledby="contact-titre">
-      <div class="section-heading">
-        <span class="eyebrow">Nous contacter</span>
-        <h2 id="contact-titre">Venez nous rendre visite.</h2>
-        <p>Une question, une commande ou simplement envie de découvrir nos produits ? Retrouvez-nous à Mbour ou contactez-nous directement.</p>
-      </div>
-
-      <div class="contact-layout">
-        <!-- CARTE : localisation actuelle = ville de Mbour (aucune adresse précise connue).
-             Pour afficher l'emplacement exact de la boutique, remplacer :
-             1) le src de l'iframe  → Google Maps > Partager > Intégrer une carte > copier le lien src
-             2) le href "Voir l'itinéraire" → Google Maps > Partager > copier le lien -->
-        <div class="contact-map">
-          <div class="contact-map-frame">
-            <span class="contact-map-fallback" aria-hidden="true"><svg class="icon"><use href="#i-pin"/></svg></span>
-            <iframe src="https://maps.google.com/maps?q=Mbour%2C%20S%C3%A9n%C3%A9gal&amp;z=13&amp;output=embed" title="Carte : Le Kadior à Mbour, Sénégal" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-          </div>
-          <div class="contact-map-footer">
-            <div>
-              <strong>Le Kadior</strong>
-              <span>Boulangerie &amp; Pâtisserie — Mbour, Sénégal</span>
-            </div>
-            <a class="contact-route" href="https://www.google.com/maps/dir/?api=1&amp;destination=Mbour%2C%20S%C3%A9n%C3%A9gal" target="_blank" rel="noopener noreferrer">Voir l'itinéraire<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          </div>
-        </div>
-
-        <div class="contact-info">
-          <ul class="contact-cards" role="list">
-            <li class="info-card">
-              <span class="info-icon" aria-hidden="true"><svg class="icon"><use href="#i-pin"/></svg></span>
-              <div>
-                <span class="info-label">Localisation</span>
-                <p class="info-main">Mbour, Sénégal</p>
-                <p class="info-sub">Boutique ouverte tous les jours</p>
-              </div>
-            </li>
-            <li class="info-card">
-              <span class="info-icon" aria-hidden="true"><svg class="icon"><use href="#i-clock"/></svg></span>
-              <div>
-                <span class="info-label">Horaires</span>
-                <p class="info-main">Lundi – Dimanche</p>
-                <p class="info-sub">06h–14h / 16h–23h</p>
-              </div>
-            </li>
-            <li class="info-card">
-              <span class="info-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M2 5.5h12.5v10H2z"/><path d="M14.5 9h4l3.5 3.5v3h-7.5"/><circle cx="6" cy="17.5" r="2"/><circle cx="17.5" cy="17.5" r="2"/></svg></span>
-              <div>
-                <span class="info-label">Livraison</span>
-                <p class="info-main">Livraison disponible</p>
-                <p class="info-sub">Renseignez-vous sur WhatsApp</p>
-              </div>
-            </li>
-            <li class="info-card">
-              <span class="info-icon" aria-hidden="true"><svg class="icon"><use href="#i-chat"/></svg></span>
-              <div>
-                <span class="info-label">WhatsApp</span>
-                <p class="info-main"><a href="https://wa.me/221784666259" target="_blank" rel="noopener noreferrer">+221 78 466 62 59</a></p>
-                <p class="info-sub">Commandez directement sur WhatsApp</p>
-              </div>
-            </li>
-          </ul>
-          <a class="btn btn-whatsapp contact-cta" href="https://wa.me/221784666259" target="_blank" rel="noopener noreferrer">Commander sur WhatsApp<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </div>
-      </div>
-    </section>
+    <section id="contact" class="section contact-section"><div class="section-heading"><h2>Retrouvez Le Kadior à Mbour</h2><p>Une commande, une question ou une envie gourmande ? Contactez-nous directement.</p></div><div class="contact-grid"><div class="map-card"><div class="map-placeholder"><span>📍</span><strong>Le Kadior</strong><small>Mbour, Sénégal</small></div><a href="https://www.google.com/maps/dir/?api=1&destination=Mbour%2C%20S%C3%A9n%C3%A9gal" target="_blank" rel="noopener">Voir l'itinéraire <svg class="icon"><use href="#i-arrow"/></svg></a></div><div class="contact-info"><div class="info-card"><svg class="icon"><use href="#i-pin"/></svg><div><b>Localisation</b><span>Mbour, Sénégal</span></div></div><div class="info-card"><svg class="icon"><use href="#i-clock"/></svg><div><b>Horaires</b><span>Lun – Dim : 06h–14h / 16h–23h</span></div></div><div class="info-card" id="livraison"><svg class="icon"><use href="#i-truck"/></svg><div><b>Livraison</b><span>Disponible à Mbour et environs</span></div></div><a class="btn btn-gold full" href="https://wa.me/221784666259" target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg>Commander sur WhatsApp</a></div></div></section>
   </main>
 
-  <a class="floating-whatsapp" href="https://wa.me/221784666259" target="_blank" rel="noopener" aria-label="Commander sur WhatsApp"><svg class="icon"><use href="#i-chat"/></svg></a>
+  <a class="floating-whatsapp" href="https://wa.me/221784666259" target="_blank" rel="noopener" aria-label="Commander sur WhatsApp"><svg class="icon"><use href="#i-whatsapp"/></svg></a>
 
-  <footer class="footer">
-    <div class="footer-main">
-      <div class="footer-brand">
-        <a class="footer-logo-link" href="#accueil" aria-label="Le Kadior — retour à l'accueil">
-          <span class="brand-logo footer-logo"><img src="images/Logo.png" alt="Le Kadior" width="500" height="500" loading="lazy"></span>
-        </a>
-        <p class="footer-tagline">Le goût qui rassemble.</p>
-        <p class="footer-desc">Boulangerie, viennoiserie et pâtisserie à&nbsp;Mbour.</p>
-      </div>
+  <footer class="footer"><div class="footer-main"><div class="footer-brand"><img src="images/Logo.png" alt="Le Kadior"><p>Le goût du bon pain, chaque jour.</p></div><div><h3>Liens utiles</h3><a href="#accueil">Accueil</a><a href="#produits">Nos produits</a><a href="#apropos">À propos</a><a href="#contact">Contact</a></div><div><h3>Nos coordonnées</h3><p>📍 Mbour, Sénégal</p><p>◷ Lundi – Dimanche : 06h–14h / 16h–23h</p><p>📞 +221 78 466 62 59</p><a href="https://wa.me/221784666259" target="_blank" rel="noopener">💬 Commander sur WhatsApp</a></div><div><h3>Suivez-nous</h3><div class="footer-socials"><a href="https://www.tiktok.com/@lekadior_officiel" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/lekadior_officiel" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/share/1LjNVexWPU/" target="_blank" rel="noopener">Facebook</a></div><div class="mini-map">📍 Le Kadior<br><small>Mbour</small></div></div></div><div class="footer-bottom"><span>© <span id="year">2026</span> Le Kadior. Tous droits réservés.</span><span>Mentions légales &nbsp;|&nbsp; Confidentialité</span></div></footer>
 
-      <nav class="footer-col" aria-labelledby="footer-nav-titre">
-        <h3 class="footer-title" id="footer-nav-titre">Navigation</h3>
-        <ul class="footer-links" role="list">
-          <li><a href="#accueil">Accueil</a></li>
-          <li><a href="#produits">Nos produits</a></li>
-          <li><a href="#apropos">À propos</a></li>
-          <!-- La section Gâteaux n'a pas d'id : on cible l'id existant de son titre -->
-          <li><a href="#gateaux-titre">Gâteaux d'anniversaire</a></li>
-          <li><a href="#galerie">Galerie</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-
-      <nav class="footer-col" aria-labelledby="footer-cat-titre">
-        <h3 class="footer-title" id="footer-cat-titre">Nos produits</h3>
-        <!-- data-footer-filter : active le filtre correspondant du catalogue (setFilter dans script.js) -->
-        <ul class="footer-links" role="list">
-          <li><a href="#produits" data-footer-filter="Pains">Pains</a></li>
-          <li><a href="#produits" data-footer-filter="Viennoiseries">Viennoiseries</a></li>
-          <li><a href="#produits" data-footer-filter="Pâtisserie">Pâtisserie</a></li>
-          <li><a href="#produits" data-footer-filter="Gâteaux d'anniversaire">Gâteaux d'anniversaire</a></li>
-        </ul>
-      </nav>
-
-      <div class="footer-col footer-contact">
-        <h3 class="footer-title">Contact</h3>
-        <ul class="footer-infos" role="list">
-          <li><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><span>Mbour, Sénégal</span></li>
-          <li><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><span>Lundi – Dimanche<br>06h–14h / 16h–23h</span></li>
-          <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5.5h12.5v10H2z"/><path d="M14.5 9h4l3.5 3.5v3h-7.5"/><circle cx="6" cy="17.5" r="2"/><circle cx="17.5" cy="17.5" r="2"/></svg><span>Livraison disponible</span></li>
-        </ul>
-        <div class="footer-social">
-          <a href="https://www.tiktok.com/@lekadior_officiel?is_from_webapp=1&amp;sender_device=pc" target="_blank" rel="noopener noreferrer" aria-label="TikTok Le Kadior" title="TikTok">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 7.917v4.034a9.948 9.948 0 0 1-5-1.951v4.5a6.5 6.5 0 1 1-8-6.326v4.326a2.5 2.5 0 1 0 4 2V3h4.083A6.005 6.005 0 0 0 21 7.917z"/></svg>
-          </a>
-          <a href="https://www.instagram.com/lekadior_officiel?stkn=ZjkxeHRnYXQ3bzZw&amp;utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram Le Kadior" title="Instagram">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4.5"/><circle cx="12" cy="12" r="3.5"/><line x1="16.5" y1="7.5" x2="16.5" y2="7.51"/></svg>
-          </a>
-          <a href="https://www.facebook.com/share/1LjNVexWPU/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook Le Kadior" title="Facebook">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10v4h3v7h4v-7h3l1-4h-4V8a1 1 0 0 1 1-1h3V3h-3a5 5 0 0 0-5 5v2H7"/></svg>
-          </a>
-          <a href="https://wa.me/221784666259" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Le Kadior" title="WhatsApp">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>
-          </a>
-        </div>
-        <a class="footer-cta" href="https://wa.me/221784666259" target="_blank" rel="noopener noreferrer">Commander sur WhatsApp<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>© <span id="year">2026</span> Le Kadior — Tous droits réservés.</p>
-      <p>Mbour, Sénégal</p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-  <script src="gallery.js"></script>
+  <script src="script.js?v=20261006-3"></script>
 </body>
 </html>
