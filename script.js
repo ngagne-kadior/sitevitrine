@@ -6,40 +6,35 @@ const WHATSAPP_NUMBER = "221784666259";
 const MAX_IMAGES = 10;
 
 const products = [
-  {name:"Baguette",category:"Pains",price:"100 FCFA",images:["images/produits/pains/Six baguettes sur une étagère en bois.png"],description:"Pain frais disponible tous les jours."},
-  {name:"Pain Sicap",category:"Pains",price:"150 FCFA",images:["images/produits/pains/pain-sicap.jpg"],description:"Pain Sicap frais."},
-  {name:"Pain Double Sicap",category:"Pains",price:"200 FCFA",images:["images/produits/pains/pain-double-sicap.jpg"],description:"Disponible selon la production."},
-  {name:"Pain Diabétique",category:"Pains",price:"150 FCFA",images:["images/produits/pains/pain-diabetique.jpg"],description:"Disponible tous les jours."},
-  {name:"Pain Thiéré",category:"Pains",price:"100 FCFA",images:["images/produits/pains/pain-thiere.jpg"],description:"Disponible tous les jours."},
-  {name:"Pain Maïs",category:"Pains",price:"100 FCFA",images:["images/produits/pains/pain-mais.jpg"],description:"Disponible tous les jours."},
-  {name:"Pain Riche",category:"Pains",price:"100 FCFA",images:["images/produits/pains/pain-riche.jpg"],description:"Disponible tous les jours."},
-  {name:"Pain Sans sel",category:"Pains",price:"150 FCFA",images:["images/produits/pains/pain-sans-sel.jpg"],description:"Sur commande, par lot de 10 pièces."},
-  {name:"Pain Diabétique Sans sel",category:"Pains",price:"150 FCFA",images:["images/produits/pains/pain-diabetique-sans-sel.jpg"],description:"Sur commande, par lot de 10 pièces."},
+  {name:"Baguette",category:"Pains",price:"100 FCFA",images:[],description:"Pain frais disponible tous les jours."},
+  {name:"Pain Sicap",category:"Pains",price:"150 FCFA",images:[],description:"Pain Sicap frais."},
+  {name:"Pain Double Sicap",category:"Pains",price:"200 FCFA",images:[],description:"Disponible selon la production."},
+  {name:"Pain Diabétique",category:"Pains",price:"150 FCFA",images:["images/produits/pains/pain diabetique.png"],description:"Disponible tous les jours."},
+  {name:"Pain Thiéré",category:"Pains",price:"100 FCFA",images:["images/produits/pains/pain thiere.png"],description:"Disponible tous les jours."},
+  {name:"Pain Maïs",category:"Pains",price:"100 FCFA",images:["images/produits/pains/pain Mais.png"],description:"Disponible tous les jours."},
+  {name:"Pain Riche",category:"Pains",price:"100 FCFA",images:[],description:"Disponible tous les jours."},
+  {name:"Pain Sans sel",category:"Pains",price:"150 FCFA",images:[],description:"Sur commande, par lot de 10 pièces."},
+  {name:"Pain Diabétique Sans sel",category:"Pains",price:"150 FCFA",images:[],description:"Sur commande, par lot de 10 pièces."},
   {name:"Croissant",category:"Viennoiseries",price:"500 FCFA",images:[
     "images/produits/viennoiseries/croissant beurre 1.jfif",
     "images/produits/viennoiseries/croissant beurre 2.jfif",
+    "images/produits/viennoiseries/croissant beurre 3.jfif",
     "images/produits/viennoiseries/croissant beurre bicolore à la fraise.jfif"
   ],description:"Viennoiserie fraîche et croustillante."},
-  {name:"Pain au chocolat",category:"Viennoiseries",price:"500 FCFA",images:["images/produits/viennoiseries/Pain au chocolat.jfif"],description:"Une viennoiserie gourmande."},
-  {name:"Pain aux raisins",category:"Viennoiseries",price:"Prix sur demande",images:["images/produits/viennoiseries/pain raisin.jfif"],description:"Disponible selon la production."},
-  {name:"Palmier",category:"Viennoiseries",price:"150 FCFA",images:[],description:"Feuilleté croustillant et caramélisé."},
-  {name:"Pain drops",category:"Viennoiseries",price:"700 FCFA",images:[],description:"Disponible selon la production."},
+  {name:"Pain au chocolat",category:"Viennoiseries",price:"500 FCFA",images:["images/produits/viennoiseries/Pain au chocolat.jfif","images/produits/viennoiseries/Pain au chocolate 1.jfif"],description:"Une viennoiserie gourmande."},
+  {name:"Pain aux raisins",category:"Viennoiseries",price:"Prix sur demande",images:["images/produits/viennoiseries/pain au raisin.jfif","images/produits/viennoiseries/pain raisin.jfif","images/produits/viennoiseries/Pain Aux Raisins.jfif"],description:"Disponible selon la production."},
+  {name:"Palmier",category:"Viennoiseries",price:"150 FCFA",images:["images/produits/viennoiseries/palmier.jfif","images/produits/viennoiseries/palmier1.jfif","images/produits/viennoiseries/palmier 2.jfif"],description:"Feuilleté croustillant et caramélisé."},
+  {name:"Pain drops",category:"Viennoiseries",price:"700 FCFA",images:["images/produits/viennoiseries/drops 1.jfif","images/produits/viennoiseries/drops2.jfif","images/produits/viennoiseries/drops.jfif"],description:"Disponible selon la production."},
   {name:"Chausson pomme",category:"Viennoiseries",price:"500 FCFA",images:["images/produits/viennoiseries/chausson pomme.jfif"],description:"Chausson feuilleté aux pommes."},
   {name:"Roche coco",category:"Pâtisserie",price:"100 FCFA",images:["images/produits/patisserie/Macarons à la noix de coco dorés.png"],description:"Une douceur gourmande."},
-  {name:"Madeleine",category:"Pâtisserie",price:"Prix sur demande",images:["images/produits/patisserie/madeleine.jpg"],description:"Moelleuse et savoureuse."},
+  {name:"Madeleine",category:"Pâtisserie",price:"Prix sur demande",images:["images/produits/patisserie/madeleine.jfif","images/produits/patisserie/Madeleine 3.jfif","images/produits/patisserie/madeleine 2.jfif"],description:"Moelleuse et savoureuse."},
   {name:"Biscuits",category:"Pâtisserie",price:"Prix sur demande",images:["images/produits/patisserie/Biscuits sablés à la confiture.png"],description:"Biscuits Le Kadior."},
-  {name:"Cookies",category:"Pâtisserie",price:"Prix sur demande",images:["images/produits/patisserie/cookies.jpg"],description:"Cookies gourmands."},
+  {name:"Cookies",category:"Pâtisserie",price:"Prix sur demande",images:["images/produits/patisserie/cookies 3.jfif","images/produits/patisserie/cookies 2.jfif","images/produits/patisserie/Cookies.jfif"],description:"Cookies gourmands."},
   {name:"Gâteau d'anniversaire",category:"Gâteaux d'anniversaire",price:"À partir de 8 000 FCFA",images:[
-    "images/produits/gateaux/gateau-anniversaire-1.jpg",
     "images/produits/gateaux/gateau-anniversaire-2.jpg",
     "images/produits/gateaux/gateau-anniversaire-3.jpg",
     "images/produits/gateaux/gateau-anniversaire-4.jpg",
-    "images/produits/gateaux/gateau-anniversaire-5.jpg",
-    "images/produits/gateaux/gateau-anniversaire-6.jpg",
-    "images/produits/gateaux/gateau-anniversaire-7.jpg",
-    "images/produits/gateaux/gateau-anniversaire-8.jpg",
-    "images/produits/gateaux/gateau-anniversaire-9.jpg",
-    "images/produits/gateaux/gateau-anniversaire-10.jpg"
+    "images/produits/gateaux/gateau-anniversaire-5.jpg"
   ],description:"Gâteau sur commande."},
   // `options` : les types de parts et leur prix. Le visiteur choisit un type dans la galerie,
   // le prix affiché et le message WhatsApp s'adaptent. Exemple :
@@ -53,29 +48,9 @@ const products = [
     "images/produits/gateaux/part de gateaux 7.jfif"
   ],description:"Parts disponibles selon les gâteaux."},
   {name:"Gâteau personnalisé",category:"Gâteaux d'anniversaire",price:"Sur devis",images:[
-    "images/produits/gateaux/Gateau personnalisé.jpg",
-    "images/produits/gateaux/gateau-personnalise-2.jpg",
-    "images/produits/gateaux/gateau-personnalise-3.jpg",
-    "images/produits/gateaux/gateau-personnalise-4.jpg",
-    "images/produits/gateaux/gateau-personnalise-5.jpg",
-    "images/produits/gateaux/gateau-personnalise-6.jpg",
-    "images/produits/gateaux/gateau-personnalise-7.jpg",
-    "images/produits/gateaux/gateau-personnalise-8.jpg",
-    "images/produits/gateaux/gateau-personnalise-9.jpg",
-    "images/produits/gateaux/gateau-personnalise-10.jpg"
+    "images/produits/gateaux/Gateau personnalisé.jpg"
   ],description:"Personnalisation sur commande."},
-  {name:"Gâteau événementiel",category:"Gâteaux d'anniversaire",price:"Sur devis",images:[
-    "images/produits/gateaux/gateau-evenementiel-1.jpg",
-    "images/produits/gateaux/gateau-evenementiel-2.jpg",
-    "images/produits/gateaux/gateau-evenementiel-3.jpg",
-    "images/produits/gateaux/gateau-evenementiel-4.jpg",
-    "images/produits/gateaux/gateau-evenementiel-5.jpg",
-    "images/produits/gateaux/gateau-evenementiel-6.jpg",
-    "images/produits/gateaux/gateau-evenementiel-7.jpg",
-    "images/produits/gateaux/gateau-evenementiel-8.jpg",
-    "images/produits/gateaux/gateau-evenementiel-9.jpg",
-    "images/produits/gateaux/gateau-evenementiel-10.jpg"
-  ],description:"Pour vos événements et célébrations."}
+  {name:"Gâteau événementiel",category:"Gâteaux d'anniversaire",price:"Sur devis",images:[],description:"Pour vos événements et célébrations."}
 ];
 
 const productImages=p=>(Array.isArray(p.images)&&p.images.length?p.images:[p.image]).filter(Boolean).slice(0,MAX_IMAGES);
