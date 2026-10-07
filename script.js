@@ -142,7 +142,7 @@ searchInput.addEventListener('input',renderProducts);
 const menu=document.querySelector('.menu-toggle'),nav=document.querySelector('.nav');
 menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open))});
 nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false')}));
-document.querySelector('.header-search').addEventListener('click',()=>{document.getElementById('catalogue').scrollIntoView({behavior:'smooth',block:'start'});searchInput.focus({preventScroll:true})});
+document.querySelector('.header-search').addEventListener('click',()=>{document.getElementById('catalogue').scrollIntoView({block:'start'});setTimeout(()=>searchInput.focus({preventScroll:true}),700)});
 document.getElementById('year').textContent=new Date().getFullYear();
 const header=document.getElementById('site-header');const links=[...document.querySelectorAll('.nav a')];window.addEventListener('scroll',()=>{header.classList.toggle('is-compact',scrollY>60);let current='';links.forEach(a=>{const s=document.querySelector(a.getAttribute('href'));if(s&&s.getBoundingClientRect().top<140)current=a.getAttribute('href')});links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')===current))},{passive:true});
 renderProducts();

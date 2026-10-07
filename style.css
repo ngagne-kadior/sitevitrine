@@ -53,3 +53,26 @@ body.modal-open{overflow:hidden}.lightbox{position:fixed;inset:0;z-index:100;dis
 .featured-card .photo-fallback{background:var(--photo,none) center/cover no-repeat,linear-gradient(145deg,#b67a3d,#59311e)}.featured-card .photo-fallback span{display:none}
 .lb-options{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;width:100%;max-width:760px}.lb-options[hidden]{display:none}.lb-option{display:flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;border:1px solid rgba(212,175,55,.55);background:transparent;color:#FFF9ED;font-size:12px;cursor:pointer;transition:.2s}.lb-option b{font-weight:700}.lb-option span{color:#D4AF37;font-weight:800}.lb-option:hover{border-color:#D4AF37}.lb-option.active{background:#D4AF37;border-color:#D4AF37;color:#241A14}.lb-option.active span{color:#3A2118}
 .featured-card.no-photo .photo-fallback span{display:block}
+/* ===== SECTION « TOUS NOS PRODUITS » (catalogue séparé des produits phares) ===== */
+.products-section .promo-grid{margin-bottom:0}.catalogue-section{padding-top:0}.catalogue-sub{font-size:13px;color:var(--muted);margin-top:4px}
+/* ===== RYTHME VERTICAL DES SECTIONS (un seul espacement, compact) ===== */
+:root{--sec:52px}
+.section{padding-top:var(--sec);padding-bottom:var(--sec)}
+.categories-section{padding-top:48px;padding-bottom:0}
+#produits-phares{padding-top:var(--sec);padding-bottom:0}
+.catalogue-section{padding-top:var(--sec);padding-bottom:var(--sec)}
+.testimonials-section{padding-top:var(--sec);padding-bottom:0}
+.gallery-preview{padding-top:var(--sec);padding-bottom:var(--sec)}
+.section-heading{margin-bottom:28px}
+@media(max-width:1050px){:root{--sec:42px}.categories-section{padding-top:38px}}
+@media(max-width:540px){:root{--sec:34px}.categories-section{padding-top:28px}.section-heading{margin-bottom:22px}}
+/* ===== TITRES CENTRÉS : PRODUITS PHARES ET CATALOGUE ===== */
+.heading-with-action{position:relative}.heading-with-action .btn{position:absolute;right:0;top:50%;transform:translateY(-50%)}.heading-with-action .btn:hover{transform:translateY(calc(-50% - 2px))}
+.catalogue-tools{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px}.catalogue-tools .filters{margin-bottom:0}
+@media(max-width:900px){.heading-with-action .btn,.heading-with-action .btn:hover{position:static;transform:none;margin-top:14px}.catalogue-tools{flex-direction:column;align-items:stretch}.catalogue-tools .filters{justify-content:center}.catalogue-tools .search-field{margin-top:0}}
+/* ===== CARTES CATÉGORIES (titre centré, numéro en médaillon) ===== */
+.category-card{border-radius:16px;box-shadow:0 10px 28px rgba(58,33,24,.08)}.category-info{position:relative;flex-direction:column;align-items:center;gap:4px;padding:26px 14px 18px;text-align:center}.category-number{position:absolute;top:-21px;left:50%;transform:translateX(-50%);width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#FFFDF8;border:2px solid #D4AF37;color:#A87417;font-size:13px;letter-spacing:.5px;box-shadow:0 4px 12px rgba(58,33,24,.12)}.category-info h3{font-size:22px}.category-info small{justify-content:center;margin-top:5px}
+@media(max-width:540px){.category-info{padding:22px 8px 14px}.category-number{top:-17px;width:34px;height:34px;font-size:11px}.category-info h3{font-size:17px}}
+/* ===== BANNIÈRES PAIN RICHE / PAIN DIABÉTIQUE ===== */
+.products-section .promo-grid{gap:16px;margin:18px 0 0}.promo{height:168px;border-radius:16px;box-shadow:0 12px 30px rgba(58,33,24,.12);justify-content:flex-start}.promo::before{background:linear-gradient(100deg,rgba(36,22,15,.9) 0,rgba(58,33,24,.72) 42%,rgba(58,33,24,.12) 78%,rgba(58,33,24,0) 100%)}.promo>div:last-child{width:auto;max-width:62%;padding:0 0 0 30px}.promo h3{font-size:30px;line-height:1.1;color:#fff}.promo p{font-size:12px;letter-spacing:1.6px;text-transform:uppercase;font-weight:700;color:#F6EBDD;margin-top:6px}.promo p::before{content:'';display:block;width:34px;height:2px;margin-bottom:9px;border-radius:2px;background:#D4AF37}.promo strong{background:#D4AF37;color:#241A14;padding:7px 20px;margin-top:14px;font-size:13.5px;font-weight:800;box-shadow:0 6px 16px rgba(0,0,0,.25)}.promo .photo-fallback span{display:none}
+@media(max-width:540px){.promo{height:150px}.promo>div:last-child{max-width:78%;padding-left:20px}.promo h3{font-size:25px}}
