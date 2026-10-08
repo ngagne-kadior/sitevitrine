@@ -76,3 +76,108 @@ body.modal-open{overflow:hidden}.lightbox{position:fixed;inset:0;z-index:100;dis
 /* ===== BANNIÈRES PAIN RICHE / PAIN DIABÉTIQUE ===== */
 .products-section .promo-grid{gap:16px;margin:18px 0 0}.promo{height:168px;border-radius:16px;box-shadow:0 12px 30px rgba(58,33,24,.12);justify-content:flex-start}.promo::before{background:linear-gradient(100deg,rgba(36,22,15,.9) 0,rgba(58,33,24,.72) 42%,rgba(58,33,24,.12) 78%,rgba(58,33,24,0) 100%)}.promo>div:last-child{width:auto;max-width:62%;padding:0 0 0 30px}.promo h3{font-size:30px;line-height:1.1;color:#fff}.promo p{font-size:12px;letter-spacing:1.6px;text-transform:uppercase;font-weight:700;color:#F6EBDD;margin-top:6px}.promo p::before{content:'';display:block;width:34px;height:2px;margin-bottom:9px;border-radius:2px;background:#D4AF37}.promo strong{background:#D4AF37;color:#241A14;padding:7px 20px;margin-top:14px;font-size:13.5px;font-weight:800;box-shadow:0 6px 16px rgba(0,0,0,.25)}.promo .photo-fallback span{display:none}
 @media(max-width:540px){.promo{height:150px}.promo>div:last-child{max-width:78%;padding-left:20px}.promo h3{font-size:25px}}
+
+/* Produits phares : carousel horizontal compact */
+.featured-carousel{position:relative}
+.featured-grid{--per:5;--gap:14px;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:calc((100% - (var(--per) - 1)*var(--gap))/var(--per));gap:var(--gap);overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:6px 2px 14px;margin:-6px -2px -14px;outline:none}
+.featured-grid::-webkit-scrollbar{display:none}
+.featured-card{position:relative;scroll-snap-align:start;border-radius:14px;box-shadow:0 6px 18px rgba(58,33,24,.07);transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s}
+.featured-card:hover{transform:translateY(-3px);border-color:var(--gold);box-shadow:0 12px 26px rgba(58,33,24,.13)}
+.featured-card .photo-fallback{height:132px}
+.featured-card h3{font-size:14px;color:var(--brown);margin:11px 8px 1px}
+.featured-card>strong{font-size:12.5px;padding:0 6px}
+.featured-card>a{margin:9px 10px 11px;padding:8px 6px;border-radius:999px;font-size:11px;transition:background .2s}
+.featured-card>a:hover{background:var(--gold-light)}
+.featured-card>a .icon{width:13px;height:13px}
+.featured-badge{position:absolute;top:9px;left:9px;z-index:2;padding:3px 9px;border-radius:999px;background:var(--gold);color:var(--brown);font-size:9.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;line-height:1.5;box-shadow:0 3px 10px rgba(58,33,24,.25)}
+.carousel-btn{position:absolute;top:50%;z-index:3;width:38px;height:38px;margin-top:-19px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--gold);background:var(--cream);color:var(--brown);box-shadow:0 6px 16px rgba(58,33,24,.14);cursor:pointer;transition:background .2s,opacity .2s}
+.carousel-btn:hover{background:var(--gold)}
+.carousel-btn:disabled{opacity:0;pointer-events:none}
+.carousel-btn .icon{width:16px;height:16px}
+.carousel-prev{left:-19px}.carousel-prev .icon{transform:rotate(180deg)}.carousel-next{right:-19px}
+.featured-carousel.is-static .carousel-btn{display:none}
+@media(max-width:1050px){.featured-grid{--per:4}}
+@media(max-width:800px){.featured-grid{--per:3;--gap:12px}}
+@media(max-width:540px){.featured-grid{--per:2;--gap:10px}.featured-card .photo-fallback{height:112px}.featured-card h3{font-size:13px}.featured-card>strong{font-size:12px}.carousel-btn{width:32px;height:32px;margin-top:-16px}.carousel-prev{left:-12px}.carousel-next{right:-12px}}
+
+/* Le catalogue complet ne s'affiche plus sur l'accueil : il s'ouvre comme une vue à part via #catalogue */
+body:not(.view-catalogue) #catalogue{display:none}
+body.view-catalogue main>section:not(#catalogue){display:none}
+body.view-catalogue #catalogue{min-height:70vh}
+
+/* Carte de localisation (Leaflet) aux couleurs Le Kadior */
+.map-canvas{height:250px;isolation:isolate;background:var(--cream-2);font-family:var(--sans)}
+.map-canvas .map-placeholder{height:100%;padding:0 18px;text-align:center}
+.map-canvas .leaflet-tile-pane{filter:sepia(.22) saturate(1.05)}
+.map-pin{filter:drop-shadow(0 6px 8px rgba(58,33,24,.4))}
+.map-pin svg{display:block;width:32px;height:42px}.map-pin path{fill:var(--gold);stroke:var(--brown);stroke-width:1.6}.map-pin circle{fill:var(--brown)}
+.leaflet-tooltip.map-label{padding:7px 13px 8px;border:1px solid var(--gold);border-radius:10px;background:var(--brown);color:var(--cream);text-align:center;line-height:1.3;box-shadow:0 8px 20px rgba(58,33,24,.3)}
+.leaflet-tooltip.map-label::before{border-top-color:var(--gold)}
+.map-label strong{display:block;font-family:var(--serif);font-size:16px;color:var(--gold)}
+.map-label small{font-size:10.5px}
+.map-canvas .leaflet-bar{border:1px solid var(--gold);border-radius:9px;overflow:hidden;box-shadow:0 4px 12px rgba(58,33,24,.15)}
+.map-canvas .leaflet-bar a{background:var(--cream);color:var(--brown);border-bottom-color:var(--line)}
+.map-canvas .leaflet-bar a:hover{background:var(--gold)}
+.map-canvas .leaflet-control-attribution{font-size:9px;background:rgba(255,249,237,.85)}
+.map-card>a{border-top:1px solid var(--line);transition:background .2s,color .2s}.map-card>a:hover{background:var(--gold);color:var(--brown)}
+
+
+/* Mini-carte du footer (Leaflet) */
+.mini-map{position:relative;height:132px;padding:0;overflow:hidden;isolation:isolate;border:1px solid rgba(212,175,55,.6);border-radius:10px}
+.mini-map-canvas{height:100%;background:transparent;font-family:var(--sans);cursor:pointer}
+.mini-map-fallback{padding:13px}
+.mini-map .leaflet-tile-pane{filter:sepia(.22) saturate(1.05)}
+.map-pin-mini svg{width:22px;height:29px}
+.leaflet-tooltip.map-label-mini{padding:3px 9px 4px;border-radius:8px;font-size:10.5px;font-weight:700;color:var(--gold)}
+.footer .mini-map .leaflet-control-attribution{margin:0;padding:0 4px;font-size:8px;line-height:1.5;color:#5A3422;background:rgba(255,249,237,.85)}
+.footer .mini-map .leaflet-control-attribution a{display:inline;margin:0;padding:0;font-size:inherit;color:inherit}
+.footer .mini-map .mini-map-link{position:absolute;left:7px;bottom:7px;z-index:1000;display:inline-flex;align-items:center;gap:5px;margin:0;padding:5px 11px;border-radius:999px;background:var(--gold);color:var(--brown);font-size:10px;font-weight:800;line-height:1.4;box-shadow:0 4px 12px rgba(36,22,15,.35);transition:background .2s}
+.footer .mini-map .mini-map-link:hover{background:var(--gold-light)}
+.mini-map-link .icon{width:11px;height:11px}
+
+/* « Notre univers en images » : diaporama des catégories (fondu + léger glissement, zoom lent sur la photo active) */
+.univers-slider{position:relative;height:clamp(340px,36vw,470px);border-radius:20px;overflow:hidden;isolation:isolate;background:var(--brown);box-shadow:var(--shadow-lg)}
+.univers-slide{position:absolute;inset:0;opacity:0;visibility:hidden;transform:translateX(40px);transition:opacity .7s ease,transform .7s var(--ease),visibility 0s .7s}
+.univers-slide.is-prev{transform:translateX(-40px)}
+.univers-slide.is-active{opacity:1;visibility:visible;transform:none;z-index:1;transition:opacity .7s ease,transform .7s var(--ease)}
+.univers-photo{position:absolute;top:0;right:0;width:63%;height:100%;overflow:hidden}
+.univers-slide img{display:block;width:100%;height:100%;object-fit:cover;transform:scale(1);transition:transform 0s .7s}
+.univers-slide.is-active img{transform:scale(1.08);transition:transform 6s linear}
+.univers-slide::after{content:'';position:absolute;top:0;bottom:0;left:36.5%;width:24%;background:linear-gradient(90deg,var(--brown) 4%,rgba(58,33,24,.55) 45%,rgba(58,33,24,0))}
+.univers-text{position:absolute;z-index:2;top:0;bottom:0;left:0;width:42%;padding:0 12px 18px clamp(64px,6.5vw,92px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;color:var(--cream)}
+.univers-text>*{opacity:0;transform:translateY(16px);transition:opacity .4s ease,transform .4s ease}
+.univers-slide.is-active .univers-text>*{opacity:1;transform:none;transition:opacity .6s ease,transform .6s var(--ease)}
+.univers-slide.is-active .univers-text>:nth-child(1){transition-delay:.15s}.univers-slide.is-active .univers-text>:nth-child(2){transition-delay:.25s}.univers-slide.is-active .univers-text>:nth-child(3){transition-delay:.35s}
+.univers-emoji{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;border:1px solid rgba(212,175,55,.7);background:rgba(212,175,55,.12);font-size:21px;line-height:1}
+.univers-text h3{font-family:var(--serif);font-size:clamp(30px,3.7vw,50px);line-height:1.1;color:var(--gold);margin-top:16px}
+.univers-text p{position:relative;font-family:var(--serif);font-style:italic;font-size:clamp(14px,1.45vw,18px);line-height:1.5;color:#F6EBDD;margin-top:14px;padding-top:15px}
+.univers-text p::before{content:'';position:absolute;top:0;left:0;width:42px;height:2px;border-radius:2px;background:var(--gold)}
+.univers-nav{position:absolute;top:50%;z-index:3;width:40px;height:40px;margin-top:-20px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(212,175,55,.75);background:rgba(36,22,15,.45);color:var(--cream);backdrop-filter:blur(4px);cursor:pointer;transition:background .2s,color .2s}
+.univers-nav:hover{background:var(--gold);color:var(--brown)}
+.univers-nav .icon{width:16px;height:16px}
+.univers-prev{left:14px}.univers-prev .icon{transform:rotate(180deg)}.univers-next{right:14px}
+.univers-dots{position:absolute;left:0;right:0;bottom:16px;z-index:3;display:flex;justify-content:center;gap:8px}
+.univers-dot{width:9px;height:9px;padding:0;border:0;border-radius:999px;background:rgba(255,249,237,.6);box-shadow:0 1px 4px rgba(0,0,0,.35);cursor:pointer;transition:width .4s var(--ease),background .3s}
+.univers-dot:hover{background:var(--cream)}
+.univers-dot.active{width:28px;background:var(--gold)}
+@media(max-width:700px){
+  .univers-slider{height:clamp(400px,112vw,500px);border-radius:16px}
+  .univers-photo{width:100%}
+  .univers-slide::after{left:0;width:100%;background:linear-gradient(0deg,rgba(36,22,15,.94) 0,rgba(58,33,24,.72) 30%,rgba(58,33,24,0) 62%)}
+  .univers-text{top:auto;width:100%;padding:0 22px 46px;justify-content:flex-end}
+  .univers-emoji{width:40px;height:40px;font-size:18px}
+  .univers-text h3{font-size:32px;margin-top:12px}.univers-text p{font-size:15px;margin-top:10px;padding-top:12px}
+  .univers-nav{top:38%;width:34px;height:34px;margin-top:-17px}.univers-prev{left:10px}.univers-next{right:10px}
+  .univers-dots{bottom:14px}
+}
+@media(prefers-reduced-motion:reduce){.univers-slide,.univers-slide.is-prev{transform:none}.univers-slide.is-active img{transform:none}.univers-text>*{transform:none}}
+/* Diaporama produits : rubrique, nom, prix et description du produit */
+.univers-eyebrow{font-size:11px;font-weight:800;letter-spacing:2.4px;text-transform:uppercase;color:#F6EBDD;padding-left:38px;position:relative}
+.univers-eyebrow::before{content:'';position:absolute;left:0;top:50%;width:28px;height:1px;background:var(--gold)}
+.univers-text h3{font-size:clamp(27px,3.2vw,44px);margin-top:12px}
+.univers-price{display:inline-block;margin-top:16px;padding:6px 18px;border-radius:999px;background:var(--gold);color:var(--brown);font-size:14px;font-weight:800;box-shadow:0 6px 16px rgba(0,0,0,.25)}
+.univers-text p{font-size:clamp(13.5px,1.3vw,16.5px);margin-top:14px;padding-top:0}.univers-text p::before{display:none}
+.univers-slide.is-active .univers-text>:nth-child(4){transition-delay:.45s}
+.univers-dots{gap:6px;padding:0 60px;flex-wrap:wrap}
+.univers-dot{width:7px;height:7px}.univers-dot.active{width:22px}
+@media(max-width:700px){.univers-text h3{font-size:28px;margin-top:9px}.univers-price{margin-top:11px;padding:5px 15px;font-size:13px}.univers-text p{font-size:14px;margin-top:10px;padding-top:0}.univers-dots{gap:5px;padding:0 16px}.univers-dot{width:6px;height:6px}.univers-dot.active{width:18px}}

@@ -6,13 +6,13 @@ const WHATSAPP_NUMBER = "221784666259";
 const MAX_IMAGES = 10;
 
 const products = [
-  {name:"Baguette",category:"Pains",price:"100 FCFA",images:[],description:"Pain frais disponible tous les jours."},
-  {name:"Pain Sicap",category:"Pains",price:"150 FCFA",images:[],description:"Pain Sicap frais."},
+  {name:"Baguette",category:"Pains",price:"100 FCFA",images:["images/produits/pains/camp baguette.png"],description:"Pain frais disponible tous les jours."},
+  {name:"Pain Sicap",category:"Pains",price:"150 FCFA",images:["images/produits/pains/pain sicap.png"],description:"Pain Sicap frais."},
   {name:"Pain Double Sicap",category:"Pains",price:"200 FCFA",images:[],description:"Disponible selon la production."},
   {name:"Pain Diabétique",category:"Pains",price:"150 FCFA",images:["images/produits/pains/pain diabetique.png"],description:"Disponible tous les jours."},
   {name:"Pain Thiéré",category:"Pains",price:"100 FCFA",images:["images/produits/pains/pain thiere.png"],description:"Disponible tous les jours."},
   {name:"Pain Maïs",category:"Pains",price:"100 FCFA",images:["images/produits/pains/pain Mais.png"],description:"Disponible tous les jours."},
-  {name:"Pain Riche",category:"Pains",price:"100 FCFA",images:[],description:"Disponible tous les jours."},
+  {name:"Pain Riche",category:"Pains",price:"100 FCFA",images:["images/produits/pains/pain riche.png"],description:"Disponible tous les jours."},
   {name:"Pain Sans sel",category:"Pains",price:"150 FCFA",images:[],description:"Sur commande, par lot de 10 pièces."},
   {name:"Pain Diabétique Sans sel",category:"Pains",price:"150 FCFA",images:[],description:"Sur commande, par lot de 10 pièces."},
   {name:"Croissant",category:"Viennoiseries",price:"500 FCFA",images:[
@@ -142,7 +142,116 @@ searchInput.addEventListener('input',renderProducts);
 const menu=document.querySelector('.menu-toggle'),nav=document.querySelector('.nav');
 menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open))});
 nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false')}));
-document.querySelector('.header-search').addEventListener('click',()=>{document.getElementById('catalogue').scrollIntoView({block:'start'});setTimeout(()=>searchInput.focus({preventScroll:true}),700)});
+document.querySelector('.header-search').addEventListener('click',()=>{location.hash='#catalogue';syncView();document.getElementById('catalogue').scrollIntoView({block:'start'});setTimeout(()=>searchInput.focus({preventScroll:true}),700)});
 document.getElementById('year').textContent=new Date().getFullYear();
-const header=document.getElementById('site-header');const links=[...document.querySelectorAll('.nav a')];window.addEventListener('scroll',()=>{header.classList.toggle('is-compact',scrollY>60);let current='';links.forEach(a=>{const s=document.querySelector(a.getAttribute('href'));if(s&&s.getBoundingClientRect().top<140)current=a.getAttribute('href')});links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')===current))},{passive:true});
+const header=document.getElementById('site-header');const links=[...document.querySelectorAll('.nav a')];window.addEventListener('scroll',()=>{header.classList.toggle('is-compact',scrollY>60);let current='';links.forEach(a=>{const s=document.querySelector(a.getAttribute('href'));if(s&&s.getClientRects().length&&s.getBoundingClientRect().top<140)current=a.getAttribute('href')});links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')===current))},{passive:true});
 renderProducts();
+
+// Vue catalogue : sur l'accueil le catalogue complet est masqué ; il s'affiche seul quand l'adresse est #catalogue
+// (bouton « Voir tout le catalogue », catégories, recherche), et l'accueil revient avec n'importe quel autre lien.
+let homeScroll=0;
+function syncView(){
+  const open=location.hash==='#catalogue',was=document.body.classList.contains('view-catalogue');
+  if(open===was)return;
+  if(open)homeScroll=scrollY;
+  document.body.classList.toggle('view-catalogue',open);
+  const target=open?null:document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if(target)target.scrollIntoView({behavior:'instant',block:'start'});
+  else scrollTo({top:open?0:homeScroll,behavior:'instant'});
+  dispatchEvent(new Event('scroll'));
+}
+addEventListener('hashchange',syncView);
+syncView();
+document.querySelector('#produits-phares .heading-with-action .btn').addEventListener('click',()=>setFilter('Tous'));
+
+// Carousel des produits phares : défilement natif (tactile) + flèches précédent / suivant.
+const carousel=document.querySelector('.featured-carousel'),track=carousel.querySelector('.featured-grid'),prevBtn=carousel.querySelector('.carousel-prev'),nextBtn=carousel.querySelector('.carousel-next');
+function updateCarousel(){const max=track.scrollWidth-track.clientWidth;carousel.classList.toggle('is-static',max<=2);prevBtn.disabled=track.scrollLeft<=2;nextBtn.disabled=track.scrollLeft>=max-2}
+const slide=dir=>track.scrollBy({left:dir*(track.firstElementChild.getBoundingClientRect().width+parseFloat(getComputedStyle(track).columnGap)),behavior:'smooth'});
+prevBtn.addEventListener('click',()=>slide(-1));nextBtn.addEventListener('click',()=>slide(1));
+track.addEventListener('scroll',updateCarousel,{passive:true});addEventListener('resize',updateCarousel);
+updateCarousel();
+
+// Carte de localisation : centrée sur la position GPS exacte de la boulangerie (attributs data-lat / data-lng).
+// Sans Leaflet (hors ligne), la fiche « Le Kadior » d'origine reste affichée à la place.
+const mapEl=document.getElementById('kadiorMap');
+if(mapEl&&window.L){
+  const pos=[parseFloat(mapEl.dataset.lat),parseFloat(mapEl.dataset.lng)];
+  mapEl.innerHTML='';
+  const map=L.map(mapEl,{center:pos,zoom:17,scrollWheelZoom:false,dragging:!L.Browser.mobile});
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'}).addTo(map);
+  const pin=L.divIcon({className:'map-pin',html:'<svg viewBox="0 0 32 42" aria-hidden="true"><path d="M16 1C7.7 1 1 7.6 1 15.8 1 26.6 16 41 16 41s15-14.4 15-25.2C31 7.6 24.3 1 16 1z"/><circle cx="16" cy="16" r="5.5"/></svg>',iconSize:[32,42],iconAnchor:[16,41]});
+  L.marker(pos,{icon:pin,alt:'Le Kadior',keyboard:false}).addTo(map).bindTooltip('<strong>Le Kadior</strong><small>Route de l\'Hôpital, en face Mbour FM</small>',{permanent:true,direction:'top',offset:[0,-44],className:'map-label'});
+  // La section peut être masquée (vue catalogue) ou redimensionnée : la carte se recale sur le marqueur.
+  if('ResizeObserver' in window)new ResizeObserver(()=>{map.invalidateSize();map.setView(pos,map.getZoom(),{animate:false})}).observe(mapEl);
+}
+
+// Mini-carte du footer : même position GPS exacte ; un clic sur la carte ouvre l'itinéraire Google Maps.
+const miniEl=document.getElementById('kadiorMiniMap');
+if(miniEl&&window.L){
+  const pos=[parseFloat(miniEl.dataset.lat),parseFloat(miniEl.dataset.lng)],route=miniEl.parentElement.querySelector('.mini-map-link').href;
+  miniEl.innerHTML='';
+  const mini=L.map(miniEl,{center:pos,zoom:16,zoomControl:false,scrollWheelZoom:false,doubleClickZoom:false,keyboard:false,dragging:!L.Browser.mobile});
+  mini.attributionControl.setPrefix(false);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'}).addTo(mini);
+  const pin=L.divIcon({className:'map-pin map-pin-mini',html:'<svg viewBox="0 0 32 42" aria-hidden="true"><path d="M16 1C7.7 1 1 7.6 1 15.8 1 26.6 16 41 16 41s15-14.4 15-25.2C31 7.6 24.3 1 16 1z"/><circle cx="16" cy="16" r="5.5"/></svg>',iconSize:[22,29],iconAnchor:[11,28]});
+  L.marker(pos,{icon:pin,alt:'Le Kadior',keyboard:false}).addTo(mini).bindTooltip('Le Kadior — Mbour',{permanent:true,direction:'top',offset:[0,-30],className:'map-label map-label-mini'});
+  mini.on('click',()=>window.open(route,'_blank','noopener'));
+  if('ResizeObserver' in window)new ResizeObserver(()=>{mini.invalidateSize();mini.setView(pos,mini.getZoom(),{animate:false})}).observe(miniEl);
+}
+
+// Diaporama « Notre univers en images » : uniquement des photos de produits réels du catalogue.
+// Chaque entrée = [nom du produit dans `products`, photo]. Sans photo indiquée, c'est la première photo du produit.
+// Nom, prix et description sont repris du catalogue ; un produit introuvable ou sans photo est ignoré.
+const universSlides=[
+  ["Baguette","images/produits/pains/camp baguette.png"],
+  ["Pain Sicap","images/produits/pains/pain sicap.png"],
+  ["Pain Thiéré"],
+  ["Pain Diabétique"],
+  ["Pain Maïs"],
+  ["Pain Riche","images/produits/pains/pain riche.png"],
+  ["Croissant"],
+  ["Pain au chocolat"],
+  ["Pain aux raisins"],
+  ["Palmier"],
+  ["Pain drops"],
+  ["Chausson pomme"],
+  ["Roche coco"],
+  ["Madeleine"],
+  ["Biscuits"],
+  ["Cookies"],
+  ["Part de gâteau","images/produits/gateaux/part de gateaux 4.png"],
+  ["Gâteau d'anniversaire"],
+  ["Gâteau personnalisé"]
+];
+const univers=document.querySelector('.univers-slider');
+if(univers){
+  // 4 s d'affichage par photo + 0,7 s de transition (même durée que dans style.css).
+  const DELAY=4000+700,dotsBox=univers.querySelector('.univers-dots');
+  const items=universSlides.map(([name,photo])=>{const p=products.find(x=>x.name===name);return p&&{p,photo:photo||productImages(p)[0]}}).filter(s=>s&&s.photo);
+  univers.querySelector('.univers-prev').insertAdjacentHTML('beforebegin',items.map(({p,photo})=>`<article class="univers-slide"><div class="univers-photo"><img data-src="${photo}" alt="${p.name}"></div><div class="univers-text"><span class="univers-eyebrow">${p.category.replace(" d'anniversaire",'')}</span><h3>${p.name}</h3><strong class="univers-price">${p.price}</strong><p>${p.description}</p></div></article>`).join(''));
+  dotsBox.innerHTML=items.map(({p})=>`<button class="univers-dot" type="button" aria-label="Voir : ${p.name}"></button>`).join('');
+  const slides=[...univers.querySelectorAll('.univers-slide')],dots=[...dotsBox.children];let current=0,timer=null,paused=false;
+  // Les photos ne sont chargées qu'à l'approche de leur slide (l'active et la suivante).
+  const load=i=>{const img=slides[(i+slides.length)%slides.length].querySelector('img[data-src]');if(img){img.src=img.dataset.src;img.removeAttribute('data-src')}};
+  function show(i){
+    const n=(i+slides.length)%slides.length;
+    load(n);load(n+1);load(n-1);
+    slides.forEach((s,k)=>{s.classList.toggle('is-prev',k===current&&k!==n);s.classList.toggle('is-active',k===n);s.setAttribute('aria-hidden',String(k!==n))});
+    dots.forEach((d,k)=>{d.classList.toggle('active',k===n);d.setAttribute('aria-current',String(k===n))});
+    current=n;
+  }
+  const stop=()=>{clearInterval(timer);timer=null};
+  const play=()=>{stop();if(!paused&&!document.hidden)timer=setInterval(()=>show(current+1),DELAY)};
+  const go=i=>{show(i);play()};
+  univers.querySelector('.univers-prev').addEventListener('click',()=>go(current-1));
+  univers.querySelector('.univers-next').addEventListener('click',()=>go(current+1));
+  dots.forEach((d,i)=>d.addEventListener('click',()=>go(i)));
+  univers.addEventListener('mouseenter',()=>{paused=true;stop()});
+  univers.addEventListener('mouseleave',()=>{paused=false;play()});
+  document.addEventListener('visibilitychange',play);
+  let startX=null;
+  univers.addEventListener('touchstart',e=>{startX=e.changedTouches[0].clientX},{passive:true});
+  univers.addEventListener('touchend',e=>{if(startX===null)return;const dx=e.changedTouches[0].clientX-startX;startX=null;if(Math.abs(dx)>45)go(current+(dx<0?1:-1))},{passive:true});
+  show(0);play();
+}
