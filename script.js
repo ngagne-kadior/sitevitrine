@@ -8,13 +8,13 @@ const MAX_IMAGES = 10;
 const products = [
   {name:"Baguette",category:"Pains",price:"100 FCFA",images:["images/produits/pains/camp baguette.png"],description:"Pain frais disponible tous les jours."},
   {name:"Pain Sicap",category:"Pains",price:"150 FCFA",images:["images/produits/pains/pain sicap.png"],description:"Pain Sicap frais."},
-  {name:"Pain Double Sicap",category:"Pains",price:"200 FCFA",images:[],description:"Disponible selon la production."},
+  {name:"Pain Double Sicap",category:"Pains",price:"200 FCFA",images:["images/produits/pains/Double sicap.png","images/produits/pains/double sicap 1.png"],description:"Disponible selon la production."},
   {name:"Pain Diabétique",category:"Pains",price:"150 FCFA",images:["images/produits/pains/pain diabetique.png"],description:"Disponible tous les jours."},
   {name:"Pain Thiéré",category:"Pains",price:"100 FCFA",images:["images/produits/pains/pain thiere.png"],description:"Disponible tous les jours."},
   {name:"Pain Maïs",category:"Pains",price:"100 FCFA",images:["images/produits/pains/pain Mais.png"],description:"Disponible tous les jours."},
   {name:"Pain Riche",category:"Pains",price:"100 FCFA",images:["images/produits/pains/pain riche.png"],description:"Disponible tous les jours."},
   {name:"Pain Sans sel",category:"Pains",price:"150 FCFA",images:[],description:"Sur commande, par lot de 10 pièces."},
-  {name:"Pain Diabétique Sans sel",category:"Pains",price:"150 FCFA",images:["images/produits/pains/Pain Diabétique Sans sel.png"],description:"Sur commande, par lot de 10 pièces."},
+  {name:"Pain Diabétique Sans sel",category:"Pains",price:"150 FCFA",images:["images/produits/pains/Pain Diabétique Sans sel.png","images/produits/pains/Pain Diabétique Sans sel1.png"],description:"Sur commande, par lot de 10 pièces."},
   {name:"Croissant",category:"Viennoiseries",price:"500 FCFA",images:[
     "images/produits/viennoiseries/croissant beurre 1.jfif",
     "images/produits/viennoiseries/croissant beurre 2.jfif",
