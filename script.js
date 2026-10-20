@@ -14,7 +14,7 @@ const products = [
   {name:"Pain Maïs",category:"Pains",price:"100 FCFA",images:["images/produits/pains/pain Mais.png"],description:"Disponible tous les jours."},
   {name:"Pain Riche",category:"Pains",price:"100 FCFA",images:["images/produits/pains/pain riche.png"],description:"Disponible tous les jours."},
   {name:"Pain Sans sel",category:"Pains",price:"150 FCFA",images:[],description:"Sur commande, par lot de 10 pièces."},
-  {name:"Pain Diabétique Sans sel",category:"Pains",price:"150 FCFA",images:[],description:"Sur commande, par lot de 10 pièces."},
+  {name:"Pain Diabétique Sans sel",category:"Pains",price:"150 FCFA",images:["images/produits/pains/Pain Diabétique Sans sel.png"],description:"Sur commande, par lot de 10 pièces."},
   {name:"Croissant",category:"Viennoiseries",price:"500 FCFA",images:[
     "images/produits/viennoiseries/croissant beurre 1.jfif",
     "images/produits/viennoiseries/croissant beurre 2.jfif",
@@ -254,4 +254,55 @@ if(univers){
   univers.addEventListener('touchstart',e=>{startX=e.changedTouches[0].clientX},{passive:true});
   univers.addEventListener('touchend',e=>{if(startX===null)return;const dx=e.changedTouches[0].clientX-startX;startX=null;if(Math.abs(dx)>45)go(current+(dx<0?1:-1))},{passive:true});
   show(0);play();
+}
+
+// ===== RECRUTEMENT : la candidature est préparée dans un message WhatsApp (les documents sont joints par le candidat) =====
+const recruitForm=document.getElementById('recruitForm');
+if(recruitForm){
+  const required={nom:'Nom et prénom',telephone:'Numéro de téléphone',adresse:'Adresse complète',poste:'Poste recherché'};
+  const errorBox=recruitForm.querySelector('.rf-error'),confirmBox=recruitForm.querySelector('.rf-confirm'),openLink=recruitForm.querySelector('.rf-open');
+  document.body.appendChild(confirmBox); // hors de la section pour passer au-dessus de tout (bouton flottant inclus)
+  const val=n=>recruitForm.elements[n].value.trim();
+  const closeConfirm=()=>{confirmBox.classList.add('hidden');recruitForm.querySelector('.rf-submit').focus()};
+  recruitForm.addEventListener('input',e=>{const f=e.target.closest('.rf-field');if(f)f.classList.remove('invalid')});
+  recruitForm.addEventListener('submit',e=>{
+    e.preventDefault();
+    const missing=Object.keys(required).filter(n=>!val(n));
+    const phoneOk=!val('telephone')||val('telephone').replace(/\D/g,'').length>=9;
+    recruitForm.querySelectorAll('.rf-field').forEach(f=>f.classList.remove('invalid'));
+    [...missing,...(phoneOk?[]:['telephone'])].forEach(n=>recruitForm.elements[n].closest('.rf-field').classList.add('invalid'));
+    if(missing.length||!phoneOk){
+      errorBox.textContent=missing.length?`Merci de remplir les champs obligatoires : ${missing.map(n=>required[n]).join(', ')}.`:'Le numéro de téléphone semble incomplet (au moins 9 chiffres).';
+      errorBox.classList.remove('hidden');
+      recruitForm.elements[missing[0]||'telephone'].focus();
+      return;
+    }
+    errorBox.classList.add('hidden');
+    const opt=n=>val(n)||'Non précisé';
+    const message=[
+      'Bonjour Le Kadior,',
+      'Je souhaite déposer ma candidature.',
+      '',
+      '*CANDIDATURE — LE KADIOR*',
+      '',
+      `*Nom et prénom :* ${val('nom')}`,
+      `*Téléphone :* ${val('telephone')}`,
+      `*Adresse :* ${val('adresse')}`,
+      `*Poste recherché :* ${val('poste')}`,
+      `*Formation / niveau d'études :* ${opt('formation')}`,
+      `*Expérience professionnelle :* ${opt('experience')}`,
+      `*Disponibilité :* ${opt('disponibilite')}`,
+      ...(val('motivation')?['','*Message de motivation :*',val('motivation')]:[]),
+      '',
+      'Je joins mon CV et mes documents à ce message.',
+      'Merci pour votre attention.'
+    ].join('\n');
+    openLink.href=`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    confirmBox.classList.remove('hidden');
+    openLink.focus();
+  });
+  confirmBox.querySelector('.rf-back').addEventListener('click',closeConfirm);
+  openLink.addEventListener('click',()=>setTimeout(()=>confirmBox.classList.add('hidden'),300));
+  confirmBox.addEventListener('click',e=>{if(e.target===confirmBox)closeConfirm()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!confirmBox.classList.contains('hidden'))closeConfirm()});
 }
