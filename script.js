@@ -6,40 +6,35 @@ const WHATSAPP_NUMBER = "221784666259";
 const MAX_IMAGES = 10;
 
 const products = [
-  {name:"Baguette",category:"Pains",price:"100 FCFA",images:["images/produits/pains/camp baguette.png"],description:"Pain frais disponible tous les jours."},
-  {name:"Pain Sicap",category:"Pains",price:"150 FCFA",images:["images/produits/pains/pain sicap.png"],description:"Pain Sicap frais."},
-  {name:"Pain Double Sicap",category:"Pains",price:"200 FCFA",images:["images/produits/pains/Double sicap.png","images/produits/pains/double sicap 1.png"],description:"Disponible selon la production."},
-  {name:"Pain Diabétique",category:"Pains",price:"150 FCFA",images:["images/produits/pains/pain diabetique.png"],description:"Disponible tous les jours."},
-  {name:"Pain Thiéré",category:"Pains",price:"100 FCFA",images:["images/produits/pains/pain thiere.png"],description:"Disponible tous les jours."},
-  {name:"Pain Maïs",category:"Pains",price:"100 FCFA",images:["images/produits/pains/pain Mais.png"],description:"Disponible tous les jours."},
-  {name:"Pain Riche",category:"Pains",price:"100 FCFA",images:["images/produits/pains/pain riche.png"],description:"Disponible tous les jours."},
-  {name:"Pain Sans sel",category:"Pains",price:"150 FCFA",images:[],description:"Sur commande, par lot de 10 pièces."},
-  {name:"Pain Diabétique Sans sel",category:"Pains",price:"150 FCFA",images:["images/produits/pains/Pain Diabétique Sans sel.png","images/produits/pains/Pain Diabétique Sans sel1.png"],description:"Sur commande, par lot de 10 pièces."},
-  {name:"Croissant",category:"Viennoiseries",price:"500 FCFA",images:[
+  {id:"baguette",name:"Baguette",category:"Pains",price:"100 FCFA",images:["images/produits/pains/camp baguette.png"],description:"Pain frais disponible tous les jours."},
+  {id:"pain-sicap",name:"Pain Sicap",category:"Pains",price:"150 FCFA",images:["images/produits/pains/pain sicap.png"],description:"Pain Sicap frais."},
+  {id:"pain-double-sicap",name:"Pain Double Sicap",category:"Pains",price:"200 FCFA",images:["images/produits/pains/Double sicap.png","images/produits/pains/double sicap 1.png"],description:"Disponible selon la production."},
+  {id:"pain-diabetique",name:"Pain Diabétique",category:"Pains",price:"150 FCFA",images:["images/produits/pains/pain diabetique.png"],description:"Disponible tous les jours."},
+  {id:"pain-thiere",name:"Pain Thiéré",category:"Pains",price:"100 FCFA",images:["images/produits/pains/pain thiere.png"],description:"Disponible tous les jours."},
+  {id:"pain-mais",name:"Pain Maïs",category:"Pains",price:"100 FCFA",images:["images/produits/pains/pain Mais.png"],description:"Disponible tous les jours."},
+  {id:"pain-riche",name:"Pain Riche",category:"Pains",price:"100 FCFA",images:["images/produits/pains/pain riche.png"],description:"Disponible tous les jours."},
+  {id:"pain-sans-sel",name:"Pain Sans sel",category:"Pains",price:"150 FCFA",images:[],description:"Sur commande, par lot de 10 pièces."},
+  {id:"pain-diabetique-sans-sel",name:"Pain Diabétique Sans sel",category:"Pains",price:"150 FCFA",images:["images/produits/pains/Pain Diabétique Sans sel.png","images/produits/pains/Pain Diabétique Sans sel1.png"],description:"Sur commande, par lot de 10 pièces."},
+  {id:"croissant",name:"Croissant",category:"Viennoiseries",price:"500 FCFA",images:[
     "images/produits/viennoiseries/croissant beurre 1.jfif",
     "images/produits/viennoiseries/croissant beurre 2.jfif",
     "images/produits/viennoiseries/croissant beurre 3.jfif",
     "images/produits/viennoiseries/croissant beurre bicolore à la fraise.jfif"
   ],description:"Viennoiserie fraîche et croustillante."},
-  {name:"Pain au chocolat",category:"Viennoiseries",price:"500 FCFA",images:["images/produits/viennoiseries/Pain au chocolat.jfif","images/produits/viennoiseries/Pain au chocolate 1.jfif"],description:"Une viennoiserie gourmande."},
-  {name:"Pain aux raisins",category:"Viennoiseries",price:"Prix sur demande",images:["images/produits/viennoiseries/pain au raisin.jfif","images/produits/viennoiseries/pain raisin.jfif","images/produits/viennoiseries/Pain Aux Raisins.jfif"],description:"Disponible selon la production."},
-  {name:"Palmier",category:"Viennoiseries",price:"150 FCFA",images:["images/produits/viennoiseries/palmier.jfif","images/produits/viennoiseries/palmier1.jfif","images/produits/viennoiseries/palmier 2.jfif"],description:"Feuilleté croustillant et caramélisé."},
-  {name:"Pain drops",category:"Viennoiseries",price:"700 FCFA",images:["images/produits/viennoiseries/drops 1.jfif","images/produits/viennoiseries/drops2.jfif","images/produits/viennoiseries/drops.jfif"],description:"Disponible selon la production."},
-  {name:"Chausson pomme",category:"Viennoiseries",price:"500 FCFA",images:["images/produits/viennoiseries/chausson pomme.jfif"],description:"Chausson feuilleté aux pommes."},
-  {name:"Roche coco",category:"Pâtisserie",price:"100 FCFA",images:["images/produits/patisserie/Macarons à la noix de coco dorés.png"],description:"Une douceur gourmande."},
-  {name:"Madeleine",category:"Pâtisserie",price:"Prix sur demande",images:["images/produits/patisserie/madeleine.jfif","images/produits/patisserie/Madeleine 3.jfif","images/produits/patisserie/madeleine 2.jfif"],description:"Moelleuse et savoureuse."},
-  {name:"Biscuits",category:"Pâtisserie",price:"Prix sur demande",images:["images/produits/patisserie/Biscuits sablés à la confiture.png"],description:"Biscuits Le Kadior."},
-  {name:"Cookies",category:"Pâtisserie",price:"Prix sur demande",images:["images/produits/patisserie/cookies 3.jfif","images/produits/patisserie/cookies 2.jfif","images/produits/patisserie/Cookies.jfif"],description:"Cookies gourmands."},
-  {name:"Gâteau d'anniversaire",category:"Gâteaux d'anniversaire",price:"À partir de 8 000 FCFA",images:[
-    "images/produits/gateaux/gateau-anniversaire-2.jpg",
-    "images/produits/gateaux/gateau-anniversaire-3.jpg",
-    "images/produits/gateaux/gateau-anniversaire-4.jpg",
-    "images/produits/gateaux/gateau-anniversaire-5.jpg"
-  ],description:"Gâteau sur commande."},
+  {id:"pain-au-chocolat",name:"Pain au chocolat",category:"Viennoiseries",price:"500 FCFA",images:["images/produits/viennoiseries/Pain au chocolat.jfif","images/produits/viennoiseries/Pain au chocolate 1.jfif"],description:"Une viennoiserie gourmande."},
+  {id:"pain-aux-raisins",name:"Pain aux raisins",category:"Viennoiseries",price:"Prix sur demande",images:["images/produits/viennoiseries/pain au raisin.jfif","images/produits/viennoiseries/pain raisin.jfif","images/produits/viennoiseries/Pain Aux Raisins.jfif"],description:"Disponible selon la production."},
+  {id:"palmier",name:"Palmier",category:"Viennoiseries",price:"150 FCFA",images:["images/produits/viennoiseries/palmier.jfif","images/produits/viennoiseries/palmier1.jfif","images/produits/viennoiseries/palmier 2.jfif"],description:"Feuilleté croustillant et caramélisé."},
+  {id:"pain-drops",name:"Pain drops",category:"Viennoiseries",price:"700 FCFA",images:["images/produits/viennoiseries/drops 1.jfif","images/produits/viennoiseries/drops2.jfif","images/produits/viennoiseries/drops.jfif"],description:"Disponible selon la production."},
+  {id:"chausson-pomme",name:"Chausson pomme",category:"Viennoiseries",price:"500 FCFA",images:["images/produits/viennoiseries/chausson pomme.jfif"],description:"Chausson feuilleté aux pommes."},
+  {id:"roche-coco",name:"Roche coco",category:"Pâtisserie",price:"100 FCFA",images:["images/produits/patisserie/Macarons à la noix de coco dorés.png"],description:"Une douceur gourmande."},
+  {id:"madeleine",name:"Madeleine",category:"Pâtisserie",price:"Prix sur demande",images:["images/produits/patisserie/madeleine.jfif","images/produits/patisserie/Madeleine 3.jfif","images/produits/patisserie/madeleine 2.jfif"],description:"Moelleuse et savoureuse."},
+  {id:"biscuits",name:"Biscuits",category:"Pâtisserie",price:"Prix sur demande",images:["images/produits/patisserie/Biscuits sablés à la confiture.png"],description:"Biscuits Le Kadior."},
+  {id:"cookies",name:"Cookies",category:"Pâtisserie",price:"Prix sur demande",images:["images/produits/patisserie/cookies 3.jfif","images/produits/patisserie/cookies 2.jfif","images/produits/patisserie/Cookies.jfif"],description:"Cookies gourmands."},
+  {id:"gateau-d-anniversaire",name:"Gâteau d'anniversaire",category:"Gâteaux d'anniversaire",price:"À partir de 8 000 FCFA",images:[],description:"Gâteau sur commande.",note:"Délai, taille et parfum confirmés sur WhatsApp à la commande."},
   // `options` : les types de parts et leur prix. Le visiteur choisit un type dans la galerie,
   // le prix affiché et le message WhatsApp s'adaptent. Exemple :
   //   options:[{label:"Part chocolat",price:"1 000 FCFA"},{label:"Part fraisier",price:"1 500 FCFA"}]
-  {name:"Part de gâteau",category:"Gâteaux d'anniversaire",price:"À partir de 1 000 FCFA",options:[],images:[
+  {id:"part-de-gateau",name:"Part de gâteau",category:"Gâteaux d'anniversaire",price:"À partir de 1 000 FCFA",options:[],images:[
     "images/produits/gateaux/part de gateaux 1.jfif",
     "images/produits/gateaux/part de gateaux 2.jfif",
     "images/produits/gateaux/part de gateaux 3.jfif",
@@ -47,10 +42,8 @@ const products = [
     "images/produits/gateaux/part de gateaux 6.jfif",
     "images/produits/gateaux/part de gateaux 7.jfif"
   ],description:"Parts disponibles selon les gâteaux."},
-  {name:"Gâteau personnalisé",category:"Gâteaux d'anniversaire",price:"Sur devis",images:[
-    "images/produits/gateaux/Gateau personnalisé.jpg"
-  ],description:"Personnalisation sur commande."},
-  {name:"Gâteau événementiel",category:"Gâteaux d'anniversaire",price:"Sur devis",images:[],description:"Pour vos événements et célébrations."}
+  {id:"gateau-personnalise",name:"Gâteau personnalisé",category:"Gâteaux d'anniversaire",price:"Sur devis",images:[],description:"Personnalisation sur commande."},
+  {id:"gateau-evenementiel",name:"Gâteau événementiel",category:"Gâteaux d'anniversaire",price:"Sur devis",images:[],description:"Pour vos événements et célébrations."}
 ];
 
 const productImages=p=>(Array.isArray(p.images)&&p.images.length?p.images:[p.image]).filter(Boolean).slice(0,MAX_IMAGES);
@@ -58,9 +51,12 @@ const productGrid=document.getElementById('productGrid');
 const searchInput=document.getElementById('searchInput');
 const emptyMessage=document.getElementById('emptyMessage');
 let currentFilter='Tous';
-const whatsappLink=(p,opt)=>`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Bonjour Le Kadior, je souhaite commander : ${p.name}${opt?` — ${opt.label} (${opt.price})`:''}.`)}`;
+// Commande : chaque carte reçoit un bloc `.cart-ctrl` (quantité − / + et « Ajouter au panier »), rempli par cart.js.
 
-productGrid.innerHTML=products.map(p=>`<article class="product-card">${productImages(p).length?`<div class="product-image hidden"><img data-src="${productImages(p)[0]}" alt="${p.name}"></div>`:''}<div class="product-body"><span class="product-category">${p.category}</span><h3>${p.name}</h3><p>${p.description}</p><div class="product-bottom"><span class="price">${p.price}</span><a class="order-btn" href="${whatsappLink(p)}" target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg>Commander</a></div></div></article>`).join('');
+// Image de secours (produit sans photo, ou photos introuvables) : bloc aux couleurs du site + emoji de la catégorie.
+const CATEGORY_EMOJI={"Pains":"🥖","Viennoiseries":"🥐","Pâtisserie":"🥥","Gâteaux d'anniversaire":"🎂"};
+const fallbackImage=p=>`<div class="product-image product-fallback" role="img" aria-label="${p.name} — photo à venir"><span aria-hidden="true">${CATEGORY_EMOJI[p.category]||'🍞'}</span></div>`;
+productGrid.innerHTML=products.map(p=>`<article class="product-card">${productImages(p).length?`<div class="product-image hidden"><img data-src="${productImages(p)[0]}" alt="${p.name} — photo du produit Le Kadior"></div>`:fallbackImage(p)}<div class="product-body"><span class="product-category">${p.category}</span><h3>${p.name}</h3><p>${p.description}</p><div class="product-bottom"><span class="price">${p.price}</span></div>${p.note?`<p class="price-note">${p.note}</p>`:''}<div class="cart-ctrl" data-id="${p.id}"></div></div></article>`).join('');
 const cards=[...productGrid.children];
 // Photo des cartes : on garde uniquement les fichiers de `images` qui existent vraiment.
 // La première photo trouvée s'affiche sur la carte ; sans aucune photo, la carte reste sans image.
@@ -69,7 +65,7 @@ function loadImage(card){
   const p=products[cards.indexOf(card)],box=img.parentElement;
   Promise.all(productImages(p).map(u=>new Promise(r=>{const i=new Image();i.onload=()=>r(u);i.onerror=()=>r(null);i.src=u}))).then(found=>{
     p.gallery=found.filter(Boolean);
-    if(!p.gallery.length){box.remove();return}
+    if(!p.gallery.length){box.outerHTML=fallbackImage(p);return}
     img.src=p.gallery[0];box.classList.remove('hidden');card.classList.add('has-gallery');
     box.tabIndex=0;box.setAttribute('role','button');box.setAttribute('aria-label',`Voir les photos : ${p.name}`);
     if(p.gallery.length>1)box.insertAdjacentHTML('beforeend',`<span class="photo-hint"><svg class="icon"><use href="#i-camera"/></svg>Voir les photos</span><span class="photo-count">${p.gallery.length} photos</span>`);
@@ -80,21 +76,20 @@ function loadImage(card){
 const lightbox=document.createElement('div');
 lightbox.className='lightbox';lightbox.hidden=true;
 lightbox.setAttribute('role','dialog');lightbox.setAttribute('aria-modal','true');lightbox.setAttribute('aria-label','Galerie photos');
-lightbox.innerHTML=`<button class="lb-close" type="button" aria-label="Fermer la galerie">&times;</button><div class="lb-stage"><button class="lb-nav lb-prev" type="button" aria-label="Photo précédente"><svg class="icon"><use href="#i-arrow"/></svg></button><img class="lb-img" alt=""><button class="lb-nav lb-next" type="button" aria-label="Photo suivante"><svg class="icon"><use href="#i-arrow"/></svg></button></div><div class="lb-options" role="group" aria-label="Choisir un type"></div><div class="lb-bar"><div class="lb-caption"><strong></strong><span></span></div><span class="lb-counter"></span><a class="btn btn-gold lb-order" target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg>Commander</a></div><div class="lb-thumbs"></div>`;
+lightbox.innerHTML=`<button class="lb-close" type="button" aria-label="Fermer la galerie">&times;</button><div class="lb-stage"><button class="lb-nav lb-prev" type="button" aria-label="Photo précédente"><svg class="icon"><use href="#i-arrow"/></svg></button><img class="lb-img" alt=""><button class="lb-nav lb-next" type="button" aria-label="Photo suivante"><svg class="icon"><use href="#i-arrow"/></svg></button></div><div class="lb-options" role="group" aria-label="Choisir un type"></div><div class="lb-bar"><div class="lb-caption"><strong></strong><span></span></div><span class="lb-counter"></span><button class="btn btn-gold lb-order" type="button"><svg class="icon" aria-hidden="true"><use href="#i-cart"/></svg><span>Ajouter au panier</span></button></div><div class="lb-thumbs"></div>`;
 document.body.appendChild(lightbox);
 const lbImg=lightbox.querySelector('.lb-img'),lbThumbs=lightbox.querySelector('.lb-thumbs'),lbCounter=lightbox.querySelector('.lb-counter'),lbStage=lightbox.querySelector('.lb-stage');
-let lbProduct=null,lbIndex=0,lbLastFocus=null;
+let lbProduct=null,lbIndex=0,lbLastFocus=null,lbOption=null;
 const lbOptions=lightbox.querySelector('.lb-options');
-// Types et prix d'un produit (champ `options`) : le choix met à jour le prix affiché et le message WhatsApp.
+// Types et prix d'un produit (champ `options`) : le choix met à jour le prix affiché et l'article ajouté au panier.
 function selectOption(i){
-  const opt=(lbProduct.options||[])[i];
+  const opt=(lbProduct.options||[])[i];lbOption=opt||null;
   [...lbOptions.children].forEach((b,k)=>{b.classList.toggle('active',k===i);b.setAttribute('aria-pressed',String(k===i))});
   lightbox.querySelector('.lb-caption span').textContent=opt?opt.price:lbProduct.price;
-  lightbox.querySelector('.lb-order').href=whatsappLink(lbProduct,opt);
 }
 function showPhoto(i){
   const g=lbProduct.gallery,n=g.length;lbIndex=(i+n)%n;
-  lbCounter.textContent=`${lbIndex+1} / ${n}`;
+  lbCounter.textContent=`${lbIndex+1} / ${n}`;lbImg.alt=`${lbProduct.name} — photo ${lbIndex+1} sur ${n}`;
   [...lbThumbs.children].forEach((t,k)=>{const on=k===lbIndex;t.classList.toggle('active',on);t.setAttribute('aria-pressed',String(on));if(on&&t.scrollIntoView)t.scrollIntoView({block:'nearest',inline:'center'})});
   const url=g[lbIndex];if(lbImg.getAttribute('src')===url)return;
   lbImg.classList.add('is-changing');
@@ -117,6 +112,7 @@ lightbox.addEventListener('click',e=>{
   const thumb=e.target.closest('.lb-thumb');
   const option=e.target.closest('.lb-option');
   if(option)selectOption([...lbOptions.children].indexOf(option));
+  else if(e.target.closest('.lb-order')){addToCart(lbProduct.id,1,lbOption);flashAdded(e.target.closest('.lb-order'))}
   else if(thumb)showPhoto([...lbThumbs.children].indexOf(thumb));
   else if(e.target.closest('.lb-prev'))showPhoto(lbIndex-1);
   else if(e.target.closest('.lb-next'))showPhoto(lbIndex+1);
@@ -134,10 +130,13 @@ lbStage.addEventListener('touchend',e=>{if(lbTouchX===null)return;const dx=e.cha
 productGrid.addEventListener('click',e=>{const card=e.target.closest('.product-card.has-gallery');if(card&&e.target.closest('.product-image,h3'))openGallery(products[cards.indexOf(card)])});
 productGrid.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('.product-image')){e.preventDefault();openGallery(products[cards.indexOf(e.target.closest('.product-card'))])}});
 if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.filter(e=>e.isIntersecting).forEach(e=>{io.unobserve(e.target);loadImage(e.target)}),{rootMargin:'300px'});cards.forEach(c=>io.observe(c))}else cards.forEach(loadImage);
-function renderProducts(){const q=searchInput.value.trim().toLowerCase();let n=0;products.forEach((p,i)=>{const ok=(currentFilter==='Tous'||p.category===currentFilter)&&(!q||p.name.toLowerCase().includes(q)||p.category.toLowerCase().includes(q));cards[i].classList.toggle('hidden',!ok);if(ok)n++});emptyMessage.classList.toggle('hidden',n!==0)}
+// Recherche insensible aux accents et aux majuscules : « gateau » trouve « Gâteau », « diabetique » trouve « Diabétique ».
+const normalize=t=>t.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+function renderProducts(){const q=normalize(searchInput.value.trim());let n=0;products.forEach((p,i)=>{const ok=(currentFilter==='Tous'||p.category===currentFilter)&&(!q||normalize(p.name).includes(q)||normalize(p.category).includes(q));cards[i].classList.toggle('hidden',!ok);if(ok)n++});emptyMessage.classList.toggle('hidden',n!==0)}
 function setFilter(cat){currentFilter=cat;document.querySelectorAll('.filter').forEach(b=>b.classList.toggle('active',b.dataset.filter===cat));renderProducts();document.getElementById('catalogue').scrollIntoView({behavior:'smooth',block:'start'})}
 document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>setFilter(b.dataset.filter)));
-document.querySelectorAll('.category-card').forEach(c=>c.addEventListener('click',()=>setFilter(c.dataset.category)));
+// Une carte catégorie efface la recherche précédente : sinon un ancien mot-clé pouvait afficher « Aucun produit trouvé ».
+document.querySelectorAll('.category-card').forEach(c=>c.addEventListener('click',()=>{searchInput.value='';setFilter(c.dataset.category)}));
 searchInput.addEventListener('input',renderProducts);
 const menu=document.querySelector('.menu-toggle'),nav=document.querySelector('.nav');
 menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open))});
@@ -162,7 +161,7 @@ function syncView(){
 }
 addEventListener('hashchange',syncView);
 syncView();
-document.querySelector('#produits-phares .heading-with-action .btn').addEventListener('click',()=>setFilter('Tous'));
+document.querySelector('#produits-phares .heading-with-action .btn').addEventListener('click',()=>{searchInput.value='';setFilter('Tous')});
 
 // Carousel des produits phares : défilement natif (tactile) + flèches précédent / suivant.
 const carousel=document.querySelector('.featured-carousel'),track=carousel.querySelector('.featured-grid'),prevBtn=carousel.querySelector('.carousel-prev'),nextBtn=carousel.querySelector('.carousel-next');
@@ -229,7 +228,7 @@ if(univers){
   // 4 s d'affichage par photo + 0,7 s de transition (même durée que dans style.css).
   const DELAY=4000+700,dotsBox=univers.querySelector('.univers-dots');
   const items=universSlides.map(([name,photo])=>{const p=products.find(x=>x.name===name);return p&&{p,photo:photo||productImages(p)[0]}}).filter(s=>s&&s.photo);
-  univers.querySelector('.univers-prev').insertAdjacentHTML('beforebegin',items.map(({p,photo})=>`<article class="univers-slide"><div class="univers-photo"><img data-src="${photo}" alt="${p.name}"></div><div class="univers-text"><span class="univers-eyebrow">${p.category.replace(" d'anniversaire",'')}</span><h3>${p.name}</h3><strong class="univers-price">${p.price}</strong><p>${p.description}</p></div></article>`).join(''));
+  univers.querySelector('.univers-prev').insertAdjacentHTML('beforebegin',items.map(({p,photo})=>`<article class="univers-slide"><div class="univers-photo"><img data-src="${photo}" alt="${p.name} — photo du produit Le Kadior"></div><div class="univers-text"><span class="univers-eyebrow">${p.category.replace(" d'anniversaire",'')}</span><h3>${p.name}</h3><strong class="univers-price">${p.price}</strong><p>${p.description}</p></div></article>`).join(''));
   dotsBox.innerHTML=items.map(({p})=>`<button class="univers-dot" type="button" aria-label="Voir : ${p.name}"></button>`).join('');
   const slides=[...univers.querySelectorAll('.univers-slide')],dots=[...dotsBox.children];let current=0,timer=null,paused=false;
   // Les photos ne sont chargées qu'à l'approche de leur slide (l'active et la suivante).

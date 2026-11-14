@@ -3,14 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Le Kadior — Boulangerie, pâtisserie et viennoiserie à Mbour. Produits frais, commandes WhatsApp et livraison.">
+  <meta name="description" content="Le Kadior — Boulangerie, pâtisserie et viennoiserie à Mbour. Produits frais, commandes WhatsApp et livraison à Mbour et environs.">
   <meta name="theme-color" content="#3A2118">
   <title>Le Kadior | Boulangerie • Pâtisserie • Viennoiserie</title>
+  <link rel="canonical" href="https://kadiorvitrine.vercel.app/">
+  <!-- Aperçu de partage (WhatsApp, Facebook, X…) : image 1200x630, moins de 300 Ko -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kadiorvitrine.vercel.app/">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Le Kadior">
+  <meta property="og:title" content="Le Kadior | Boulangerie • Pâtisserie • Viennoiserie">
+  <meta property="og:description" content="Le Kadior — Boulangerie, pâtisserie et viennoiserie à Mbour. Produits frais, commandes WhatsApp et livraison à Mbour et environs.">
+  <meta property="og:image" content="https://kadiorvitrine.vercel.app/images/og-image.jpg">
+  <meta property="og:image:secure_url" content="https://kadiorvitrine.vercel.app/images/og-image.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="La façade jaune de la boulangerie Le Kadior à Mbour, avec son enseigne Boulangerie Viennoiserie">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Le Kadior | Boulangerie • Pâtisserie • Viennoiserie">
+  <meta name="twitter:description" content="Le Kadior — Boulangerie, pâtisserie et viennoiserie à Mbour. Produits frais, commandes WhatsApp et livraison à Mbour et environs.">
+  <meta name="twitter:image" content="https://kadiorvitrine.vercel.app/images/og-image.jpg">
+  <meta name="twitter:image:alt" content="La façade jaune de la boulangerie Le Kadior à Mbour, avec son enseigne Boulangerie Viennoiserie">
+  <!-- Données structurées pour les moteurs de recherche (fiche boulangerie) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Bakery",
+    "name": "Le Kadior",
+    "url": "https://kadiorvitrine.vercel.app/",
+    "image": "https://kadiorvitrine.vercel.app/images/og-image.jpg",
+    "logo": "https://kadiorvitrine.vercel.app/images/Logo.png",
+    "description": "Boulangerie, pâtisserie et viennoiserie à Mbour. Produits frais, commandes WhatsApp et livraison à Mbour et environs.",
+    "telephone": "+221784666259",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Grand-Mbour, Route de l'Hôpital, en face Mbour FM",
+      "addressLocality": "Mbour",
+      "addressCountry": "SN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 14.428746,
+      "longitude": -16.979262
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "06:00",
+        "closes": "14:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "16:00",
+        "closes": "23:00"
+      }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/lekadior_officiel",
+      "https://www.facebook.com/share/1LjNVexWPU/",
+      "https://www.tiktok.com/@lekadior_officiel"
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-  <link rel="stylesheet" href="style.css?v=20261020-2">
+  <link rel="stylesheet" href="style.css?v=20261114-1">
 </head>
 <body>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -26,6 +88,7 @@
     <symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M14 3.5v11a3.7 3.7 0 1 1-3.7-3.7"/><path d="M14 3.5c.3 2.5 2 4.3 4.7 4.6"/></symbol>
     <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="3.8"/><path d="M17 7h.01"/></symbol>
     <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M14.5 21v-7.5h2.6l.4-3.2h-3V8.4c0-.9.3-1.5 1.6-1.5h1.5V4.1A19 19 0 0 0 15.4 4C13.1 4 11.5 5.4 11.5 8v2.3H9v3.2h2.5V21"/></symbol>
+    <symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2.5 3.5h3l2.4 11.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.1l1.7-6.8H6.6"/></symbol>
     <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3.2l1.6-2.5h6.4L16.8 8H20a1.5 1.5 0 0 1 1.5 1.5v8A1.5 1.5 0 0 1 20 19H4a1.5 1.5 0 0 1-1.5-1.5v-8A1.5 1.5 0 0 1 4 8z"/><circle cx="12" cy="13" r="3.6"/></symbol>
     <symbol id="i-wheat" viewBox="0 0 60 120"><path d="M30 118V22"/><ellipse cx="30" cy="12" rx="4.5" ry="10"/><ellipse cx="21" cy="30" rx="4" ry="9.5" transform="rotate(-28 21 30)"/><ellipse cx="39" cy="30" rx="4" ry="9.5" transform="rotate(28 39 30)"/><ellipse cx="21" cy="47" rx="4" ry="9.5" transform="rotate(-28 21 47)"/><ellipse cx="39" cy="47" rx="4" ry="9.5" transform="rotate(28 39 47)"/><ellipse cx="21" cy="64" rx="4" ry="9.5" transform="rotate(-28 21 64)"/><ellipse cx="39" cy="64" rx="4" ry="9.5" transform="rotate(28 39 64)"/><ellipse cx="21" cy="81" rx="4" ry="9.5" transform="rotate(-28 21 81)"/><ellipse cx="39" cy="81" rx="4" ry="9.5" transform="rotate(28 39 81)"/></symbol>
   </svg>
@@ -33,7 +96,7 @@
   <div class="topbar">
     <div class="topbar-item"><svg class="icon"><use href="#i-pin"/></svg><span>Mbour, Sénégal</span></div>
     <div class="topbar-item"><svg class="icon"><use href="#i-clock"/></svg><span>Lundi – Dimanche : 06h – 14h / 16h – 23h</span></div>
-    <div class="topbar-item delivery"><svg class="icon"><use href="#i-truck"/></svg><span>Livraison disponible à Mbour et environs</span></div>
+    <div class="topbar-item delivery"><svg class="icon"><use href="#i-truck"/></svg><span>Livraison à Mbour et environs</span></div>
     <div class="socials" aria-label="Réseaux sociaux">
       <a href="https://www.tiktok.com/@lekadior_officiel" target="_blank" rel="noopener" aria-label="TikTok"><svg class="icon"><use href="#i-tiktok"/></svg></a>
       <a href="https://www.instagram.com/lekadior_officiel" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon"><use href="#i-instagram"/></svg></a>
@@ -49,7 +112,7 @@
       <a href="#accueil" class="active">Accueil</a>
       <a href="#categories">Nos catégories</a>
       <a href="#a-propos">À propos</a>
-      <a href="#actualites">Actualités</a>
+      <a href="#actualites">Galerie</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="header-actions">
@@ -77,7 +140,7 @@
         <ul class="hero-features">
           <li class="feature-item"><svg class="icon" aria-hidden="true"><use href="#i-leaf"/></svg><span class="feature-text">Produits frais<br>tous les jours</span></li>
           <li class="feature-item"><svg class="icon" aria-hidden="true"><use href="#i-award"/></svg><span class="feature-text">Qualité<br>artisanale</span></li>
-          <li class="feature-item"><svg class="icon" aria-hidden="true"><use href="#i-truck"/></svg><span class="feature-text">Livraison<br>disponible</span></li>
+          <li class="feature-item"><svg class="icon" aria-hidden="true"><use href="#i-truck"/></svg><span class="feature-text">Livraison à Mbour<br>et environs</span></li>
           <li class="feature-item"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg><span class="feature-text">Accueil<br>chaleureux</span></li>
         </ul>
       </div>
@@ -108,19 +171,19 @@
       <div class="featured-carousel">
         <button class="carousel-btn carousel-prev" type="button" aria-label="Produits précédents"><svg class="icon"><use href="#i-arrow"/></svg></button>
         <div class="featured-grid" tabindex="0" aria-label="Nos produits phares">
-        <article class="featured-card photo" style="--photo:url('images/produits/pains/pain sicap.png')"><span class="featured-badge">Populaire</span><div class="photo-fallback"><span>🥖</span></div><h3>Pain Sicap</h3><strong>150 FCFA</strong><a href="https://wa.me/221784666259?text=Bonjour%20Le%20Kadior%2C%20je%20souhaite%20commander%20un%20Pain%20Sicap." target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg>Commander</a></article>
-        <article class="featured-card photo" style="--photo:url('images/produits/viennoiseries/croissant beurre 1.jfif')"><span class="featured-badge">Populaire</span><div class="photo-fallback"><span>🥐</span></div><h3>Croissant</h3><strong>500 FCFA</strong><a href="https://wa.me/221784666259?text=Bonjour%20Le%20Kadior%2C%20je%20souhaite%20commander%20un%20Croissant." target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg>Commander</a></article>
-        <article class="featured-card photo" style="--photo:url('images/produits/viennoiseries/Pain au chocolat.jfif')"><div class="photo-fallback"><span>🥐</span></div><h3>Pain au chocolat</h3><strong>500 FCFA</strong><a href="https://wa.me/221784666259?text=Bonjour%20Le%20Kadior%2C%20je%20souhaite%20commander%20un%20Pain%20au%20chocolat." target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg>Commander</a></article>
-        <article class="featured-card photo" style="--photo:url('images/produits/viennoiseries/chausson pomme.jfif')"><div class="photo-fallback"><span>🥐</span></div><h3>Chausson pomme</h3><strong>500 FCFA</strong><a href="https://wa.me/221784666259?text=Bonjour%20Le%20Kadior%2C%20je%20souhaite%20commander%20un%20Chausson%20pomme." target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg>Commander</a></article>
-        <article class="featured-card photo" style="--photo:url('images/produits/patisserie/Macarons à la noix de coco dorés.png')"><div class="photo-fallback"><span>🥥</span></div><h3>Roche coco</h3><strong>100 FCFA</strong><a href="https://wa.me/221784666259?text=Bonjour%20Le%20Kadior%2C%20je%20souhaite%20commander%20une%20Roche%20coco." target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg>Commander</a></article>
-        <article class="featured-card photo" style="--photo:url('images/produits/gateaux/gateau-anniversaire-2.jpg')"><div class="photo-fallback"><span>🎂</span></div><h3>Gâteau d'anniversaire</h3><strong>À partir de 8 000 FCFA</strong><a href="https://wa.me/221784666259?text=Bonjour%20Le%20Kadior%2C%20je%20souhaite%20commander%20un%20g%C3%A2teau%20d'anniversaire." target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg>Commander</a></article>
+        <article class="featured-card photo" style="--photo:url('images/produits/pains/pain sicap.png')"><span class="featured-badge">Populaire</span><div class="photo-fallback" aria-hidden="true"><span>🥖</span></div><h3>Pain Sicap</h3><strong>150 FCFA</strong><div class="cart-ctrl" data-id="pain-sicap"></div></article>
+        <article class="featured-card photo" style="--photo:url('images/produits/viennoiseries/croissant beurre 1.jfif')"><span class="featured-badge">Populaire</span><div class="photo-fallback" aria-hidden="true"><span>🥐</span></div><h3>Croissant</h3><strong>500 FCFA</strong><div class="cart-ctrl" data-id="croissant"></div></article>
+        <article class="featured-card photo" style="--photo:url('images/produits/viennoiseries/Pain au chocolat.jfif')"><div class="photo-fallback" aria-hidden="true"><span>🥐</span></div><h3>Pain au chocolat</h3><strong>500 FCFA</strong><div class="cart-ctrl" data-id="pain-au-chocolat"></div></article>
+        <article class="featured-card photo" style="--photo:url('images/produits/viennoiseries/chausson pomme.jfif')"><div class="photo-fallback" aria-hidden="true"><span>🥐</span></div><h3>Chausson pomme</h3><strong>500 FCFA</strong><div class="cart-ctrl" data-id="chausson-pomme"></div></article>
+        <article class="featured-card photo" style="--photo:url('images/produits/patisserie/Macarons à la noix de coco dorés.png')"><div class="photo-fallback" aria-hidden="true"><span>🥥</span></div><h3>Roche coco</h3><strong>100 FCFA</strong><div class="cart-ctrl" data-id="roche-coco"></div></article>
+        <article class="featured-card photo no-photo"><div class="photo-fallback" aria-hidden="true"><span>🎂</span></div><h3>Gâteau d'anniversaire</h3><strong>À partir de 8 000 FCFA</strong><small class="price-note">Délai, taille et parfum confirmés sur WhatsApp à la commande.</small><div class="cart-ctrl" data-id="gateau-d-anniversaire"></div></article>
         </div>
         <button class="carousel-btn carousel-next" type="button" aria-label="Produits suivants"><svg class="icon"><use href="#i-arrow"/></svg></button>
       </div>
 
       <div class="promo-grid">
-        <article class="promo photo" style="--photo:url('images/produits/pains/pain riche.png')"><div class="photo-fallback"><span>🍞</span></div><div><h3>Pain Riche</h3><p>Disponible tous les jours</p><strong>100 FCFA</strong></div></article>
-        <article class="promo photo" style="--photo:url('images/produits/pains/pain diabetique.png')"><div class="photo-fallback"><span>🍞</span></div><div><h3>Pain diabétique</h3><p>Disponible tous les jours</p><strong>150 FCFA</strong></div></article>
+        <article class="promo photo" style="--photo:url('images/produits/pains/pain riche.png')"><div class="photo-fallback" aria-hidden="true"><span>🍞</span></div><div><h3>Pain Riche</h3><p>Disponible tous les jours</p><strong>100 FCFA</strong><div class="cart-ctrl" data-id="pain-riche"></div></div></article>
+        <article class="promo photo" style="--photo:url('images/produits/pains/pain diabetique.png')"><div class="photo-fallback" aria-hidden="true"><span>🍞</span></div><div><h3>Pain diabétique</h3><p>Disponible tous les jours</p><strong>150 FCFA</strong><div class="cart-ctrl" data-id="pain-diabetique"></div></div></article>
       </div>
 
     </section>
@@ -138,11 +201,9 @@
 
     <section id="a-propos" class="section about-section">
       <div class="about-copy"><span class="eyebrow">À propos de Le Kadior</span><h2>Le goût du bon pain,<br><em>chaque jour.</em></h2><p>Le Kadior est une boulangerie, pâtisserie et viennoiserie située à Mbour. Nous vous proposons des produits frais, savoureux et de qualité, préparés chaque jour avec passion et savoir-faire.</p><a class="btn btn-gold" href="#contact">En savoir plus <svg class="icon"><use href="#i-arrow"/></svg></a></div>
-      <div class="about-photo"><img src="images/hero-mobile.jpg?v=20261005-3" alt="La façade de la boulangerie Le Kadior à Mbour" loading="lazy"></div>
-      <div class="about-points"><div><svg class="icon"><use href="#i-leaf"/></svg><b>Produits frais</b><small>Préparés chaque jour</small></div><div><svg class="icon"><use href="#i-award"/></svg><b>Qualité artisanale</b><small>Recettes traditionnelles</small></div><div><svg class="icon"><use href="#i-heart"/></svg><b>Large choix</b><small>Pains, viennoiseries, pâtisseries, gâteaux</small></div><div><svg class="icon"><use href="#i-truck"/></svg><b>Livraison disponible</b><small>À Mbour et environs</small></div></div>
+      <div class="about-photo"><img src="images/hero-mobile.jpg?v=20261005-3" alt="La devanture jaune de Le Kadior à Mbour, avec ses vitrines de pains et de pâtisseries" loading="lazy"></div>
+      <div class="about-points"><div><svg class="icon"><use href="#i-leaf"/></svg><b>Produits frais</b><small>Préparés chaque jour</small></div><div><svg class="icon"><use href="#i-award"/></svg><b>Qualité artisanale</b><small>Recettes traditionnelles</small></div><div><svg class="icon"><use href="#i-heart"/></svg><b>Large choix</b><small>Pains, viennoiseries, pâtisseries, gâteaux</small></div><div><svg class="icon"><use href="#i-truck"/></svg><b>Livraison</b><small>Livraison à Mbour et environs</small></div></div>
     </section>
-
-    <section class="section testimonials-section"><div class="section-heading"><h2>Ils nous font confiance</h2></div><div class="testimonial-grid"><article><div class="avatar">A</div><div><b>Aïssatou D.</b><div class="stars">★★★★★</div><p>« Le pain est toujours frais et délicieux. J'adore leurs viennoiseries ! »</p></div></article><article><div class="avatar">M</div><div><b>Mamadou S.</b><div class="stars">★★★★★</div><p>« Service rapide et de qualité. Les gâteaux sont magnifiques. »</p></div></article><article><div class="avatar">N</div><div><b>Ndeye F.</b><div class="stars">★★★★★</div><p>« La meilleure boulangerie de Mbour. Accueil très chaleureux ! »</p></div></article></div></section>
 
     <section id="actualites" class="section gallery-preview">
       <div class="section-heading"><h2>Notre univers en images</h2><p>Découvrez l'univers gourmand de Le Kadior</p></div>
@@ -152,6 +213,8 @@
         <div class="univers-dots"></div>
       </div>
     </section>
+
+    <section id="contact" class="section contact-section"><div class="section-heading"><h2>Retrouvez Le Kadior à Mbour</h2><p>Une commande, une question ou une envie gourmande ? Contactez-nous directement.</p></div><div class="contact-grid"><div class="map-card"><div id="kadiorMap" class="map-canvas" data-lat="14.428746" data-lng="-16.979262"><div class="map-placeholder"><span>📍</span><strong>Le Kadior</strong><small>Mbour, Grand-Mbour, Route de l'Hôpital, en face Mbour FM</small></div></div><a href="https://www.google.com/maps/dir/?api=1&destination=14.428746%2C-16.979262" target="_blank" rel="noopener">Voir l'itinéraire <svg class="icon"><use href="#i-arrow"/></svg></a></div><div class="contact-info"><div class="info-card"><svg class="icon"><use href="#i-pin"/></svg><div><b>Localisation</b><span>Mbour, Grand-Mbour<br>Route de l'Hôpital<br>En face Mbour FM</span></div></div><div class="info-card"><svg class="icon"><use href="#i-clock"/></svg><div><b>Horaires</b><span>Lun – Dim : 06h–14h / 16h–23h</span></div></div><div class="info-card"><svg class="icon"><use href="#i-truck"/></svg><div><b>Livraison</b><span>Livraison à Mbour et environs. Tarif et délai confirmés sur WhatsApp selon votre adresse.</span></div></div><a class="btn btn-gold full" href="https://wa.me/221784666259" target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg>Commander sur WhatsApp</a></div></div></section>
 
     <section id="recrutement" class="section recruit-section">
       <div class="section-heading"><h2>Déposer une candidature</h2><p>Vous souhaitez rejoindre l'équipe Le Kadior ? Remplissez ce formulaire : votre candidature s'ouvrira dans WhatsApp, prête à être envoyée.</p></div>
@@ -179,15 +242,15 @@
         </div>
       </form>
     </section>
-
-    <section id="contact" class="section contact-section"><div class="section-heading"><h2>Retrouvez Le Kadior à Mbour</h2><p>Une commande, une question ou une envie gourmande ? Contactez-nous directement.</p></div><div class="contact-grid"><div class="map-card"><div id="kadiorMap" class="map-canvas" data-lat="14.428746" data-lng="-16.979262"><div class="map-placeholder"><span>📍</span><strong>Le Kadior</strong><small>Mbour, Grand-Mbour, Route de l'Hôpital, en face Mbour FM</small></div></div><a href="https://www.google.com/maps/dir/?api=1&destination=14.428746%2C-16.979262" target="_blank" rel="noopener">Voir l'itinéraire <svg class="icon"><use href="#i-arrow"/></svg></a></div><div class="contact-info"><div class="info-card"><svg class="icon"><use href="#i-pin"/></svg><div><b>Localisation</b><span>Mbour, Grand-Mbour<br>Route de l'Hôpital<br>En face Mbour FM</span></div></div><div class="info-card"><svg class="icon"><use href="#i-clock"/></svg><div><b>Horaires</b><span>Lun – Dim : 06h–14h / 16h–23h</span></div></div><div class="info-card"><svg class="icon"><use href="#i-truck"/></svg><div><b>Livraison</b><span>Disponible à Mbour et environs</span></div></div><a class="btn btn-gold full" href="https://wa.me/221784666259" target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg>Commander sur WhatsApp</a></div></div></section>
   </main>
 
   <a class="floating-whatsapp" href="https://wa.me/221784666259" target="_blank" rel="noopener" aria-label="Commander sur WhatsApp"><svg class="icon"><use href="#i-whatsapp"/></svg></a>
 
-  <footer class="footer"><div class="footer-main"><div class="footer-brand"><img src="images/Logo.png" alt="Le Kadior"><p>Le goût du bon pain, chaque jour.</p></div><div><h3>Liens utiles</h3><a href="#accueil">Accueil</a><a href="#categories">Nos catégories</a><a href="#catalogue">Tous nos produits</a><a href="#a-propos">À propos</a><a href="#actualites">Actualités</a><a href="#contact">Contact</a></div><div><h3>Nos coordonnées</h3><p>📍 Mbour, Grand-Mbour<br>Route de l'Hôpital<br>En face Mbour FM</p><p>◷ Lundi – Dimanche : 06h–14h / 16h–23h</p><p>📞 +221 78 466 62 59</p><a href="https://wa.me/221784666259" target="_blank" rel="noopener">💬 Commander sur WhatsApp</a></div><div><h3>Suivez-nous</h3><div class="footer-socials"><a href="https://www.tiktok.com/@lekadior_officiel" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/lekadior_officiel" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/share/1LjNVexWPU/" target="_blank" rel="noopener">Facebook</a></div><div class="mini-map"><div id="kadiorMiniMap" class="mini-map-canvas" data-lat="14.428746" data-lng="-16.979262"><div class="mini-map-fallback">📍 Le Kadior<br><small>Mbour</small></div></div><a class="mini-map-link" href="https://www.google.com/maps/dir/?api=1&destination=14.428746%2C-16.979262" target="_blank" rel="noopener">Itinéraire <svg class="icon"><use href="#i-arrow"/></svg></a></div></div></div><div class="footer-bottom"><span>© <span id="year">2026</span> Le Kadior. Tous droits réservés.</span><span>Mentions légales &nbsp;|&nbsp; Confidentialité</span></div></footer>
+  <footer class="footer"><div class="footer-main"><div class="footer-brand"><img src="images/Logo.png" alt="Logo de la boulangerie Le Kadior"><p>Le goût du bon pain, chaque jour.</p></div><div><h3>Liens utiles</h3><a href="#accueil">Accueil</a><a href="#categories">Nos catégories</a><a href="#catalogue">Tous nos produits</a><a href="#a-propos">À propos</a><a href="#actualites">Galerie</a><a href="#contact">Contact</a></div><div><h3>Nos coordonnées</h3><p>📍 Mbour, Grand-Mbour<br>Route de l'Hôpital<br>En face Mbour FM</p><p>◷ Lundi – Dimanche : 06h–14h / 16h–23h</p><p>📞 <a href="tel:+221784666259">+221 78 466 62 59</a></p><p>🚚 Livraison à Mbour et environs. Tarif et délai confirmés sur WhatsApp selon votre adresse.</p><a href="https://wa.me/221784666259" target="_blank" rel="noopener">💬 Commander sur WhatsApp</a></div><div><h3>Suivez-nous</h3><div class="footer-socials"><a href="https://www.tiktok.com/@lekadior_officiel" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/lekadior_officiel" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/share/1LjNVexWPU/" target="_blank" rel="noopener">Facebook</a></div><div class="mini-map"><div id="kadiorMiniMap" class="mini-map-canvas" data-lat="14.428746" data-lng="-16.979262"><div class="mini-map-fallback">📍 Le Kadior<br><small>Mbour</small></div></div><a class="mini-map-link" href="https://www.google.com/maps/dir/?api=1&destination=14.428746%2C-16.979262" target="_blank" rel="noopener">Itinéraire <svg class="icon"><use href="#i-arrow"/></svg></a></div></div></div><div class="footer-bottom"><span>© <span id="year">2026</span> Le Kadior. Tous droits réservés.</span></div></footer>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script src="script.js?v=20261020-2"></script>
+  <script src="order.js?v=20261114-1"></script>
+  <script src="script.js?v=20261114-1"></script>
+  <script src="cart.js?v=20261114-1"></script>
 </body>
 </html>

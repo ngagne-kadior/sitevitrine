@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kadiorvitrine.vercel.app/sitemap.xml
