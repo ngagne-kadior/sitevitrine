@@ -2,7 +2,7 @@
 // Dépend de : order.js (buildOrderMessage, fixedPrice, formatFCFA, orderTotals, buildWhatsappUrl)
 // et script.js (products, WHATSAPP_NUMBER). Chargé après ces deux fichiers.
 const CART_KEY = 'lekadior-panier-v1';
-const MAX_QTY = 99;
+const MAX_QTY = 50; // quantité maximale par ligne (un panier déjà enregistré au-delà est ramené à 50)
 const productById = id => products.find(p => p.id === id);
 const lineKey = (id, option) => id + (option ? '::' + option.label : '');
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -38,33 +38,31 @@ function addToCart(id, qty = 1, option = null) {
   else cart.push({ id, qty: Math.min(MAX_QTY, qty), option: option ? { label: option.label, price: option.price } : null });
   saveCart(); renderCart(); bumpFab();
 }
+// Quantité d'une ligne du panneau : toujours entre 1 et MAX_QTY (retirer une ligne passe par removeLine).
 function setLineQty(index, qty) {
   if (!cart[index]) return;
-  if (qty <= 0) cart.splice(index, 1); else cart[index].qty = Math.min(MAX_QTY, qty);
+  cart[index].qty = Math.min(MAX_QTY, Math.max(1, qty));
+  saveCart(); renderCart();
+}
+function removeLine(index) {
+  if (!cart[index]) return;
+  cart.splice(index, 1);
   saveCart(); renderCart();
 }
 function clearCart() { cart = []; saveCart(); renderCart(); }
 
-// ---------- Boutons des cartes : − / quantité / + et « Ajouter au panier » ----------
-const qtyHTML = (val, name) => `<div class="qty" role="group" aria-label="Quantité : ${esc(name)}"><button class="qty-btn" type="button" data-step="-1" aria-label="Diminuer la quantité">−</button><span class="qty-val">${val}</span><button class="qty-btn" type="button" data-step="1" aria-label="Augmenter la quantité">+</button></div>`;
+// ---------- Bouton « Ajouter au panier » des cartes (la quantité se règle dans le panneau) ----------
 document.querySelectorAll('.cart-ctrl[data-id]').forEach(box => {
   const p = productById(box.dataset.id);
   if (!p) { box.remove(); return; }
-  box.dataset.qty = '1';
-  box.innerHTML = qtyHTML(1, p.name) + `<button class="add-btn" type="button"><svg class="icon" aria-hidden="true"><use href="#i-cart"/></svg><span>Ajouter au panier</span></button>`;
+  box.innerHTML = `<button class="add-btn" type="button" aria-label="Ajouter au panier : ${esc(p.name)}"><svg class="icon" aria-hidden="true"><use href="#i-cart"/></svg><span>Ajouter au panier</span></button>`;
 });
+// Un clic = 1 unité de plus (le panier ne s'ouvre pas tout seul ; le badge se met à jour aussitôt).
 document.addEventListener('click', e => {
-  const box = e.target.closest('.cart-ctrl[data-id]');
-  if (!box) return;
-  const step = e.target.closest('.qty-btn'), add = e.target.closest('.add-btn');
-  if (step) {
-    const q = Math.min(MAX_QTY, Math.max(1, Number(box.dataset.qty) + Number(step.dataset.step)));
-    box.dataset.qty = String(q); box.querySelector('.qty-val').textContent = q;
-  } else if (add) {
-    addToCart(box.dataset.id, Number(box.dataset.qty));
-    box.dataset.qty = '1'; box.querySelector('.qty-val').textContent = '1';
-    flashAdded(add);
-  }
+  const add = e.target.closest('.cart-ctrl[data-id] .add-btn');
+  if (!add) return;
+  addToCart(add.closest('.cart-ctrl').dataset.id, 1);
+  flashAdded(add);
 });
 // Retour visuel bref sur le bouton cliqué.
 function flashAdded(btn) {
@@ -73,7 +71,7 @@ function flashAdded(btn) {
   if (!btn.dataset.label) btn.dataset.label = label.textContent;
   clearTimeout(btn._flash);
   btn.classList.add('is-added'); label.textContent = 'Ajouté ✓';
-  btn._flash = setTimeout(() => { btn.classList.remove('is-added'); label.textContent = btn.dataset.label; }, 1400);
+  btn._flash = setTimeout(() => { btn.classList.remove('is-added'); label.textContent = btn.dataset.label; }, 1500);
 }
 
 // ---------- Bouton flottant et panneau ----------
@@ -125,12 +123,20 @@ overlay.addEventListener('click', closeCart);
 panel.querySelector('.cart-close').addEventListener('click', closeCart);
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && !panel.hidden) closeCart(); });
 
-// Lignes du panier : − / + et suppression.
+// Lignes du panier : − / + (de 1 à MAX_QTY) et suppression.
+// Sélecteur de quantité : uniquement dans le panneau du panier.
+const qtyHTML = (val, name) => `<div class="qty" role="group" aria-label="Quantité : ${esc(name)}"><button class="qty-btn" type="button" data-step="-1" aria-label="Diminuer la quantité"${val <= 1 ? ' disabled' : ''}>−</button><span class="qty-val" aria-live="polite">${val}</span><button class="qty-btn" type="button" data-step="1" aria-label="Augmenter la quantité"${val >= MAX_QTY ? ' disabled' : ''}>+</button></div>`;
 linesBox.addEventListener('click', e => {
   const li = e.target.closest('.cart-line'); if (!li) return;
   const i = Number(li.dataset.index), step = e.target.closest('.qty-btn');
-  if (step) setLineQty(i, cart[i].qty + Number(step.dataset.step));
-  else if (e.target.closest('.cart-remove')) setLineQty(i, 0);
+  if (step) {
+    const stepIndex = [...li.querySelectorAll('.qty-btn')].indexOf(step);
+    setLineQty(i, cart[i].qty + Number(step.dataset.step));
+    // Le panneau est redessiné : on garde le focus sur le même bouton (ou son voisin s'il vient d'être désactivé).
+    const btns = linesBox.querySelectorAll(`.cart-line[data-index="${i}"] .qty-btn`);
+    const next = btns[stepIndex] && !btns[stepIndex].disabled ? btns[stepIndex] : btns[1 - stepIndex];
+    if (next) next.focus();
+  } else if (e.target.closest('.cart-remove')) removeLine(i);
 });
 
 function renderCart() {
@@ -142,7 +148,7 @@ function renderCart() {
   panel.querySelector('.cart-summary').hidden = count === 0;
   linesBox.innerHTML = views.map((v, i) => {
     const fixed = typeof v.unitPrice === 'number';
-    return `<li class="cart-line" data-index="${i}"><div class="cart-line-info"><b>${esc(v.name)}</b><small>${fixed ? formatFCFA(v.unitPrice) + ' l’unité' : 'Prix à confirmer'}</small></div>${qtyHTML(v.qty, v.name)}<strong class="cart-line-sum${fixed ? '' : ' is-unpriced'}">${fixed ? formatFCFA(v.unitPrice * v.qty) : 'prix à confirmer'}</strong><button class="cart-remove" type="button" aria-label="Supprimer ${esc(v.name)}"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></button></li>`;
+    return `<li class="cart-line" data-index="${i}"><div class="cart-line-info"><b>${esc(v.name)}</b><small>${fixed ? formatFCFA(v.unitPrice) + ' l’unité' : 'Prix à confirmer'}</small></div>${qtyHTML(v.qty, v.name)}${fixed ? `<strong class="cart-line-sum">${formatFCFA(v.unitPrice * v.qty)}</strong>` : ''}<button class="cart-remove" type="button" aria-label="Supprimer ${esc(v.name)}"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></button></li>`;
   }).join('');
   const t = orderTotals(views);
   panel.querySelector('.cart-total strong').textContent = t.hasFixed ? formatFCFA(t.total) : 'prix à confirmer';

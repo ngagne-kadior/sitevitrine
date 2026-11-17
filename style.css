@@ -191,14 +191,10 @@ body.view-catalogue #catalogue{min-height:70vh}
 /* Précision sous le prix (gâteau d'anniversaire) */
 .product-card .price-note{min-height:0;margin-top:8px;font-size:10.5px;line-height:1.4;color:var(--muted);font-style:italic}.featured-card .price-note{display:block;margin:3px 8px 0;font-size:9.5px;line-height:1.35;color:var(--muted)}
 /* ===== PANIER ===== */
-/* Boutons des cartes : − quantité + et « Ajouter au panier » (téléphone d'abord) */
-.cart-ctrl{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:10px}
-.qty{display:inline-flex;align-items:center;flex:none;height:34px;border:1px solid var(--line);border-radius:999px;background:#fff;overflow:hidden}
-.qty-btn{width:34px;height:100%;border:0;background:transparent;color:var(--brown);font-size:17px;font-weight:800;line-height:1;cursor:pointer;transition:background .2s}
-.qty-btn:hover{background:var(--cream-2)}
+/* Bouton « Ajouter au panier » des cartes (téléphone d'abord) : seul, pleine largeur, en bas de la carte */
+.cart-ctrl{display:flex;margin-top:10px}
 .qty-btn:focus-visible,.add-btn:focus-visible,.cart-remove:focus-visible,.cart-close:focus-visible,.cart-fab:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-.qty-val{min-width:22px;text-align:center;font-size:13px;font-weight:800;color:var(--brown)}
-.add-btn{flex:1 1 118px;min-width:0;height:34px;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:0 12px;border:0;border-radius:999px;background:var(--gold);color:var(--brown);font-size:11.5px;font-weight:800;white-space:nowrap;cursor:pointer;transition:background .2s}
+.add-btn{flex:1 1 auto;min-width:0;height:36px;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:0 12px;border:0;border-radius:999px;background:var(--gold);color:var(--brown);font-size:11.5px;font-weight:800;white-space:nowrap;cursor:pointer;transition:background .2s}
 .add-btn:hover{background:var(--gold-light)}
 .add-btn .icon{width:15px;height:15px}
 .add-btn.is-added,.lb-order.is-added{background:var(--green);color:#fff}
@@ -206,15 +202,14 @@ body.view-catalogue #catalogue{min-height:70vh}
 .product-card{display:flex;flex-direction:column}.product-body{flex:1;display:flex;flex-direction:column}.product-card .cart-ctrl{margin-top:auto;padding-top:10px}
 /* Produits phares : version compacte */
 .featured-card{display:flex;flex-direction:column}
-.featured-card .cart-ctrl{margin:auto 8px 8px;padding-top:8px;gap:6px;justify-content:center}
-.featured-card .qty{height:30px;margin:0 auto}.featured-card .qty-btn{width:30px;font-size:15px}
-.featured-card .add-btn{flex:1 1 100%;height:30px;font-size:10.5px;padding:0 8px}
+.featured-card .cart-ctrl{margin:auto 8px 8px;padding-top:8px}
+.featured-card .add-btn{height:32px;font-size:10.5px;padding:0 8px}
 /* Encarts Pain Riche / Pain diabétique */
 .promo{height:auto;min-height:168px}
 .promo>div:last-child{padding-top:18px;padding-bottom:18px}
-.promo .cart-ctrl{margin-top:12px}
-.promo .qty{background:rgba(255,249,237,.95);border-color:transparent}
-.promo .add-btn{flex:0 1 auto}
+/* Encarts : le bouton se place à côté du prix */
+.promo .cart-ctrl{display:inline-flex;vertical-align:bottom;margin:14px 0 0 10px}
+.promo .add-btn{flex:0 0 auto;height:auto;min-height:33px;padding:0 16px;font-size:12.5px}
 @media(max-width:540px){.promo{min-height:150px}.promo>div:last-child{padding-top:16px;padding-bottom:16px}}
 
 /* Bouton flottant : à gauche du bouton WhatsApp (52 px à 18 px du bord), sans chevauchement */
@@ -243,9 +238,13 @@ body.cart-open .cart-fab,body.cart-open .floating-whatsapp{visibility:hidden}
 .cart-line-info{grid-area:info;min-width:0}
 .cart-line-info b{display:block;font-family:var(--serif);font-size:16px;color:var(--brown);line-height:1.25}
 .cart-line-info small{font-size:11.5px;color:var(--muted)}
-.cart-line .qty{grid-area:qty;justify-self:start}
+/* Sélecteur de quantité : uniquement dans les lignes du panier (1 à 50) */
+.cart-line .qty{grid-area:qty;justify-self:start;display:inline-flex;align-items:center;height:36px;border:1px solid var(--line);border-radius:999px;background:#fff;overflow:hidden}
+.cart-line .qty-btn{width:36px;height:100%;border:0;background:transparent;color:var(--brown);font-size:18px;font-weight:800;line-height:1;cursor:pointer;transition:background .2s}
+.cart-line .qty-btn:hover:not(:disabled){background:var(--cream-2)}
+.cart-line .qty-btn:disabled{color:#CBBFB3;cursor:not-allowed}
+.cart-line .qty-val{min-width:26px;text-align:center;font-size:14px;font-weight:800;color:var(--brown)}
 .cart-line-sum{grid-area:sum;justify-self:end;font-size:14px;color:#B87F10}
-.cart-line-sum.is-unpriced{font-size:12px;font-style:italic;font-weight:700;color:var(--muted)}
 .cart-remove{grid-area:remove;justify-self:end;width:34px;height:34px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;background:#fff;color:#9B2C1F;cursor:pointer}
 .cart-remove:hover{background:#FDECEA}
 .cart-remove .icon{width:16px;height:16px}

@@ -51,7 +51,7 @@ const productGrid=document.getElementById('productGrid');
 const searchInput=document.getElementById('searchInput');
 const emptyMessage=document.getElementById('emptyMessage');
 let currentFilter='Tous';
-// Commande : chaque carte reçoit un bloc `.cart-ctrl` (quantité − / + et « Ajouter au panier »), rempli par cart.js.
+// Commande : chaque carte reçoit un bloc `.cart-ctrl` (bouton « Ajouter au panier » ; la quantité se règle dans le panier), rempli par cart.js.
 
 // Image de secours (produit sans photo, ou photos introuvables) : bloc aux couleurs du site + emoji de la catégorie.
 const CATEGORY_EMOJI={"Pains":"🥖","Viennoiseries":"🥐","Pâtisserie":"🥥","Gâteaux d'anniversaire":"🎂"};
