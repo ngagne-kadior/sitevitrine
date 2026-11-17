@@ -210,12 +210,25 @@ if (univers) {
   const items = products.filter(p => p.galerie === true && productImages(p).length).slice(0, UNIVERS_MAX);
   const counter = univers.querySelector('.univers-counter');
   if (!items.length) univers.closest('section').hidden = true;
-  univers.querySelector('.univers-prev').insertAdjacentHTML('beforebegin', items.map((p, i) => `<article class="univers-slide" role="group" aria-roledescription="diapositive" aria-label="${i + 1} sur ${items.length} : ${p.name}"><div class="univers-photo"><img src="${productImages(p)[0]}" alt="${p.photoAlt || p.name}, Le Kadior, Mbour"${i ? ' loading="lazy"' : ''} decoding="async"></div><div class="univers-text"><span class="univers-eyebrow">${p.category.replace(" d'anniversaire", '')}</span><h3>${p.name}</h3><strong class="univers-price">${p.price}</strong>${p.accroche ? `<p>${p.accroche}</p>` : ''}<div class="cart-ctrl" data-id="${p.id}"></div></div></article>`).join(''));
+  univers.querySelector('.univers-prev').insertAdjacentHTML('beforebegin', items.map((p, i) => `<article class="univers-slide" role="group" aria-roledescription="diapositive" aria-label="${i + 1} sur ${items.length} : ${p.name}"><div class="univers-photo"><img ${i <= 1 || i === items.length - 1 ? 'src' : 'data-src'}="${productImages(p)[0]}" alt="${p.photoAlt || p.name}, Le Kadior, Mbour" width="800" height="600" decoding="async"></div><div class="univers-text"><span class="univers-eyebrow">${p.category.replace(" d'anniversaire", '')}</span><h3>${p.name}</h3><strong class="univers-price">${p.price}</strong>${p.accroche ? `<p>${p.accroche}</p>` : ''}<div class="cart-ctrl" data-id="${p.id}"></div></div></article>`).join(''));
   counter.querySelector('.univers-total').textContent = items.length;
   const slides = [...univers.querySelectorAll('.univers-slide')];
+  // Images : la première, la suivante et la précédente sont chargées tout de suite (src) ; les autres (data-src)
+  // sont préchauffées en arrière-plan une fois la page chargée, ou dès qu'on s'en approche.
+  // Une image en échec reste invisible : ni icône cassée ni texte alternatif, seulement le fond brun.
+  const loadSlide = i => { const img = slides[(i + slides.length) % slides.length].querySelector('img[data-src]'); if (img) { img.src = img.dataset.src; img.removeAttribute('data-src'); } };
+  slides.forEach(sl => {
+    const img = sl.querySelector('img'), ok = () => img.classList.add('is-loaded'), ko = () => img.classList.add('is-broken');
+    img.addEventListener('load', ok); img.addEventListener('error', ko);
+    if (img.getAttribute('src') && img.complete) (img.naturalWidth ? ok : ko)();
+  });
+  const warmAll = () => slides.forEach((sl, i) => loadSlide(i));
+  const whenIdle = cb => ('requestIdleCallback' in window ? requestIdleCallback(cb, { timeout: 3000 }) : setTimeout(cb, 1200));
+  if (document.readyState === 'complete') whenIdle(warmAll); else addEventListener('load', () => whenIdle(warmAll));
   let current = 0;
   function show(i, announce) {
     const n = (i + slides.length) % slides.length;
+    loadSlide(n); loadSlide(n + 1); loadSlide(n - 1);
     slides.forEach((s, k) => {
       s.classList.toggle('is-prev', k === current && k !== n);
       s.classList.toggle('is-active', k === n);
@@ -261,3 +274,15 @@ if (univers) {
   }, { passive: true });
   show(0, false); sync();
 }
+
+// Bouton WhatsApp flottant : masqué pendant la saisie (clavier ouvert), pour ne jamais recouvrir un champ.
+// Deux signaux : le focus dans un champ de saisie, et la hauteur visible réduite par le clavier (visualViewport).
+(function(){
+  const isField = el => !!(el && el.matches && el.matches('input:not([type="radio"]):not([type="checkbox"]):not([type="button"]):not([type="submit"]), select, textarea'));
+  let focused = false, keyboard = false;
+  const apply = () => document.body.classList.toggle('is-typing', focused || keyboard);
+  document.addEventListener('focusin', e => { focused = isField(e.target); apply(); });
+  document.addEventListener('focusout', e => { focused = isField(e.relatedTarget); apply(); });
+  const vv = window.visualViewport;
+  if (vv) vv.addEventListener('resize', () => { keyboard = vv.height < window.innerHeight - 150; apply(); });
+})();
