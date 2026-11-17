@@ -92,7 +92,12 @@ document.body.insertAdjacentHTML('beforeend', `
         <label><input type="radio" name="mode" value="livraison"><span>Livraison à domicile</span></label>
       </fieldset>
       <label class="rf-field cart-field" data-field="address" hidden><span>Adresse de livraison <em>*</em></span><input type="text" name="address" autocomplete="street-address" placeholder="Quartier, rue, point de repère"><small class="field-error" hidden></small></label>
-      <label class="rf-field cart-field" data-field="time"><span>Heure souhaitée <small>(facultatif)</small></span><input type="text" name="time" placeholder="Ex. aujourd'hui vers 18h"></label>
+      <fieldset class="cart-when"><legend>Heure souhaitée <small>(facultatif)</small></legend>
+        <div class="cart-when-grid">
+          <label class="rf-field cart-field"><span>Jour</span><select name="day"></select></label>
+          <label class="rf-field cart-field"><span>Heure</span><select name="slot"></select></label>
+        </div>
+      </fieldset>
       <label class="rf-field cart-field" data-field="name"><span>Nom <em>*</em></span><input type="text" name="name" autocomplete="name"><small class="field-error" hidden></small></label>
       <label class="rf-field cart-field" data-field="phone"><span>Téléphone <em>*</em></span><input type="tel" name="phone" autocomplete="tel" placeholder="Ex. 77 123 45 67"><small class="field-error" hidden></small></label>
       <button class="btn cart-send" type="submit" disabled><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Envoyer ma commande sur WhatsApp</button>
@@ -108,6 +113,7 @@ let lastFocus = null;
 
 function openCart() {
   lastFocus = document.activeElement;
+  fillSchedule({ day: form.elements.day.value, slot: form.elements.slot.value }); // créneaux recalculés à chaque ouverture
   panel.hidden = false; overlay.hidden = false; document.body.classList.add('modal-open', 'cart-open');
   panel.querySelector('.cart-close').focus();
 }
@@ -185,22 +191,64 @@ function validate() {
   panel.querySelector('.cart-missing').textContent = empty ? 'Ajoutez au moins un produit pour commander.'
     : missing.length ? `Pour envoyer, complétez : ${missing.join(', ')}.` : '';
 }
+function showAddress() {
+  const delivery = mode() === 'livraison';
+  panel.querySelector('[data-field="address"]').hidden = !delivery; form.elements.address.required = delivery;
+}
 form.addEventListener('input', e => {
-  if (e.target.name === 'mode') {
-    const delivery = mode() === 'livraison', addr = panel.querySelector('[data-field="address"]');
-    addr.hidden = !delivery; form.elements.address.required = delivery;
-  } else if (e.target.name) touched.add(e.target.name);
+  if (e.target.name === 'mode') showAddress();
+  else if (e.target.name === 'day') fillSlots(currentDays.find(d => d.value === e.target.value), form.elements.slot.value);
+  else if (e.target.name) touched.add(e.target.name);
   successBox.hidden = true;
   validate();
+  saveDraft();
 });
 form.addEventListener('focusout', e => { if (e.target.name && e.target.name !== 'mode') { touched.add(e.target.name); validate(); } });
+
+// ---------- Jour et heure souhaités (listes déroulantes, heure de Dakar : voir order.js) ----------
+let currentDays = [];
+const SLOT_GROUPS = [['Matin (06h00 - 14h00)', MORNING_SLOTS], ['Soir (16h00 - 23h00)', EVENING_SLOTS]];
+// Reconstruit la liste des jours ; garde le jour et l'heure voulus s'ils sont encore proposés, sinon « Peu importe ».
+function fillSchedule(want = {}) {
+  currentDays = scheduleDays(new Date());
+  const daySel = form.elements.day, matched = currentDays.find(d => d.value === want.day);
+  daySel.innerHTML = currentDays.map(d => `<option value="${d.value}">${esc(d.label)}</option>`).join('');
+  daySel.value = (matched || currentDays[0]).value;
+  fillSlots(matched || currentDays[0], matched ? want.slot : '');
+}
+function fillSlots(day, wantSlot) {
+  const slotSel = form.elements.slot;
+  if (!day) { slotSel.innerHTML = '<option value="">Peu importe</option>'; return; }
+  slotSel.innerHTML = '<option value="">Peu importe</option>' + SLOT_GROUPS.map(([label, slots]) => {
+    const opts = slots.filter(s => day.slots.includes(s));
+    return opts.length ? `<optgroup label="${label}">${opts.map(s => `<option value="${s}">${formatSlot(s)}</option>`).join('')}</optgroup>` : '';
+  }).join('');
+  slotSel.value = scheduleText(currentDays, day.value, wantSlot) ? String(wantSlot) : '';
+}
+
+// ---------- Brouillon du formulaire (localStorage, chaque accès protégé) ----------
+const DRAFT_KEY = 'lekadior-commande-v1';
+function saveDraft() {
+  const draft = { mode: mode(), address: form.elements.address.value, name: form.elements.name.value, phone: form.elements.phone.value, day: form.elements.day.value, slot: form.elements.slot.value };
+  try { localStorage.setItem(DRAFT_KEY, JSON.stringify(draft)); } catch (e) { /* stockage indisponible : rien n'est conservé */ }
+}
+function loadDraft() {
+  let draft = {};
+  try { draft = JSON.parse(localStorage.getItem(DRAFT_KEY) || '{}') || {}; } catch (e) { draft = {}; }
+  if (typeof draft !== 'object') draft = {};
+  if (draft.mode === 'livraison' || draft.mode === 'retrait') form.querySelector(`input[name="mode"][value="${draft.mode}"]`).checked = true;
+  for (const k of ['address', 'name', 'phone']) if (typeof draft[k] === 'string') form.elements[k].value = draft[k].slice(0, 200);
+  showAddress();
+  // Créneau passé ou invalide → « Peu importe » (géré par fillSchedule).
+  fillSchedule({ day: typeof draft.day === 'string' ? draft.day : '', slot: typeof draft.slot === 'string' ? draft.slot : '' });
+}
 
 // ---------- Envoi ----------
 function currentOrder() {
   return {
     items: cart.map(lineView).map(v => ({ name: v.name, qty: v.qty, unitPrice: v.unitPrice })),
     mode: mode(), address: mode() === 'livraison' ? val('address') : '',
-    time: val('time'), name: val('name'), phone: val('phone')
+    time: scheduleText(currentDays, form.elements.day.value, form.elements.slot.value), name: val('name'), phone: val('phone')
   };
 }
 // Envoi de la commande. Pour l'instant : ouvre seulement WhatsApp avec le message prérempli.
@@ -221,11 +269,12 @@ form.addEventListener('submit', e => {
   if (submitOrder(currentOrder())) {
     clearCart();
     form.reset(); touched.clear();
-    panel.querySelector('[data-field="address"]').hidden = true;
-    validate();
+    showAddress(); fillSchedule();
+    validate(); saveDraft();
     successBox.hidden = false;
     panel.querySelector('.cart-scroll').scrollTop = 0;
   }
 });
 
+loadDraft();
 renderCart();

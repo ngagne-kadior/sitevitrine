@@ -10,31 +10,31 @@ const products = [
   {id:"pain-sicap",name:"Pain Sicap",category:"Pains",price:"150 FCFA",images:["images/produits/pains/pain sicap.png"],description:"Pain Sicap frais."},
   {id:"pain-double-sicap",name:"Pain Double Sicap",category:"Pains",price:"200 FCFA",images:["images/produits/pains/Double sicap.png","images/produits/pains/double sicap 1.png"],description:"Disponible selon la production."},
   {id:"pain-diabetique",name:"Pain Diabétique",category:"Pains",price:"150 FCFA",images:["images/produits/pains/pain diabetique.png"],description:"Disponible tous les jours."},
-  {id:"pain-thiere",name:"Pain Thiéré",category:"Pains",price:"100 FCFA",images:["images/produits/pains/pain thiere.png"],description:"Disponible tous les jours."},
+  {id:"pain-thiere",galerie:true,accroche:"Cuit chaque jour dans notre fournil.",photoAlt:"Pains thiéré dorés alignés sur une étagère en bois",name:"Pain Thiéré",category:"Pains",price:"100 FCFA",images:["images/produits/pains/pain thiere.png"],description:"Disponible tous les jours."},
   {id:"pain-mais",name:"Pain Maïs",category:"Pains",price:"100 FCFA",images:["images/produits/pains/pain Mais.png"],description:"Disponible tous les jours."},
-  {id:"pain-riche",name:"Pain Riche",category:"Pains",price:"100 FCFA",images:["images/produits/pains/pain riche.png"],description:"Disponible tous les jours."},
+  {id:"pain-riche",galerie:true,accroche:"Doré et moelleux, disponible tous les jours.",photoAlt:"Pains riches dorés en vitrine",name:"Pain Riche",category:"Pains",price:"100 FCFA",images:["images/produits/pains/pain riche.png"],description:"Disponible tous les jours."},
   {id:"pain-sans-sel",name:"Pain Sans sel",category:"Pains",price:"150 FCFA",images:[],description:"Sur commande, par lot de 10 pièces."},
   {id:"pain-diabetique-sans-sel",name:"Pain Diabétique Sans sel",category:"Pains",price:"150 FCFA",images:["images/produits/pains/Pain Diabétique Sans sel.png","images/produits/pains/Pain Diabétique Sans sel1.png"],description:"Sur commande, par lot de 10 pièces."},
-  {id:"croissant",name:"Croissant",category:"Viennoiseries",price:"500 FCFA",images:[
+  {id:"croissant",galerie:true,accroche:"Feuilleté, doré et croustillant.",photoAlt:"Croissant pur beurre doré et feuilleté",name:"Croissant",category:"Viennoiseries",price:"500 FCFA",images:[
     "images/produits/viennoiseries/croissant beurre 1.jfif",
     "images/produits/viennoiseries/croissant beurre 2.jfif",
     "images/produits/viennoiseries/croissant beurre 3.jfif",
     "images/produits/viennoiseries/croissant beurre bicolore à la fraise.jfif"
   ],description:"Viennoiserie fraîche et croustillante."},
-  {id:"pain-au-chocolat",name:"Pain au chocolat",category:"Viennoiseries",price:"500 FCFA",images:["images/produits/viennoiseries/Pain au chocolat.jfif","images/produits/viennoiseries/Pain au chocolate 1.jfif"],description:"Une viennoiserie gourmande."},
-  {id:"pain-aux-raisins",name:"Pain aux raisins",category:"Viennoiseries",price:"Prix sur demande",images:["images/produits/viennoiseries/pain au raisin.jfif","images/produits/viennoiseries/pain raisin.jfif","images/produits/viennoiseries/Pain Aux Raisins.jfif"],description:"Disponible selon la production."},
+  {id:"pain-au-chocolat",galerie:true,accroche:"La viennoiserie gourmande par excellence.",photoAlt:"Trois pains au chocolat empilés",name:"Pain au chocolat",category:"Viennoiseries",price:"500 FCFA",images:["images/produits/viennoiseries/Pain au chocolat.jfif","images/produits/viennoiseries/Pain au chocolate 1.jfif"],description:"Une viennoiserie gourmande."},
+  {id:"pain-aux-raisins",galerie:true,accroche:"Une spirale feuilletée aux raisins.",photoAlt:"Pains aux raisins en spirale, bien dorés",name:"Pain aux raisins",category:"Viennoiseries",price:"Prix sur demande",images:["images/produits/viennoiseries/pain au raisin.jfif","images/produits/viennoiseries/pain raisin.jfif","images/produits/viennoiseries/Pain Aux Raisins.jfif"],description:"Disponible selon la production."},
   {id:"palmier",name:"Palmier",category:"Viennoiseries",price:"150 FCFA",images:["images/produits/viennoiseries/palmier.jfif","images/produits/viennoiseries/palmier1.jfif","images/produits/viennoiseries/palmier 2.jfif"],description:"Feuilleté croustillant et caramélisé."},
   {id:"pain-drops",name:"Pain drops",category:"Viennoiseries",price:"700 FCFA",images:["images/produits/viennoiseries/drops 1.jfif","images/produits/viennoiseries/drops2.jfif","images/produits/viennoiseries/drops.jfif"],description:"Disponible selon la production."},
   {id:"chausson-pomme",name:"Chausson pomme",category:"Viennoiseries",price:"500 FCFA",images:["images/produits/viennoiseries/chausson pomme.jfif"],description:"Chausson feuilleté aux pommes."},
-  {id:"roche-coco",name:"Roche coco",category:"Pâtisserie",price:"100 FCFA",images:["images/produits/patisserie/Macarons à la noix de coco dorés.png"],description:"Une douceur gourmande."},
+  {id:"roche-coco",galerie:true,accroche:"Une douceur dorée à la noix de coco.",photoAlt:"Roches à la noix de coco dorées sur une assiette",name:"Roche coco",category:"Pâtisserie",price:"100 FCFA",images:["images/produits/patisserie/Macarons à la noix de coco dorés.png"],description:"Une douceur gourmande."},
   {id:"madeleine",name:"Madeleine",category:"Pâtisserie",price:"Prix sur demande",images:["images/produits/patisserie/madeleine.jfif","images/produits/patisserie/Madeleine 3.jfif","images/produits/patisserie/madeleine 2.jfif"],description:"Moelleuse et savoureuse."},
-  {id:"biscuits",name:"Biscuits",category:"Pâtisserie",price:"Prix sur demande",images:["images/produits/patisserie/Biscuits sablés à la confiture.png"],description:"Biscuits Le Kadior."},
+  {id:"biscuits",galerie:true,accroche:"Des sablés gourmands à la confiture.",photoAlt:"Biscuits sablés à la confiture sur un plat",name:"Biscuits",category:"Pâtisserie",price:"Prix sur demande",images:["images/produits/patisserie/Biscuits sablés à la confiture.png"],description:"Biscuits Le Kadior."},
   {id:"cookies",name:"Cookies",category:"Pâtisserie",price:"Prix sur demande",images:["images/produits/patisserie/cookies 3.jfif","images/produits/patisserie/cookies 2.jfif","images/produits/patisserie/Cookies.jfif"],description:"Cookies gourmands."},
   {id:"gateau-d-anniversaire",name:"Gâteau d'anniversaire",category:"Gâteaux d'anniversaire",price:"À partir de 8 000 FCFA",images:[],description:"Gâteau sur commande.",note:"Délai, taille et parfum confirmés sur WhatsApp à la commande."},
   // `options` : les types de parts et leur prix. Le visiteur choisit un type dans la galerie,
   // le prix affiché et le message WhatsApp s'adaptent. Exemple :
   //   options:[{label:"Part chocolat",price:"1 000 FCFA"},{label:"Part fraisier",price:"1 500 FCFA"}]
-  {id:"part-de-gateau",name:"Part de gâteau",category:"Gâteaux d'anniversaire",price:"À partir de 1 000 FCFA",options:[],images:[
+  {id:"part-de-gateau",galerie:true,accroche:"Une part de douceur, selon les gâteaux du jour.",photoAlt:"Assortiment de parts de gâteaux au chocolat et aux fruits rouges",name:"Part de gâteau",category:"Gâteaux d'anniversaire",price:"À partir de 1 000 FCFA",options:[],images:[
     "images/produits/gateaux/part de gateaux 1.jfif",
     "images/produits/gateaux/part de gateaux 2.jfif",
     "images/produits/gateaux/part de gateaux 3.jfif",
@@ -42,8 +42,8 @@ const products = [
     "images/produits/gateaux/part de gateaux 6.jfif",
     "images/produits/gateaux/part de gateaux 7.jfif"
   ],description:"Parts disponibles selon les gâteaux."},
-  {id:"gateau-personnalise",name:"Gâteau personnalisé",category:"Gâteaux d'anniversaire",price:"Sur devis",images:[],description:"Personnalisation sur commande."},
-  {id:"gateau-evenementiel",name:"Gâteau événementiel",category:"Gâteaux d'anniversaire",price:"Sur devis",images:[],description:"Pour vos événements et célébrations."}
+  {id:"gateau-personnalise",devis:true,name:"Gâteau personnalisé",category:"Gâteaux d'anniversaire",price:"Sur devis",images:[],description:"Personnalisation sur commande."},
+  {id:"gateau-evenementiel",devis:true,occasion:"Fête ou événement",name:"Gâteau événementiel",category:"Gâteaux d'anniversaire",price:"Sur devis",images:[],description:"Pour vos événements et célébrations."}
 ];
 
 const productImages=p=>(Array.isArray(p.images)&&p.images.length?p.images:[p.image]).filter(Boolean).slice(0,MAX_IMAGES);
@@ -52,11 +52,12 @@ const searchInput=document.getElementById('searchInput');
 const emptyMessage=document.getElementById('emptyMessage');
 let currentFilter='Tous';
 // Commande : chaque carte reçoit un bloc `.cart-ctrl` (bouton « Ajouter au panier » ; la quantité se règle dans le panier), rempli par cart.js.
+// Produits `devis: true` (gâteaux sur devis) : lien « Demander un devis » vers la section #gateau-sur-mesure (gateau.js) au lieu du panier.
 
 // Image de secours (produit sans photo, ou photos introuvables) : bloc aux couleurs du site + emoji de la catégorie.
 const CATEGORY_EMOJI={"Pains":"🥖","Viennoiseries":"🥐","Pâtisserie":"🥥","Gâteaux d'anniversaire":"🎂"};
 const fallbackImage=p=>`<div class="product-image product-fallback" role="img" aria-label="${p.name} — photo à venir"><span aria-hidden="true">${CATEGORY_EMOJI[p.category]||'🍞'}</span></div>`;
-productGrid.innerHTML=products.map(p=>`<article class="product-card">${productImages(p).length?`<div class="product-image hidden"><img data-src="${productImages(p)[0]}" alt="${p.name} — photo du produit Le Kadior"></div>`:fallbackImage(p)}<div class="product-body"><span class="product-category">${p.category}</span><h3>${p.name}</h3><p>${p.description}</p><div class="product-bottom"><span class="price">${p.price}</span></div>${p.note?`<p class="price-note">${p.note}</p>`:''}<div class="cart-ctrl" data-id="${p.id}"></div></div></article>`).join('');
+productGrid.innerHTML=products.map(p=>`<article class="product-card">${productImages(p).length?`<div class="product-image hidden"><img data-src="${productImages(p)[0]}" alt="${p.name} — photo du produit Le Kadior"></div>`:fallbackImage(p)}<div class="product-body"><span class="product-category">${p.category}</span><h3>${p.name}</h3><p>${p.description}</p><div class="product-bottom"><span class="price">${p.price}</span></div>${p.note?`<p class="price-note">${p.note}</p>`:''}${p.devis?`<div class="cart-ctrl"><a class="add-btn devis-btn" href="#gateau-sur-mesure"${p.occasion?` data-occasion="${p.occasion}"`:''} aria-label="Demander un devis : ${p.name}"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg><span>Demander un devis</span></a></div>`:`<div class="cart-ctrl" data-id="${p.id}"></div>`}</div></article>`).join('');
 const cards=[...productGrid.children];
 // Photo des cartes : on garde uniquement les fichiers de `images` qui existent vraiment.
 // La première photo trouvée s'affiche sur la carte ; sans aucune photo, la carte reste sans image.
@@ -199,109 +200,64 @@ if(miniEl&&window.L){
   if('ResizeObserver' in window)new ResizeObserver(()=>{mini.invalidateSize();mini.setView(pos,mini.getZoom(),{animate:false})}).observe(miniEl);
 }
 
-// Diaporama « Notre univers en images » : uniquement des photos de produits réels du catalogue.
-// Chaque entrée = [nom du produit dans `products`, photo]. Sans photo indiquée, c'est la première photo du produit.
-// Nom, prix et description sont repris du catalogue ; un produit introuvable ou sans photo est ignoré.
-const universSlides=[
-  ["Baguette","images/produits/pains/camp baguette.png"],
-  ["Pain Sicap","images/produits/pains/pain sicap.png"],
-  ["Pain Thiéré"],
-  ["Pain Diabétique"],
-  ["Pain Maïs"],
-  ["Pain Riche","images/produits/pains/pain riche.png"],
-  ["Croissant"],
-  ["Pain au chocolat"],
-  ["Pain aux raisins"],
-  ["Palmier"],
-  ["Pain drops"],
-  ["Chausson pomme"],
-  ["Roche coco"],
-  ["Madeleine"],
-  ["Biscuits"],
-  ["Cookies"],
-  ["Part de gâteau","images/produits/gateaux/part de gateaux 4.png"],
-  ["Gâteau d'anniversaire"],
-  ["Gâteau personnalisé"]
-];
-const univers=document.querySelector('.univers-slider');
-if(univers){
-  // 4 s d'affichage par photo + 0,7 s de transition (même durée que dans style.css).
-  const DELAY=4000+700,dotsBox=univers.querySelector('.univers-dots');
-  const items=universSlides.map(([name,photo])=>{const p=products.find(x=>x.name===name);return p&&{p,photo:photo||productImages(p)[0]}}).filter(s=>s&&s.photo);
-  univers.querySelector('.univers-prev').insertAdjacentHTML('beforebegin',items.map(({p,photo})=>`<article class="univers-slide"><div class="univers-photo"><img data-src="${photo}" alt="${p.name} — photo du produit Le Kadior"></div><div class="univers-text"><span class="univers-eyebrow">${p.category.replace(" d'anniversaire",'')}</span><h3>${p.name}</h3><strong class="univers-price">${p.price}</strong><p>${p.description}</p></div></article>`).join(''));
-  dotsBox.innerHTML=items.map(({p})=>`<button class="univers-dot" type="button" aria-label="Voir : ${p.name}"></button>`).join('');
-  const slides=[...univers.querySelectorAll('.univers-slide')],dots=[...dotsBox.children];let current=0,timer=null,paused=false;
-  // Les photos ne sont chargées qu'à l'approche de leur slide (l'active et la suivante).
-  const load=i=>{const img=slides[(i+slides.length)%slides.length].querySelector('img[data-src]');if(img){img.src=img.dataset.src;img.removeAttribute('data-src')}};
-  function show(i){
-    const n=(i+slides.length)%slides.length;
-    load(n);load(n+1);load(n-1);
-    slides.forEach((s,k)=>{s.classList.toggle('is-prev',k===current&&k!==n);s.classList.toggle('is-active',k===n);s.setAttribute('aria-hidden',String(k!==n))});
-    dots.forEach((d,k)=>{d.classList.toggle('active',k===n);d.setAttribute('aria-current',String(k===n))});
-    current=n;
+// Diaporama « Notre univers en images » : construit uniquement à partir du tableau `products`.
+// Un produit y figure s'il est marqué `galerie: true` et s'il a au moins une photo (8 au maximum).
+// Nom, prix, catégorie, photo et id viennent du catalogue : un changement de prix s'y reflète aussitôt.
+// `accroche` (ligne en italique) et `photoAlt` (description de la photo) sont facultatifs.
+const UNIVERS_MAX = 8, UNIVERS_DELAY = 5000;
+const univers = document.querySelector('.univers-slider');
+if (univers) {
+  const items = products.filter(p => p.galerie === true && productImages(p).length).slice(0, UNIVERS_MAX);
+  const counter = univers.querySelector('.univers-counter');
+  if (!items.length) univers.closest('section').hidden = true;
+  univers.querySelector('.univers-prev').insertAdjacentHTML('beforebegin', items.map((p, i) => `<article class="univers-slide" role="group" aria-roledescription="diapositive" aria-label="${i + 1} sur ${items.length} : ${p.name}"><div class="univers-photo"><img src="${productImages(p)[0]}" alt="${p.photoAlt || p.name}, Le Kadior, Mbour"${i ? ' loading="lazy"' : ''} decoding="async"></div><div class="univers-text"><span class="univers-eyebrow">${p.category.replace(" d'anniversaire", '')}</span><h3>${p.name}</h3><strong class="univers-price">${p.price}</strong>${p.accroche ? `<p>${p.accroche}</p>` : ''}<div class="cart-ctrl" data-id="${p.id}"></div></div></article>`).join(''));
+  counter.querySelector('.univers-total').textContent = items.length;
+  const slides = [...univers.querySelectorAll('.univers-slide')];
+  let current = 0;
+  function show(i, announce) {
+    const n = (i + slides.length) % slides.length;
+    slides.forEach((s, k) => {
+      s.classList.toggle('is-prev', k === current && k !== n);
+      s.classList.toggle('is-active', k === n);
+      s.setAttribute('aria-hidden', String(k !== n));
+      s.inert = k !== n; // le bouton d'une diapositive cachée n'est pas atteignable au clavier
+    });
+    // Annonce aux lecteurs d'écran seulement quand l'utilisateur change lui-même de diapositive.
+    counter.setAttribute('aria-live', announce ? 'polite' : 'off');
+    counter.querySelector('.univers-current').textContent = n + 1;
+    current = n;
   }
-  const stop=()=>{clearInterval(timer);timer=null};
-  const play=()=>{stop();if(!paused&&!document.hidden)timer=setInterval(()=>show(current+1),DELAY)};
-  const go=i=>{show(i);play()};
-  univers.querySelector('.univers-prev').addEventListener('click',()=>go(current-1));
-  univers.querySelector('.univers-next').addEventListener('click',()=>go(current+1));
-  dots.forEach((d,i)=>d.addEventListener('click',()=>go(i)));
-  univers.addEventListener('mouseenter',()=>{paused=true;stop()});
-  univers.addEventListener('mouseleave',()=>{paused=false;play()});
-  document.addEventListener('visibilitychange',play);
-  let startX=null;
-  univers.addEventListener('touchstart',e=>{startX=e.changedTouches[0].clientX},{passive:true});
-  univers.addEventListener('touchend',e=>{if(startX===null)return;const dx=e.changedTouches[0].clientX-startX;startX=null;if(Math.abs(dx)>45)go(current+(dx<0?1:-1))},{passive:true});
-  show(0);play();
-}
 
-// ===== RECRUTEMENT : la candidature est préparée dans un message WhatsApp (les documents sont joints par le candidat) =====
-const recruitForm=document.getElementById('recruitForm');
-if(recruitForm){
-  const required={nom:'Nom et prénom',telephone:'Numéro de téléphone',adresse:'Adresse complète',poste:'Poste recherché'};
-  const errorBox=recruitForm.querySelector('.rf-error'),confirmBox=recruitForm.querySelector('.rf-confirm'),openLink=recruitForm.querySelector('.rf-open');
-  document.body.appendChild(confirmBox); // hors de la section pour passer au-dessus de tout (bouton flottant inclus)
-  const val=n=>recruitForm.elements[n].value.trim();
-  const closeConfirm=()=>{confirmBox.classList.add('hidden');recruitForm.querySelector('.rf-submit').focus()};
-  recruitForm.addEventListener('input',e=>{const f=e.target.closest('.rf-field');if(f)f.classList.remove('invalid')});
-  recruitForm.addEventListener('submit',e=>{
-    e.preventDefault();
-    const missing=Object.keys(required).filter(n=>!val(n));
-    const phoneOk=!val('telephone')||val('telephone').replace(/\D/g,'').length>=9;
-    recruitForm.querySelectorAll('.rf-field').forEach(f=>f.classList.remove('invalid'));
-    [...missing,...(phoneOk?[]:['telephone'])].forEach(n=>recruitForm.elements[n].closest('.rf-field').classList.add('invalid'));
-    if(missing.length||!phoneOk){
-      errorBox.textContent=missing.length?`Merci de remplir les champs obligatoires : ${missing.map(n=>required[n]).join(', ')}.`:'Le numéro de téléphone semble incomplet (au moins 9 chiffres).';
-      errorBox.classList.remove('hidden');
-      recruitForm.elements[missing[0]||'telephone'].focus();
-      return;
-    }
-    errorBox.classList.add('hidden');
-    const opt=n=>val(n)||'Non précisé';
-    const message=[
-      'Bonjour Le Kadior,',
-      'Je souhaite déposer ma candidature.',
-      '',
-      '*CANDIDATURE — LE KADIOR*',
-      '',
-      `*Nom et prénom :* ${val('nom')}`,
-      `*Téléphone :* ${val('telephone')}`,
-      `*Adresse :* ${val('adresse')}`,
-      `*Poste recherché :* ${val('poste')}`,
-      `*Formation / niveau d'études :* ${opt('formation')}`,
-      `*Expérience professionnelle :* ${opt('experience')}`,
-      `*Disponibilité :* ${opt('disponibilite')}`,
-      ...(val('motivation')?['','*Message de motivation :*',val('motivation')]:[]),
-      '',
-      'Je joins mon CV et mes documents à ce message.',
-      'Merci pour votre attention.'
-    ].join('\n');
-    openLink.href=`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-    confirmBox.classList.remove('hidden');
-    openLink.focus();
+  // Lecture automatique : arrêtée au survol, au toucher, quand un élément du diaporama a le focus,
+  // quand l'onglet est caché, et jamais si l'utilisateur préfère réduire les animations.
+  const reduced = window.matchMedia ? matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
+  const state = { hover: false, focus: false, touched: false };
+  let timer = null;
+  const canPlay = () => slides.length > 1 && !reduced.matches && !document.hidden && !state.hover && !state.focus && !state.touched;
+  function sync() {
+    clearInterval(timer); timer = null;
+    if (canPlay()) timer = setInterval(() => show(current + 1, false), UNIVERS_DELAY);
+    univers.classList.toggle('is-playing', !!timer);
+  }
+  const go = i => { show(i, true); sync(); };
+  univers.querySelector('.univers-prev').addEventListener('click', () => go(current - 1));
+  univers.querySelector('.univers-next').addEventListener('click', () => go(current + 1));
+  univers.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); go(current + (e.key === 'ArrowRight' ? 1 : -1)); }
   });
-  confirmBox.querySelector('.rf-back').addEventListener('click',closeConfirm);
-  openLink.addEventListener('click',()=>setTimeout(()=>confirmBox.classList.add('hidden'),300));
-  confirmBox.addEventListener('click',e=>{if(e.target===confirmBox)closeConfirm()});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!confirmBox.classList.contains('hidden'))closeConfirm()});
+  univers.addEventListener('mouseenter', () => { state.hover = true; sync(); });
+  univers.addEventListener('mouseleave', () => { state.hover = false; sync(); });
+  univers.addEventListener('focusin', () => { state.focus = true; sync(); });
+  univers.addEventListener('focusout', e => { if (!univers.contains(e.relatedTarget)) { state.focus = false; sync(); } });
+  document.addEventListener('visibilitychange', sync);
+  if (reduced.addEventListener) reduced.addEventListener('change', sync);
+  // Balayage tactile : un toucher arrête la lecture automatique ; un glissement de plus de 45 px change de diapositive.
+  let startX = null, startY = null;
+  univers.addEventListener('touchstart', e => { state.touched = true; sync(); startX = e.changedTouches[0].clientX; startY = e.changedTouches[0].clientY; }, { passive: true });
+  univers.addEventListener('touchend', e => {
+    if (startX === null) return;
+    const dx = e.changedTouches[0].clientX - startX, dy = e.changedTouches[0].clientY - startY; startX = null;
+    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) go(current + (dx < 0 ? 1 : -1));
+  }, { passive: true });
+  show(0, false); sync();
 }

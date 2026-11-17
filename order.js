@@ -50,11 +50,63 @@ function buildOrderMessage(order) {
   return lines.join('\n');
 }
 
+// ===== JOUR ET HEURE SOUHAITÉS (heure de Dakar) =====
+// Créneaux de 30 minutes dans les horaires d'ouverture, exprimés en minutes depuis minuit :
+// matin 06h00 → 14h00, soir 16h00 → 23h00.
+const MORNING_SLOTS = [], EVENING_SLOTS = [];
+for (let m = 6 * 60; m <= 14 * 60; m += 30) MORNING_SLOTS.push(m);
+for (let m = 16 * 60; m <= 23 * 60; m += 30) EVENING_SLOTS.push(m);
+const ALL_SLOTS = MORNING_SLOTS.concat(EVENING_SLOTS);
+const SLOT_MARGIN = 30; // pour aujourd'hui : on masque les créneaux passés et ceux des 30 prochaines minutes
+
+// 390 → "06h30"
+function formatSlot(minutes) {
+  return String(Math.floor(minutes / 60)).padStart(2, '0') + 'h' + String(minutes % 60).padStart(2, '0');
+}
+
+// Date et heure actuelles à Dakar (Africa/Dakar), quelle que soit l'heure réglée sur l'appareil.
+function dakarNow(date = new Date()) {
+  try {
+    const parts = {};
+    new Intl.DateTimeFormat('en-GB', { timeZone: 'Africa/Dakar', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' })
+      .formatToParts(date).forEach(p => { parts[p.type] = p.value; });
+    return { y: +parts.year, m: +parts.month, d: +parts.day, minutes: (+parts.hour % 24) * 60 + +parts.minute };
+  } catch (e) {
+    // Fuseau indisponible : Dakar est à UTC+0 toute l'année, sans heure d'été.
+    return { y: date.getUTCFullYear(), m: date.getUTCMonth() + 1, d: date.getUTCDate(), minutes: date.getUTCHours() * 60 + date.getUTCMinutes() };
+  }
+}
+
+// Liste des jours proposés : Aujourd'hui, Demain, puis les 5 jours suivants ("Jeudi 20/11").
+// Chaque jour : { value: "2026-11-20" (date absolue, sauvegardable), label, slots: [minutes…] }.
+// Aujourd'hui n'apparaît que s'il reste au moins un créneau à plus de 30 minutes.
+function scheduleDays(date = new Date()) {
+  const now = dakarNow(date), days = [];
+  const weekday = new Intl.DateTimeFormat('fr-FR', { weekday: 'long', timeZone: 'UTC' });
+  for (let i = 0; i < 7; i++) {
+    const day = new Date(Date.UTC(now.y, now.m - 1, now.d + i));
+    const dd = String(day.getUTCDate()).padStart(2, '0'), mm = String(day.getUTCMonth() + 1).padStart(2, '0');
+    const name = weekday.format(day);
+    const label = i === 0 ? "Aujourd'hui" : i === 1 ? 'Demain' : `${name.charAt(0).toUpperCase()}${name.slice(1)} ${dd}/${mm}`;
+    const slots = i === 0 ? ALL_SLOTS.filter(s => s > now.minutes + SLOT_MARGIN) : ALL_SLOTS.slice();
+    if (slots.length) days.push({ value: `${day.getUTCFullYear()}-${mm}-${dd}`, label, slots });
+  }
+  return days;
+}
+
+// Texte envoyé dans le champ `time` de la commande : "Aujourd'hui à 18h30", "Jeudi 20/11 à 07h00".
+// Vide si l'heure est « Peu importe » ou si le créneau n'est plus proposé.
+function scheduleText(days, dayValue, slot) {
+  const day = days.find(d => d.value === dayValue), minutes = slot === '' || slot == null ? NaN : Number(slot);
+  if (!day || !day.slots.includes(minutes)) return '';
+  return `${day.label} à ${formatSlot(minutes)}`;
+}
+
 // Lien WhatsApp complet avec le message encodé.
 function buildWhatsappUrl(number, message) {
   return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 }
 
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { fixedPrice, formatFCFA, orderTotals, buildOrderMessage, buildWhatsappUrl };
+  module.exports = { fixedPrice, formatFCFA, orderTotals, buildOrderMessage, buildWhatsappUrl, MORNING_SLOTS, EVENING_SLOTS, formatSlot, dakarNow, scheduleDays, scheduleText };
 }
