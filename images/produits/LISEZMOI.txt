@@ -1,0 +1,18 @@
+AJOUTER LA PHOTO D'UN PRODUIT
+
+1. Où mettre la photo
+   Dans ce dossier : images/produits/
+
+2. Quel nom lui donner
+   L'identifiant (id) du produit, en minuscules, sans accents ni espaces.
+   Exemple : pour le produit « Torsade », l'id est torsade
+   → nommez la photo torsade.jpg
+
+3. Taille conseillée
+   - 800 x 800 px (carrée) ou format 4:3 (par exemple 800 x 600 px)
+   - moins de 200 Ko
+   - format JPG ou WebP
+
+4. Brancher la photo sur le site
+   Envoyez cette phrase à Claude (en remplaçant NOM par l'id du produit) :
+   Ajoute la photo images/produits/NOM.jpg au produit NOM

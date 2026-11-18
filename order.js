@@ -51,11 +51,14 @@ function buildOrderMessage(order) {
 }
 
 // ===== JOUR ET HEURE SOUHAITÉS (heure de Dakar) =====
-// Créneaux de 30 minutes dans les horaires d'ouverture, exprimés en minutes depuis minuit :
-// matin 06h00 → 14h00, soir 16h00 → 23h00.
-const MORNING_SLOTS = [], EVENING_SLOTS = [];
-for (let m = 6 * 60; m <= 14 * 60; m += 30) MORNING_SLOTS.push(m);
-for (let m = 16 * 60; m <= 23 * 60; m += 30) EVENING_SLOTS.push(m);
+// Créneaux de 30 minutes dans les horaires d'ouverture, exprimés en minutes depuis minuit.
+// Les plages viennent de HORAIRES (horaires.js, chargé avant ce fichier) : matin 06h00 → 14h00, soir 16h00 → 23h00.
+const SHOP_HOURS = typeof HORAIRES !== 'undefined' ? HORAIRES : require('./horaires.js').HORAIRES;
+const [MORNING_SLOTS, EVENING_SLOTS] = SHOP_HOURS.plages.map(p => {
+  const [dh, dm] = p.debut.split(':').map(Number), [fh, fm] = p.fin.split(':').map(Number), slots = [];
+  for (let m = dh * 60 + dm; m <= fh * 60 + fm; m += 30) slots.push(m);
+  return slots;
+});
 const ALL_SLOTS = MORNING_SLOTS.concat(EVENING_SLOTS);
 const SLOT_MARGIN = 30; // pour aujourd'hui : on masque les créneaux passés et ceux des 30 prochaines minutes
 
@@ -68,7 +71,7 @@ function formatSlot(minutes) {
 function dakarNow(date = new Date()) {
   try {
     const parts = {};
-    new Intl.DateTimeFormat('en-GB', { timeZone: 'Africa/Dakar', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' })
+    new Intl.DateTimeFormat('en-GB', { timeZone: SHOP_HOURS.fuseau, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' })
       .formatToParts(date).forEach(p => { parts[p.type] = p.value; });
     return { y: +parts.year, m: +parts.month, d: +parts.day, minutes: (+parts.hour % 24) * 60 + +parts.minute };
   } catch (e) {

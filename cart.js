@@ -100,6 +100,7 @@ document.body.insertAdjacentHTML('beforeend', `
       </fieldset>
       <label class="rf-field cart-field" data-field="name"><span>Nom <em>*</em></span><input type="text" name="name" autocomplete="name"><small class="field-error" hidden></small></label>
       <label class="rf-field cart-field" data-field="phone"><span>Téléphone <em>*</em></span><input type="tel" name="phone" autocomplete="tel" placeholder="Ex. 77 123 45 67"><small class="field-error" hidden></small></label>
+      <p class="cart-ferme" hidden>Nous sommes fermés. Nous répondrons à votre commande à la réouverture.</p>
       <button class="btn cart-send" type="submit" disabled><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Envoyer ma commande sur WhatsApp</button>
       <p class="cart-missing" aria-live="polite"></p>
       <p class="cart-note">${DELIVERY_NOTE}</p>
@@ -207,7 +208,8 @@ form.addEventListener('focusout', e => { if (e.target.name && e.target.name !== 
 
 // ---------- Jour et heure souhaités (listes déroulantes, heure de Dakar : voir order.js) ----------
 let currentDays = [];
-const SLOT_GROUPS = [['Matin (06h00 - 14h00)', MORNING_SLOTS], ['Soir (16h00 - 23h00)', EVENING_SLOTS]];
+// Libellés calculés à partir de HORAIRES (horaires.js) : « Matin (06h00 - 14h00) », « Soir (16h00 - 23h00) ».
+const SLOT_GROUPS = [['Matin', MORNING_SLOTS], ['Soir', EVENING_SLOTS]].map(([name, slots]) => [`${name} (${formatSlot(slots[0])} - ${formatSlot(slots[slots.length - 1])})`, slots]);
 // Reconstruit la liste des jours ; garde le jour et l'heure voulus s'ils sont encore proposés, sinon « Peu importe ».
 function fillSchedule(want = {}) {
   currentDays = scheduleDays(new Date());

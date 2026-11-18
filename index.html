@@ -72,7 +72,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-  <link rel="stylesheet" href="style.css?v=20261117-6">
+  <link rel="stylesheet" href="style.css?v=20261118-2">
 </head>
 <body>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -95,7 +95,7 @@
   </svg>
 
   <div class="topbar">
-    <div class="topbar-item"><svg class="icon"><use href="#i-pin"/></svg><span>Mbour, Sénégal</span></div>
+    <div class="topbar-lieu"><div class="topbar-item"><svg class="icon"><use href="#i-pin"/></svg><span>Mbour, Sénégal</span></div><span class="statut-boutique" data-statut-boutique role="status" aria-live="polite" hidden></span></div>
     <div class="topbar-item"><svg class="icon"><use href="#i-clock"/></svg><span>Lundi – Dimanche : 06h – 14h / 16h – 23h</span></div>
     <div class="topbar-item delivery"><svg class="icon"><use href="#i-truck"/></svg><span>Livraison à Mbour et environs</span></div>
     <div class="socials" aria-label="Réseaux sociaux">
@@ -122,6 +122,8 @@
     </div>
     <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </header>
+
+  <div class="bandeau-ferme" hidden><p class="bandeau-ferme-texte"></p><button class="bandeau-ferme-close" type="button" aria-label="Fermer ce message">&times;</button></div>
 
   <main>
     <section id="accueil" class="hero">
@@ -215,7 +217,7 @@
       </div>
     </section>
 
-    <section id="contact" class="section contact-section"><div class="section-heading"><h2>Retrouvez Le Kadior à Mbour</h2><p>Une commande, une question ou une envie gourmande ? Contactez-nous directement.</p></div><div class="contact-grid"><div class="map-card"><div id="kadiorMap" class="map-canvas" data-lat="14.428746" data-lng="-16.979262"><div class="map-placeholder"><span>📍</span><strong>Le Kadior</strong><small>Mbour, Grand-Mbour, Route de l'Hôpital, en face Mbour FM</small></div></div><a href="https://www.google.com/maps/dir/?api=1&destination=14.428746%2C-16.979262" target="_blank" rel="noopener">Voir l'itinéraire <svg class="icon"><use href="#i-arrow"/></svg></a></div><div class="contact-info"><div class="info-card"><svg class="icon"><use href="#i-pin"/></svg><div><b>Localisation</b><span>Mbour, Grand-Mbour<br>Route de l'Hôpital<br>En face Mbour FM</span></div></div><div class="info-card"><svg class="icon"><use href="#i-clock"/></svg><div><b>Horaires</b><span>Lun – Dim : 06h–14h / 16h–23h</span></div></div><div class="info-card"><svg class="icon"><use href="#i-truck"/></svg><div><b>Livraison</b><span>Livraison à Mbour et environs. Tarif et délai confirmés sur WhatsApp selon votre adresse.</span></div></div><a class="btn btn-gold full" href="https://wa.me/221784666259" target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg>Commander sur WhatsApp</a></div></div></section>
+    <section id="contact" class="section contact-section"><div class="section-heading"><h2>Retrouvez Le Kadior à Mbour</h2><p>Une commande, une question ou une envie gourmande ? Contactez-nous directement.</p></div><div class="contact-grid"><div class="map-card"><div id="kadiorMap" class="map-canvas" data-lat="14.428746" data-lng="-16.979262"><div class="map-placeholder"><span>📍</span><strong>Le Kadior</strong><small>Mbour, Grand-Mbour, Route de l'Hôpital, en face Mbour FM</small></div></div><a href="https://www.google.com/maps/dir/?api=1&destination=14.428746%2C-16.979262" target="_blank" rel="noopener">Voir l'itinéraire <svg class="icon"><use href="#i-arrow"/></svg></a></div><div class="contact-info"><div class="info-card"><svg class="icon"><use href="#i-pin"/></svg><div><b>Localisation</b><span>Mbour, Grand-Mbour<br>Route de l'Hôpital<br>En face Mbour FM</span></div></div><div class="info-card"><svg class="icon"><use href="#i-clock"/></svg><div><b>Horaires</b><span>Lun – Dim : 06h–14h / 16h–23h</span><span class="statut-boutique" data-statut-boutique hidden></span></div></div><div class="info-card"><svg class="icon"><use href="#i-truck"/></svg><div><b>Livraison</b><span>Livraison à Mbour et environs. Tarif et délai confirmés sur WhatsApp selon votre adresse.</span></div></div><a class="btn btn-gold full" href="https://wa.me/221784666259" target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg>Commander sur WhatsApp</a></div></div></section>
 
     <section id="gateau-sur-mesure" class="section cake-section">
       <div class="section-heading"><h2>Un gâteau sur mesure&nbsp;?</h2><p>Anniversaire, mariage, baptême ou événement : dites-nous ce que vous imaginez. Nous vous répondons sur WhatsApp avec le tarif et le délai.</p></div>
@@ -241,9 +243,10 @@
   <footer class="footer"><div class="footer-main"><div class="footer-brand"><img src="images/Logo.png" alt="Logo de la boulangerie Le Kadior"><p>Le goût du bon pain, chaque jour.</p></div><div><h3>Liens utiles</h3><a href="#accueil">Accueil</a><a href="#categories">Nos catégories</a><a href="#catalogue">Tous nos produits</a><a href="#gateau-sur-mesure">Gâteaux sur mesure</a><a href="#a-propos">À propos</a><a href="#actualites">Galerie</a><a href="#contact">Contact</a></div><div><h3>Nos coordonnées</h3><p class="footer-line"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><span>Mbour, Grand-Mbour<br>Route de l'Hôpital<br>En face Mbour FM</span></p><p class="footer-line"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><span>Lundi – Dimanche : 06h–14h / 16h–23h</span></p><p class="footer-line"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:+221784666259">+221 78 466 62 59</a></p><p class="footer-line"><svg class="icon" aria-hidden="true"><use href="#i-truck"/></svg><span>Livraison à Mbour et environs. Tarif et délai confirmés sur WhatsApp selon votre adresse.</span></p><a class="footer-line" href="https://wa.me/221784666259" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg><span>Commander sur WhatsApp</span></a></div><div><h3>Suivez-nous</h3><div class="footer-socials"><a href="https://www.tiktok.com/@lekadior_officiel" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/lekadior_officiel" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/share/1LjNVexWPU/" target="_blank" rel="noopener">Facebook</a></div><div class="mini-map"><div id="kadiorMiniMap" class="mini-map-canvas" data-lat="14.428746" data-lng="-16.979262"><div class="mini-map-fallback">📍 Le Kadior<br><small>Mbour</small></div></div><a class="mini-map-link" href="https://www.google.com/maps/dir/?api=1&destination=14.428746%2C-16.979262" target="_blank" rel="noopener">Itinéraire <svg class="icon"><use href="#i-arrow"/></svg></a></div></div></div><div class="footer-bottom"><span class="footer-copy">©&nbsp;<span id="year">2026</span>&nbsp;Le&nbsp;Kadior. Tous droits réservés.</span></div></footer>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script src="order.js?v=20261117-6"></script>
-  <script src="script.js?v=20261117-6"></script>
-  <script src="cart.js?v=20261117-6"></script>
-  <script src="gateau.js?v=20261117-6"></script>
+  <script src="horaires.js?v=20261118-2"></script>
+  <script src="order.js?v=20261118-2"></script>
+  <script src="script.js?v=20261118-2"></script>
+  <script src="cart.js?v=20261118-2"></script>
+  <script src="gateau.js?v=20261118-2"></script>
 </body>
 </html>
